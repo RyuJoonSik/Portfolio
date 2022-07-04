@@ -53,5 +53,8 @@
   },
   "resolutions": {
     "styled-components": "^5"
+  },
+  "dependencies": {
+    "firebase": "^9.8.4"
   }
 }

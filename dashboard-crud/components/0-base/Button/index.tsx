@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import { Box } from "../FlexBox";
-import { text_12px_Medium } from "../Text";
+import { Box } from "../Box";
+import { text_12px_regular } from "../Text";
 
-export const Button = styled(Box).attrs({
+export const HeaderButton = styled(Box).attrs({
   as: "button",
 })`
   position: relative;
@@ -14,13 +14,13 @@ export const Button = styled(Box).attrs({
   padding: 0.3rem 0.6rem;
 
   border-radius: 4px;
-  background-color: rgb(${(props) => props.theme.color.ultramarineBlue});
+  background-color: rgb(${({ theme }) => theme.color.ultramarineBlue});
 
   transition: background-color 150ms ease-in;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(${(props) => props.theme.color.blueberry});
+    background-color: rgb(${({ theme }) => theme.color.blueberry});
   }
 
   &::after {
@@ -43,7 +43,7 @@ export const Button = styled(Box).attrs({
   }
 `;
 
-export const ButtonName = styled.span`
-  ${text_12px_Medium};
+export const HeaderButtonName = styled.span`
+  ${text_12px_regular};
   color: rgb(${({ theme }) => theme.color.cultured});
 `;

@@ -1,14 +1,15 @@
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./App.tsx",
+  // entry: "./App.ts",
   output: {
     filename: "App.js",
-    path: path.resolve(__dirname),
+    path: path.resolve(__dirname) + "/public",
   },
   resolve: {
-    extensions: [".tsx", ".js"],
+    extensions: [".tsx", ".ts", ".js"],
   },
   module: {
     rules: [

@@ -1,16 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import MainBox from ".";
+import Main from ".";
 
 export default {
-  title: "Atoms/MainBox",
-  component: MainBox,
+  title: "Molecules/Main",
+  component: Main,
   parameters: {
     layout: "fullscreen",
   },
-} as ComponentMeta<typeof MainBox>;
+} as ComponentMeta<typeof Main>;
 
-const Template: ComponentStory<typeof MainBox> = () => <MainBox />;
+const Template: ComponentStory<typeof Main> = () => <Main />;
 
 export const Default = Template.bind({});

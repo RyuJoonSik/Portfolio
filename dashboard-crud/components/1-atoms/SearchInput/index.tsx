@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { Search } from "@styled-icons/material-sharp/Search";
 
-import { Icon } from "../../0-base/Icon";
-import { Box } from "../../0-base/FlexBox";
+import { HeaderIcon } from "../../0-base/Icon";
+import { Box } from "../../0-base/Box";
 
-const StyledContainer = styled(Box)`
+const Group = styled(Box)`
   position: relative;
 
   border-radius: 4px;
@@ -36,7 +36,7 @@ const StyledSearchInput = styled.input`
   }
 `;
 
-const StyledSearchIcon = styled(Icon).attrs({
+const Icon = styled(HeaderIcon).attrs({
   as: Search,
 })`
   position: absolute;
@@ -47,9 +47,9 @@ const StyledSearchIcon = styled(Icon).attrs({
 
 export default function SearchInput(): JSX.Element {
   return (
-    <StyledContainer>
-      <StyledSearchIcon />
+    <Group>
+      <Icon />
       <StyledSearchInput />
-    </StyledContainer>
+    </Group>
   );
 }

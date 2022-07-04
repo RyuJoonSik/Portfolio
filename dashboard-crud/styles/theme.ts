@@ -8,9 +8,11 @@ export const theme: DefaultTheme = {
     cornflowerBlue: "102, 140, 255",
     white: "255, 255, 255",
     cultured: "245, 245, 245",
+    chineseWhite: "224, 224, 224",
     antiFlashWhite: "240, 242, 248",
     black: "0, 0, 0",
     gunmetal: "36, 44, 58",
+    eerieBlack: "18, 23, 30",
   },
 };
 

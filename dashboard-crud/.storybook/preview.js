@@ -17,7 +17,7 @@ export const parameters = {
     values: [
       {
         name: "default",
-        value: "#fff",
+        value: "#999",
       },
       {
         name: "ultramarineBlue",

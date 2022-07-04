@@ -7,7 +7,7 @@ export default {
   title: "Atoms/HeaderBox",
   component: HeaderBox,
   parameters: {
-    layout: "fullscreen",
+    layout: "centered",
   },
 } as ComponentMeta<typeof HeaderBox>;
 

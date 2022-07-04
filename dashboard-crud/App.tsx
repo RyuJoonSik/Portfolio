@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ThemeProvider } from "styled-components";
 
+import theme from "./styles/theme";
 import GlobalStyle from "./styles/GlobalStyle";
-import DefaultPage from "./pages/DefaultPage/DefaultPage";
+import DefaultPage from "./components/3-pages/DefaultPage";
 
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <DefaultPage />
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <DefaultPage />
+      </ThemeProvider>
     </>
   );
 }

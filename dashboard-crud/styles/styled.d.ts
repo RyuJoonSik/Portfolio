@@ -9,9 +9,11 @@ declare module "styled-components" {
       cornflowerBlue: string;
       white: string;
       cultured: string;
+      chineseWhite: string;
       antiFlashWhite: string;
       black: string;
       gunmetal: string;
+      eerieBlack: string;
     };
   }
 }
