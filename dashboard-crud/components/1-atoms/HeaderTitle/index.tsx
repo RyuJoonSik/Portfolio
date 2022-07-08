@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { text_24px_medium } from "../../0-base/Text";
+import { text_24px_medium } from "../../../styles/textStyle";
 
 const StyledHeaderTitle = styled.h1`
   display: flex;

@@ -8,6 +8,7 @@ import { Login } from "@styled-icons/material-sharp/Login";
 import HeaderBox from "../../1-atoms/HeaderBox";
 import HeaderIconButton from "../../2-molecules/HeaderIconButton";
 import HeaderTitle from "../../1-atoms/HeaderTitle";
+import DarkModeButton from "../../2-molecules/DarkModeButton";
 
 const Group = styled.div`
   display: flex;
@@ -33,7 +34,7 @@ export default function Header(): JSX.Element {
     <HeaderBox>
       <HeaderTitle />
       <Group>
-        <HeaderIconButton Icon={Brightness6} name="다크 모드" />
+        <DarkModeButton />
         <HeaderIconButton Icon={AccountCircle} name="프로필" />
         <HeaderIconButton Icon={NearMe} name="일상" />
         <HeaderIconButton Icon={Login} name="로그인" />

@@ -5,7 +5,7 @@ import GlobalStyle from "./styles/GlobalStyle";
 import ProfilePage from "./components/4-pages/ProfilePage";
 import ThemeContextProvider from "./contexts/ThemeContext";
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
   console.log("App render");
   return (
     <ThemeContextProvider>

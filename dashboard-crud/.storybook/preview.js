@@ -1,5 +1,6 @@
 import React from "react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import "@storybook/addon-console";
 
 import GlobalStyle from "../styles/GlobalStyle";
 import theme from "../styles/theme";

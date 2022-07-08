@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { text_16px_regular } from "../../0-base/Text";
+import { text_16px_regular } from "../../../styles/textStyle";
 
 export const StyledMainContentDescriptionTerm = styled.dt`
   ${text_16px_regular}
