@@ -1,8 +1,9 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 
 import GlobalStyle from "../styles/GlobalStyle";
 import theme from "../styles/theme";
+import ThemeContextProvider from "../contexts/ThemeContext";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -25,15 +26,18 @@ export const parameters = {
       },
     ],
   },
+  viewport: {
+    viewports: INITIAL_VIEWPORTS,
+  },
 };
 
 export const decorators = [
   (Story) => (
     <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
+      <ThemeContextProvider>
+        <GlobalStyle />
         <Story />
-      </ThemeProvider>
+      </ThemeContextProvider>
     </>
   ),
 ];

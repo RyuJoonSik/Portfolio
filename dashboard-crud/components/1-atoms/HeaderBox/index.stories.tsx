@@ -7,10 +7,12 @@ export default {
   title: "Atoms/HeaderBox",
   component: HeaderBox,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
 } as ComponentMeta<typeof HeaderBox>;
 
-const Template: ComponentStory<typeof HeaderBox> = () => <HeaderBox />;
+const Template: ComponentStory<typeof HeaderBox> = (args) => (
+  <HeaderBox {...args} />
+);
 
 export const Default = Template.bind({});

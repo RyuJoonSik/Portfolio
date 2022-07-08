@@ -1,7 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 
-import { H2 } from "../../0-base/Heading";
+import { text_24px_regular } from "../../0-base/Text";
+
+export const StyledMainTitle = styled.h2`
+  padding: 1.25rem 0;
+  border-bottom: 1px rgb(${({ theme }) => theme.color.chineseWhite}) solid;
+  background-color: rgb(${({ theme }) => theme.color.antiFlashWhite});
+
+  ${text_24px_regular}
+  color: rgb(${({ theme }) => theme.color.eerieBlack});
+`;
 
 export default function MainTitle(): JSX.Element {
-  return <H2>프로필</H2>;
+  return <StyledMainTitle>프로필</StyledMainTitle>;
 }

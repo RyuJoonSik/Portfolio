@@ -7,7 +7,7 @@ export default {
   title: "Atoms/HeaderTitle",
   component: HeaderTitle,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
 } as ComponentMeta<typeof HeaderTitle>;
 

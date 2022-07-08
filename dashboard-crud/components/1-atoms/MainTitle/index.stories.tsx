@@ -7,7 +7,7 @@ export default {
   title: "Atoms/MainTitle",
   component: MainTitle,
   parameters: {
-    layout: "centered",
+    layout: "fullscreen",
   },
 } as ComponentMeta<typeof MainTitle>;
 

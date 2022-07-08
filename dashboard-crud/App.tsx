@@ -1,19 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ThemeProvider } from "styled-components";
 
-import theme from "./styles/theme";
 import GlobalStyle from "./styles/GlobalStyle";
-import DefaultPage from "./components/3-pages/DefaultPage";
+import ProfilePage from "./components/4-pages/ProfilePage";
+import ThemeContextProvider from "./contexts/ThemeContext";
 
-function App() {
+function App(): JSX.Element {
+  console.log("App render");
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <DefaultPage />
-      </ThemeProvider>
-    </>
+    <ThemeContextProvider>
+      <GlobalStyle />
+      <ProfilePage />
+    </ThemeContextProvider>
   );
 }
 
