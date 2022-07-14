@@ -19,7 +19,7 @@ export default function ProfileAboutMe(): JSX.Element {
   return (
     <MainContentItemBox>
       <MainContentTitle title="About me" Icon={Face} />
-      <MainContentParagraph textContent={TEXT_CONTENT} />
+      <MainContentParagraph>{TEXT_CONTENT}</MainContentParagraph>
     </MainContentItemBox>
   );
 }

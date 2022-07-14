@@ -4,17 +4,19 @@ import styled from "styled-components";
 const StyledParagraph = styled.p`
   box-sizing: border-box;
   padding: 1.5rem;
-  background-color: rgb(${({ theme }) => theme.color.white});
+  background-color: rgb(
+    ${({ theme }) => theme.color.mainContentItemContentBackground}
+  );
 
-  color: rgb(${({ theme }) => theme.color.gunmetal});
+  color: rgb(${({ theme }) => theme.color.mainContentItemContentText});
 `;
 
 interface MainContentParagraphProps {
-  textContent: string;
+  children: React.ReactNode;
 }
 
 export default function MainContentParagraph({
-  textContent,
+  children,
 }: MainContentParagraphProps): JSX.Element {
-  return <StyledParagraph>{textContent}</StyledParagraph>;
+  return <StyledParagraph>{children}</StyledParagraph>;
 }

@@ -6,13 +6,13 @@ const StyleMainIcon = styled.i`
   width: 24px;
   height: 24px;
 
-  color: rgb(${({ theme }) => theme.color.eerieBlack});
+  color: rgb(${({ theme }) => theme.color.mainIcon});
 `;
 
 interface MainIconProps {
-  Icon: StyledIcon;
+  Icon?: StyledIcon;
 }
 
-export default function MainIcon({ Icon }: MainIconProps): JSX.Element {
-  return <StyleMainIcon as={Icon} />;
+export default function MainIcon({ Icon }: MainIconProps): JSX.Element | null {
+  return Icon ? <StyleMainIcon as={Icon} /> : null;
 }

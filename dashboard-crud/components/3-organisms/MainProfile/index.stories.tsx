@@ -1,16 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Main from ".";
+import MainProfile from ".";
 
 export default {
-  title: "Organisms/Main",
-  component: Main,
+  title: "Organisms/MainProfile",
+  component: MainProfile,
   parameters: {
     layout: "fullscreen",
   },
-} as ComponentMeta<typeof Main>;
+} as ComponentMeta<typeof MainProfile>;
 
-const Template: ComponentStory<typeof Main> = () => <Main />;
+const Template: ComponentStory<typeof MainProfile> = () => <MainProfile />;
 
 export const Default = Template.bind({});

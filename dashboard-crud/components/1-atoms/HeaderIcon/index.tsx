@@ -6,7 +6,7 @@ const StyleHeaderIcon = styled.i`
   width: 24px;
   height: 24px;
 
-  color: rgb(${({ theme }) => theme.color.cultured});
+  color: rgb(${({ theme }) => theme.color.headerButtonIcon});
 `;
 
 interface HeaderIconProps {

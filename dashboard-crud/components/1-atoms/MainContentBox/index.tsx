@@ -1,10 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { MOBILE_SIZE } from "../../../styles/deviceSize";
 
 export const StyledMainContentBox = styled.div`
+  box-sizing: border-box;
   max-width: 63.75rem;
-  padding: 0 1rem;
-  background-color: rgb(${({ theme }) => theme.color.antiFlashWhite});
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 1rem 0;
+
+  ${MOBILE_SIZE} {
+    padding: 2rem 1rem 3.5rem;
+  }
 `;
 
 interface MainContentBoxProps {

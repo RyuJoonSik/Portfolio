@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { MOBILE_SIZE, TABLET_SIZE } from "../../../styles/deviceSize";
+
 const StyledHeaderButton = styled.button`
   position: relative;
   overflow: hidden;
@@ -13,13 +15,13 @@ const StyledHeaderButton = styled.button`
   padding: 0.3rem 0.6rem;
 
   border-radius: 4px;
-  background-color: rgb(${({ theme }) => theme.color.ultramarineBlue});
+  background-color: rgb(${({ theme }) => theme.color.headerButton});
 
   transition: background-color 150ms ease-in;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(${({ theme }) => theme.color.blueberry});
+    background-color: rgb(${({ theme }) => theme.color.headerButtonHover});
   }
 
   &::after {
@@ -29,20 +31,27 @@ const StyledHeaderButton = styled.button`
 
     width: 100%;
     height: 100%;
-    border-radius: 4px;
-    background-color: rgb(${(props) => props.theme.color.cornflowerBlue});
+    background-color: rgb(
+      ${(props) => props.theme.color.headerButtonPseudoElement}
+    );
 
-    transform: scale(0);
-    transition: transform 60ms ease-in;
     content: "";
+    visibility: hidden;
   }
 
   &:active::after {
-    transform: scale(1);
+    visibility: visible;
   }
 
-  @media screen and (max-width: 565px) {
+  ${TABLET_SIZE} {
+    &:hover {
+      background-color: rgb(${({ theme }) => theme.color.headerButton});
+    }
+  }
+
+  ${MOBILE_SIZE} {
     flex: 1;
+    border-radius: 0;
   }
 `;
 

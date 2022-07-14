@@ -11,6 +11,16 @@ export default {
   },
 } as ComponentMeta<typeof MainTitle>;
 
-const Template: ComponentStory<typeof MainTitle> = () => <MainTitle />;
+const Template: ComponentStory<typeof MainTitle> = (args) => (
+  <MainTitle {...args} />
+);
 
-export const Default = Template.bind({});
+export const Profile = Template.bind({});
+Profile.args = {
+  title: "프로필",
+};
+
+export const Login = Template.bind({});
+Login.args = {
+  title: "로그인",
+};

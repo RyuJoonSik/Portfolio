@@ -14,19 +14,6 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  backgrounds: {
-    default: "default",
-    values: [
-      {
-        name: "default",
-        value: "#999",
-      },
-      {
-        name: "ultramarineBlue",
-        value: `rgba(${theme.color.ultramarineBlue})`,
-      },
-    ],
-  },
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },

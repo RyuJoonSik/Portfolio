@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-export const StyledMainContentList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+const StyledForm = styled.form`
   box-sizing: border-box;
   padding: 1.5rem;
   background-color: rgb(
@@ -13,12 +11,12 @@ export const StyledMainContentList = styled.ul`
   color: rgb(${({ theme }) => theme.color.mainContentItemContentText});
 `;
 
-interface MainContentListProps {
+interface MainContentFormProps {
   children?: React.ReactNode;
 }
 
-export default function MainContentList({
+export default function MainContentForm({
   children,
-}: MainContentListProps): JSX.Element {
-  return <StyledMainContentList>{children}</StyledMainContentList>;
+}: MainContentFormProps): JSX.Element {
+  return <StyledForm>{children}</StyledForm>;
 }

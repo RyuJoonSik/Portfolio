@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const StyledMainBox = styled.main`
   display: flex;
   justify-content: center;
-  background-color: rgb(${({ theme }) => theme.color.antiFlashWhite});
+  background-color: rgb(${({ theme }) => theme.color.mainBackground});
 `;
 
 interface MainBoxProps {

@@ -5,7 +5,7 @@ import { text_12px_regular } from "../../../styles/textStyle";
 
 const StyledHeaderButtonName = styled.span`
   ${text_12px_regular};
-  color: rgb(${({ theme }) => theme.color.cultured});
+  color: rgb(${({ theme }) => theme.color.headerButtonText});
 `;
 
 interface HeaderButtonNameProps {
