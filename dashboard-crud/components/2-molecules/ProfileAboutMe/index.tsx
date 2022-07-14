@@ -1,7 +1,7 @@
 import React from "react";
 import { Face } from "@styled-icons/material-sharp/Face";
 
-import MainContentItemBox from "../../1-atoms/MainContentItemBox";
+import MainContentItemContainer from "../../1-atoms/MainContentItemContainer";
 import MainContentTitle from "../../1-atoms/MainContentTitle";
 import MainContentParagraph from "../../1-atoms/MainContentParagraph";
 
@@ -17,9 +17,9 @@ sit.
 
 export default function ProfileAboutMe(): JSX.Element {
   return (
-    <MainContentItemBox>
+    <MainContentItemContainer>
       <MainContentTitle title="About me" Icon={Face} />
       <MainContentParagraph>{TEXT_CONTENT}</MainContentParagraph>
-    </MainContentItemBox>
+    </MainContentItemContainer>
   );
 }

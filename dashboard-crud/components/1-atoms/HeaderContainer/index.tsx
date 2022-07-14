@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { MOBILE_SIZE } from "../../../styles/deviceSize";
 
-export const StyledHeaderBox = styled.header`
+const StyledHeaderContainer = styled.header`
   position: fixed;
 
   box-sizing: border-box;
@@ -24,10 +24,12 @@ export const StyledHeaderBox = styled.header`
   }
 `;
 
-interface HeaderBoxProps {
+interface HeaderContainerProps {
   children?: React.ReactNode;
 }
 
-export default function HeaderBox({ children }: HeaderBoxProps): JSX.Element {
-  return <StyledHeaderBox>{children}</StyledHeaderBox>;
+export default function HeaderContainer({
+  children,
+}: HeaderContainerProps): JSX.Element {
+  return <StyledHeaderContainer>{children}</StyledHeaderContainer>;
 }

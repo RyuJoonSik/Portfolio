@@ -1,7 +1,7 @@
 import React from "react";
 import { Construction } from "@styled-icons/material-sharp/Construction";
 
-import MainContentItemBox from "../../1-atoms/MainContentItemBox";
+import MainContentItemContainer from "../../1-atoms/MainContentItemContainer";
 import MainContentTitle from "../../1-atoms/MainContentTitle";
 import MainContentDescriptionList from "../../1-atoms/MainContentDescriptionList";
 import MainContentDescriptionTerm from "../../1-atoms/MainContentDescriptionTerm";
@@ -9,7 +9,7 @@ import MainContentDescriptionDetail from "../../1-atoms/MainContentDescriptionDe
 
 export default function ProfileSkillsItem(): JSX.Element {
   return (
-    <MainContentItemBox>
+    <MainContentItemContainer>
       <MainContentTitle title="Skills" Icon={Construction} />
       <MainContentDescriptionList>
         <MainContentDescriptionTerm>Lorem Ipsum</MainContentDescriptionTerm>
@@ -52,6 +52,6 @@ export default function ProfileSkillsItem(): JSX.Element {
           consequat sunt nostrud amet.
         </MainContentDescriptionDetail>
       </MainContentDescriptionList>
-    </MainContentItemBox>
+    </MainContentItemContainer>
   );
 }

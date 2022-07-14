@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { MOBILE_SIZE } from "../../../styles/deviceSize";
 
-export const StyledMainContentBox = styled.div`
+const StyledMainContentContainer = styled.div`
   box-sizing: border-box;
   max-width: 63.75rem;
   width: 100%;
@@ -14,12 +14,12 @@ export const StyledMainContentBox = styled.div`
   }
 `;
 
-interface MainContentBoxProps {
+interface MainContentContainerProps {
   children?: React.ReactNode;
 }
 
-export default function MainContentBox({
+export default function MainContentContainer({
   children,
-}: MainContentBoxProps): JSX.Element {
-  return <StyledMainContentBox>{children}</StyledMainContentBox>;
+}: MainContentContainerProps): JSX.Element {
+  return <StyledMainContentContainer>{children}</StyledMainContentContainer>;
 }

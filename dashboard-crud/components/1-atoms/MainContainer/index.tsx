@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-export const StyledMainBox = styled.main`
+const StyledMainContainer = styled.main`
   display: flex;
   justify-content: center;
   background-color: rgb(${({ theme }) => theme.color.mainBackground});
 `;
 
-interface MainBoxProps {
+interface MainContainerProps {
   children?: React.ReactNode;
 }
 
-export default function MainBox({ children }: MainBoxProps): JSX.Element {
-  return <StyledMainBox>{children}</StyledMainBox>;
+export default function MainContainer({
+  children,
+}: MainContainerProps): JSX.Element {
+  return <StyledMainContainer>{children}</StyledMainContainer>;
 }

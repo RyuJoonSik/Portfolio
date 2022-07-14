@@ -9,12 +9,12 @@ const StyledHeaderTitle = styled.div`
     0px 2px 2px -1px rgba(0, 0, 0, 0.05);
 `;
 
-interface MainContentItemBoxProps {
+interface MainContentItemContainerProps {
   children: React.ReactNode;
 }
 
-export default function MainContentItemBox({
+export default function MainContentItemContainer({
   children,
-}: MainContentItemBoxProps): JSX.Element {
+}: MainContentItemContainerProps): JSX.Element {
   return <StyledHeaderTitle>{children}</StyledHeaderTitle>;
 }

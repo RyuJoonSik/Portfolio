@@ -4,11 +4,11 @@ import { AccountCircle } from "@styled-icons/material-outlined/AccountCircle";
 import { NearMe } from "@styled-icons/material-outlined/NearMe";
 import { Login } from "@styled-icons/material-sharp/Login";
 
-import HeaderBox from "../../1-atoms/HeaderBox";
 import HeaderIconButton from "../../2-molecules/HeaderIconButton";
 import HeaderTitle from "../../1-atoms/HeaderTitle";
 import DarkModeButton from "../../2-molecules/DarkModeButton";
 import { MOBILE_SIZE, TABLET_SIZE } from "../../../styles/deviceSize";
+import HeaderContainer from "../../1-atoms/HeaderContainer";
 
 const ScrollFrame = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ const ScrollFrame = styled.div`
   }
 `;
 
-const Group = styled.div`
+const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
@@ -48,16 +48,16 @@ const Group = styled.div`
 
 export default function Header(): JSX.Element {
   return (
-    <HeaderBox>
+    <HeaderContainer>
       <HeaderTitle />
       <ScrollFrame>
-        <Group>
+        <Container>
           <DarkModeButton />
           <HeaderIconButton Icon={AccountCircle} name="프로필" />
           <HeaderIconButton Icon={NearMe} name="일상" />
           <HeaderIconButton Icon={Login} name="로그인" />
-        </Group>
+        </Container>
       </ScrollFrame>
-    </HeaderBox>
+    </HeaderContainer>
   );
 }

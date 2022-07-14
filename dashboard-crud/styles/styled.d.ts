@@ -22,6 +22,9 @@ declare module "styled-components" {
       mainContentItemTitleText: string;
       mainContentItemContentBackground: string;
       mainContentItemContentText: string;
+      mainContentItemInputBorder: string;
+      mainContentItemLoginButtonBackground: string;
+      mainContentItemLoginButtonText: string;
     };
   }
 }
