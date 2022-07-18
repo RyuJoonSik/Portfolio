@@ -4,7 +4,8 @@ import styled from "styled-components";
 const StyledMainContainer = styled.main`
   display: flex;
   justify-content: center;
-  background-color: rgb(${({ theme }) => theme.color.mainBackground});
+
+  background-color: ${({ theme }) => theme.color.mainBackground};
 `;
 
 interface MainContainerProps {

@@ -6,12 +6,12 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
   padding: 1.5rem;
-  background-color: rgb(
-    ${({ theme }) => theme.color.mainContentItemContentBackground}
-  );
+  background-color: ${({ theme }) =>
+    theme.color.mainContentItemContentBackground};
 
-  color: rgb(${({ theme }) => theme.color.mainContentItemContentText});
+  color: ${({ theme }) => theme.color.mainContentItemContentText};
 `;
 
 interface MainContentFormProps {

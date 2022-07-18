@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { MOBILE_SIZE, TABLET_SIZE } from "../../../styles/deviceSize";
 
-const StyledHeaderButton = styled.button`
+export const StyledHeaderButton = styled.button`
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -15,13 +15,13 @@ const StyledHeaderButton = styled.button`
   padding: 0.3rem 0.6rem;
 
   border-radius: 4px;
-  background-color: rgb(${({ theme }) => theme.color.headerButton});
+  background-color: ${({ theme }) => theme.color.headerButton};
 
   transition: background-color 150ms ease-in;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(${({ theme }) => theme.color.headerButtonHover});
+    background-color: ${({ theme }) => theme.color.headerButtonHover};
   }
 
   &::after {
@@ -31,9 +31,7 @@ const StyledHeaderButton = styled.button`
 
     width: 100%;
     height: 100%;
-    background-color: rgb(
-      ${(props) => props.theme.color.headerButtonPseudoElement}
-    );
+    background-color: ${(props) => props.theme.color.headerButtonPseudoElement};
 
     content: "";
     visibility: hidden;
@@ -45,7 +43,7 @@ const StyledHeaderButton = styled.button`
 
   ${TABLET_SIZE} {
     &:hover {
-      background-color: rgb(${({ theme }) => theme.color.headerButton});
+      background-color: (${({ theme }) => theme.color.headerButton});
     }
   }
 

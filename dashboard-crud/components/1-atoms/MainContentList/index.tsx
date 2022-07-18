@@ -6,11 +6,10 @@ export const StyledMainContentList = styled.ul`
   flex-wrap: wrap;
   box-sizing: border-box;
   padding: 1.5rem;
-  background-color: rgb(
-    ${({ theme }) => theme.color.mainContentItemContentBackground}
-  );
+  background-color: ${({ theme }) =>
+    theme.color.mainContentItemContentBackground};
 
-  color: rgb(${({ theme }) => theme.color.mainContentItemContentText});
+  color: ${({ theme }) => theme.color.mainContentItemContentText};
 `;
 
 interface MainContentListProps {

@@ -8,10 +8,10 @@ const StyledHeaderTitle = styled.h1`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(${({ theme }) => theme.color.headerTitleBackground});
+  background-color: ${({ theme }) => theme.color.headerTitleBackground};
 
   ${text_24px_medium};
-  color: rgb(${({ theme }) => theme.color.headerTitleText});
+  color: ${({ theme }) => theme.color.headerTitleText};
 
   ${TABLET_SIZE} {
     ${text_20px_medium}

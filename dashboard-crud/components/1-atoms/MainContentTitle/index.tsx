@@ -11,14 +11,13 @@ const StyledContentTitle = styled.h3`
   gap: 1rem;
   box-sizing: border-box;
   padding: 1.5rem;
-  background-color: rgb(
-    ${({ theme }) => theme.color.mainContentItemTitleBackground}
-  );
-  border-bottom: 1px
-    rgb(${({ theme }) => theme.color.mainContentItemTitleBorder}) solid;
+  background-color: ${({ theme }) =>
+    theme.color.mainContentItemTitleBackground};
+  border-bottom: 1px ${({ theme }) => theme.color.mainContentItemTitleBorder}
+    solid;
 
   ${text_20px_regular}
-  color: rgb(${({ theme }) => theme.color.mainContentItemTitleText});
+  color: ${({ theme }) => theme.color.mainContentItemTitleText};
 `;
 
 interface MainContentTitleProps {

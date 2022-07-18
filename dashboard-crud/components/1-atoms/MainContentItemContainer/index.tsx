@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledHeaderTitle = styled.div`
+export const StyledMainContentItemContainer = styled.div`
   overflow: hidden;
   margin: 1.25rem 0;
   border-radius: 10px;
@@ -16,5 +16,7 @@ interface MainContentItemContainerProps {
 export default function MainContentItemContainer({
   children,
 }: MainContentItemContainerProps): JSX.Element {
-  return <StyledHeaderTitle>{children}</StyledHeaderTitle>;
+  return (
+    <StyledMainContentItemContainer>{children}</StyledMainContentItemContainer>
+  );
 }

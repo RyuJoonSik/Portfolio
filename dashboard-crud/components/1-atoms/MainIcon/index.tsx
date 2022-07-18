@@ -6,7 +6,7 @@ const StyleMainIcon = styled.i`
   width: 24px;
   height: 24px;
 
-  color: rgb(${({ theme }) => theme.color.mainIcon});
+  color: ${({ theme }) => theme.color.mainIcon};
 `;
 
 interface MainIconProps {
