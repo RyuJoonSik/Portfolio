@@ -1,17 +1,17 @@
 import React from "react";
 
-import MainContainer from "../../1-atoms/MainContainer";
-import MainContentContainer from "../../1-atoms/MainContentContainer";
-import MainTitle from "../../1-atoms/MainTitle";
-import LoginForm from "../../2-molecules/LoginForm";
+import Main from "../../1-atoms/Main/Main";
+import LoginForm from "../../2-molecules/LoginForm/LoginForm";
+import MainContentContainer from "../../1-atoms/Box/MainContentContainer";
+import H2 from "../../1-atoms/Heading/H2";
 
 export default function MainLogin(): JSX.Element {
   return (
-    <MainContainer>
+    <Main>
       <MainContentContainer>
-        <MainTitle title="로그인" />
+        <H2>로그인</H2>
         <LoginForm />
       </MainContentContainer>
-    </MainContainer>
+    </Main>
   );
 }

@@ -1,21 +1,21 @@
 import React from "react";
-import MainContainer from "../../1-atoms/MainContainer";
 
-import MainContentContainer from "../../1-atoms/MainContentContainer";
-import MainTitle from "../../1-atoms/MainTitle";
-import ProfileAboutMe from "../../2-molecules/ProfileAboutMe";
-import ProfileEducationAndCertificateItem from "../../2-molecules/ProfileEducationAndCertificateItem";
-import ProfileSkillsItem from "../../2-molecules/ProfileSkillsItem";
+import MainContentContainer from "../../1-atoms/Box/MainContentContainer";
+import Main from "../../1-atoms/Main/Main";
+import ProfileAboutMe from "../../2-molecules/ProfileAboutMe/ProfileAboutMe";
+import H2 from "../../1-atoms/Heading/H2";
+import ProfileSkills from "../../2-molecules/ProfileSkills/ProfileSkills";
+import ProfileEducationAndCertificate from "../../2-molecules/ProfileEducationAndCertificate/ProfileEducationAndCertificate";
 
 export default function MainProfile(): JSX.Element {
   return (
-    <MainContainer>
+    <Main>
       <MainContentContainer>
-        <MainTitle title="프로필" />
+        <H2>프로필</H2>
         <ProfileAboutMe />
-        <ProfileSkillsItem />
-        <ProfileEducationAndCertificateItem />
+        <ProfileSkills />
+        <ProfileEducationAndCertificate />
       </MainContentContainer>
-    </MainContainer>
+    </Main>
   );
 }

@@ -1,73 +1,54 @@
 import { DefaultTheme } from "styled-components";
+import { BLACK, BLUE, WHITE } from "./color";
 
-const BLUE = {
-  light: "rgb(118, 143, 255)",
-  base: "rgb(41, 98, 255)",
-  dark: "rgb(0, 57, 203)",
-};
-
-const WHITE = {
-  light: "rgb(255, 255, 255)",
-  base: "rgb(245, 245, 245)",
-  dark: "rgb(204, 204, 204)",
-};
-
-const BLACK = {
-  light: "rgb(71, 71, 71)",
-  base: "rgb(44, 44, 44)",
-  dark: "rgb(39, 39, 39)",
-};
-
-export const lightTheme: DefaultTheme = {
+export const LIGHT_THEME: DefaultTheme = {
   color: {
-    headerBackground: BLUE.base,
-    headerTitleBackground: BLUE.base,
-    headerTitleText: WHITE.light,
-    headerButton: BLUE.base,
-    headerButtonPseudoElement: BLUE.dark,
-    headerButtonHover: BLUE.light,
-    headerButtonIcon: WHITE.light,
-    headerButtonText: WHITE.light,
+    mainIcon: BLACK.DEFAULT,
+    mainBackground: WHITE.DEFAULT,
+    mainTitleBackground: WHITE.DEFAULT,
+    mainTitleText: BLACK.DARK,
+    mainTitleBorder: WHITE.DARK,
+    mainContentItemTitleBackground: WHITE.LIGHT,
+    mainContentItemTitleBorder: WHITE.DARK,
+    mainContentItemTitleText: BLACK.DARK,
+    mainContentItemContentBackground: WHITE.LIGHT,
+    mainContentItemContentText: BLACK.DEFAULT,
+    mainContentItemInputBorder: WHITE.DARK,
+    mainContentItemLoginButtonBackground: BLUE.DEFAULT,
+    mainContentItemLoginButtonText: WHITE.LIGHT,
 
-    mainIcon: BLACK.base,
-    mainBackground: WHITE.base,
-    mainTitleBackground: WHITE.base,
-    mainTitleText: BLACK.dark,
-    mainTitleBorder: WHITE.dark,
-    mainContentItemTitleBackground: WHITE.light,
-    mainContentItemTitleBorder: WHITE.dark,
-    mainContentItemTitleText: BLACK.dark,
-    mainContentItemContentBackground: WHITE.light,
-    mainContentItemContentText: BLACK.base,
-    mainContentItemInputBorder: WHITE.dark,
-    mainContentItemLoginButtonBackground: BLUE.base,
-    mainContentItemLoginButtonText: WHITE.light,
+    backgroundDefault: WHITE.DEFAULT,
+    backgroundAccent: WHITE.LIGHT,
+    textDefault: BLACK.DEFAULT,
+    textAccent: BLACK.DARK,
+    textPlaceholder: WHITE.DARK,
+    borderDefault: WHITE.DARK,
+    borderAccent: BLACK.DARK,
   },
 };
 
-export const darkTheme: DefaultTheme = {
+export const DARK_THEME: DefaultTheme = {
   color: {
-    headerBackground: BLUE.base,
-    headerTitleBackground: BLUE.base,
-    headerTitleText: WHITE.light,
-    headerButton: BLUE.base,
-    headerButtonPseudoElement: BLUE.dark,
-    headerButtonHover: BLUE.light,
-    headerButtonIcon: WHITE.light,
-    headerButtonText: WHITE.light,
+    mainIcon: WHITE.DEFAULT,
+    mainBackground: BLACK.DARK,
+    mainTitleBackground: BLACK.DARK,
+    mainTitleText: WHITE.LIGHT,
+    mainTitleBorder: BLACK.LIGHT,
+    mainContentItemTitleBackground: BLACK.DEFAULT,
+    mainContentItemTitleBorder: BLACK.LIGHT,
+    mainContentItemTitleText: WHITE.LIGHT,
+    mainContentItemContentBackground: BLACK.DEFAULT,
+    mainContentItemContentText: WHITE.DARK,
+    mainContentItemInputBorder: BLACK.LIGHT,
+    mainContentItemLoginButtonBackground: BLUE.DEFAULT,
+    mainContentItemLoginButtonText: WHITE.LIGHT,
 
-    mainIcon: WHITE.base,
-    mainBackground: BLACK.dark,
-    mainTitleBackground: BLACK.dark,
-    mainTitleText: WHITE.light,
-    mainTitleBorder: BLACK.light,
-    mainContentItemTitleBackground: BLACK.base,
-    mainContentItemTitleBorder: BLACK.light,
-    mainContentItemTitleText: WHITE.light,
-    mainContentItemContentBackground: BLACK.base,
-    mainContentItemContentText: WHITE.dark,
-    mainContentItemInputBorder: BLACK.light,
-    mainContentItemLoginButtonBackground: BLUE.base,
-    mainContentItemLoginButtonText: WHITE.light,
+    backgroundDefault: BLACK.DARK,
+    backgroundAccent: BLACK.DEFAULT,
+    textDefault: WHITE.DARK,
+    textAccent: WHITE.LIGHT,
+    textPlaceholder: BLACK.LIGHT,
+    borderDefault: BLACK.LIGHT,
+    borderAccent: WHITE.LIGHT,
   },
 };

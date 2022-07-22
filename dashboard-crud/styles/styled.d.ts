@@ -3,15 +3,6 @@ import "styled-components";
 declare module "styled-components" {
   export interface DefaultTheme {
     color: {
-      headerBackground: string;
-      headerTitleBackground: string;
-      headerTitleText: string;
-      headerButton: string;
-      headerButtonPseudoElement: string;
-      headerButtonHover: string;
-      headerButtonIcon: string;
-      headerButtonText: string;
-
       mainIcon: string;
       mainBackground: string;
       mainTitleBackground: string;
@@ -25,6 +16,14 @@ declare module "styled-components" {
       mainContentItemInputBorder: string;
       mainContentItemLoginButtonBackground: string;
       mainContentItemLoginButtonText: string;
+
+      backgroundDefault: string;
+      backgroundAccent: string;
+      textDefault: string;
+      textAccent: string;
+      textPlaceholder: string;
+      borderDefault: string;
+      borderAccent: string;
     };
   }
 }

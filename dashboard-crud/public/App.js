@@ -68,7 +68,20 @@
 `,Re.span`
   ${Ge};
   color: ${({theme:e})=>e.color.headerButtonText};
-`);function nt({children:t}){return e.createElement(tt,null,t)}function rt(e,t="max"){return`@media screen and (${t}-width: ${e})`}const at=rt("768px"),lt=rt("428px"),ot=Re.button`
+`);function nt({children:t}){return e.createElement(tt,null,t)}function rt(e,t="max"){return`@media screen and (${t}-width: ${e})`}const at=rt("768px"),lt=rt("428px"),ot=ve`
+  &::after {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    background-color: ${e=>e.theme.color.headerButtonPseudoElement};
+
+    content: "";
+    visibility: hidden;
+  }
+`,it=Re.button`
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -89,18 +102,7 @@
     background-color: ${({theme:e})=>e.color.headerButtonHover};
   }
 
-  &::after {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-
-    width: 100%;
-    height: 100%;
-    background-color: ${e=>e.theme.color.headerButtonPseudoElement};
-
-    content: "";
-    visibility: hidden;
-  }
+  ${ot}
 
   &:active::after {
     visibility: visible;
@@ -116,7 +118,7 @@
     flex: 1;
     border-radius: 0;
   }
-`;function it({children:t,dataTestid:n,onClick:r}){return e.createElement(ot,{"data-testid":n,onClick:r},t)}function ut({name:t,Icon:n,dataTestid:r,onClick:a}){return e.createElement(it,{dataTestid:r,onClick:a},e.createElement(Ye,{Icon:n}),e.createElement(nt,null,t))}const st=Re.h1`
+`;function ut({children:t,dataTestid:n,onClick:r}){return e.createElement(it,{"data-testid":n,onClick:r},t)}function st({name:t,Icon:n,dataTestid:r,onClick:a}){return e.createElement(ut,{dataTestid:r,onClick:a},e.createElement(Ye,{Icon:n}),e.createElement(nt,null,t))}const ct=Re.h1`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,7 +130,7 @@
   ${at} {
     ${Ze}
   }
-`;function ct(){return e.createElement(st,null,"<frontend>류준식</frontend>")}var ft=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0V0z"}),e.createElement("path",{d:"M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48zM12 6.5v11c3.03 0 5.5-2.47 5.5-5.5S15.03 6.5 12 6.5z"}))}));ft.displayName="Brightness6";var dt=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0z"}),e.createElement("path",{d:"M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18V6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"}))}));dt.displayName="BrightnessMedium";const pt="rgb(118, 143, 255)",mt="rgb(41, 98, 255)",ht="rgb(0, 57, 203)",gt="rgb(255, 255, 255)",vt="rgb(245, 245, 245)",yt="rgb(204, 204, 204)",bt="rgb(71, 71, 71)",wt="rgb(44, 44, 44)",kt="rgb(39, 39, 39)",St={color:{headerBackground:mt,headerTitleBackground:mt,headerTitleText:gt,headerButton:mt,headerButtonPseudoElement:ht,headerButtonHover:pt,headerButtonIcon:gt,headerButtonText:gt,mainIcon:wt,mainBackground:vt,mainTitleBackground:vt,mainTitleText:kt,mainTitleBorder:yt,mainContentItemTitleBackground:gt,mainContentItemTitleBorder:yt,mainContentItemTitleText:kt,mainContentItemContentBackground:gt,mainContentItemContentText:wt,mainContentItemInputBorder:yt,mainContentItemLoginButtonBackground:mt,mainContentItemLoginButtonText:gt}},xt={color:{headerBackground:mt,headerTitleBackground:mt,headerTitleText:gt,headerButton:mt,headerButtonPseudoElement:ht,headerButtonHover:pt,headerButtonIcon:gt,headerButtonText:gt,mainIcon:vt,mainBackground:kt,mainTitleBackground:kt,mainTitleText:gt,mainTitleBorder:bt,mainContentItemTitleBackground:wt,mainContentItemTitleBorder:bt,mainContentItemTitleText:gt,mainContentItemContentBackground:wt,mainContentItemContentText:yt,mainContentItemInputBorder:bt,mainContentItemLoginButtonBackground:mt,mainContentItemLoginButtonText:gt}},Ct=e.createContext(null);function Et({children:t}){const[n,r]=(0,e.useState)(!0);return e.createElement(Ct.Provider,{value:{isLightMode:n,setIsLightMode:r}},e.createElement(Te,{theme:n?St:xt},t))}function Pt(){const{isLightMode:t,setIsLightMode:n}=(0,e.useContext)(Ct);return e.createElement(ut,{name:t?"다크 모드":"라이트 모드",Icon:t?ft:dt,dataTestid:"darkModeButton",onClick:()=>{n(!t)}})}const _t=Re.header`
+`;function ft(){return e.createElement(ct,null,"<frontend>류준식</frontend>")}var dt=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0V0z"}),e.createElement("path",{d:"M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zm-2 5.79V18h-3.52L12 20.48 9.52 18H6v-3.52L3.52 12 6 9.52V6h3.52L12 3.52 14.48 6H18v3.52L20.48 12 18 14.48zM12 6.5v11c3.03 0 5.5-2.47 5.5-5.5S15.03 6.5 12 6.5z"}))}));dt.displayName="Brightness6";var pt=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0z"}),e.createElement("path",{d:"M20 15.31L23.31 12 20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69zM12 18V6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"}))}));pt.displayName="BrightnessMedium";const mt="rgb(118, 143, 255)",ht="rgb(41, 98, 255)",gt="rgb(0, 57, 203)",vt="rgb(255, 255, 255)",yt="rgb(245, 245, 245)",bt="rgb(204, 204, 204)",wt="rgb(71, 71, 71)",kt="rgb(44, 44, 44)",St="rgb(39, 39, 39)",xt={color:{headerBackground:ht,headerTitleBackground:ht,headerTitleText:vt,headerButton:ht,headerButtonPseudoElement:gt,headerButtonHover:mt,headerButtonIcon:vt,headerButtonText:vt,mainIcon:kt,mainBackground:yt,mainTitleBackground:yt,mainTitleText:St,mainTitleBorder:bt,mainContentItemTitleBackground:vt,mainContentItemTitleBorder:bt,mainContentItemTitleText:St,mainContentItemContentBackground:vt,mainContentItemContentText:kt,mainContentItemInputBorder:bt,mainContentItemLoginButtonBackground:ht,mainContentItemLoginButtonText:vt}},Ct={color:{headerBackground:ht,headerTitleBackground:ht,headerTitleText:vt,headerButton:ht,headerButtonPseudoElement:gt,headerButtonHover:mt,headerButtonIcon:vt,headerButtonText:vt,mainIcon:yt,mainBackground:St,mainTitleBackground:St,mainTitleText:vt,mainTitleBorder:wt,mainContentItemTitleBackground:kt,mainContentItemTitleBorder:wt,mainContentItemTitleText:vt,mainContentItemContentBackground:kt,mainContentItemContentText:bt,mainContentItemInputBorder:wt,mainContentItemLoginButtonBackground:ht,mainContentItemLoginButtonText:vt}},Et=e.createContext(null);function Pt({children:t}){const[n,r]=(0,e.useState)(!0);return e.createElement(Et.Provider,{value:{isLightMode:n,setIsLightMode:r}},e.createElement(Te,{theme:n?xt:Ct},t))}function _t(){const{isLightMode:t,setIsLightMode:n}=(0,e.useContext)(Et);return e.createElement(st,{name:t?"다크 모드":"라이트 모드",Icon:t?dt:pt,dataTestid:"darkModeButton",onClick:()=>{n(!t)}})}const zt=Re.header`
   position: fixed;
 
   box-sizing: border-box;
@@ -147,7 +149,7 @@
     height: 2rem;
     padding: 0;
   }
-`;function zt({children:t}){return e.createElement(_t,null,t)}const Tt=Re.div`
+`;function Tt({children:t}){return e.createElement(zt,null,t)}const Nt=Re.div`
   display: flex;
   justify-content: end;
   align-items: center;
@@ -174,17 +176,17 @@
 
     max-width: none;
   }
-`,Nt=Re.div`
+`,It=Re.div`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
-`;function It(){return e.createElement(zt,null,e.createElement(ct,null),e.createElement(Tt,null,e.createElement(Nt,null,e.createElement(Pt,null),e.createElement(ut,{Icon:He,name:"프로필"}),e.createElement(ut,{Icon:We,name:"일상"}),e.createElement(ut,{Icon:qe,name:"로그인"}))))}const Lt=Re.main`
+`;function Lt(){return e.createElement(Tt,null,e.createElement(ft,null),e.createElement(Nt,null,e.createElement(It,null,e.createElement(_t,null),e.createElement(st,{Icon:He,name:"프로필"}),e.createElement(st,{Icon:We,name:"일상"}),e.createElement(st,{Icon:qe,name:"로그인"}))))}const Ot=Re.main`
   display: flex;
   justify-content: center;
 
   background-color: ${({theme:e})=>e.color.mainBackground};
-`;function Ot({children:t}){return e.createElement(Lt,null,t)}const At=Re.div`
+`;function At({children:t}){return e.createElement(Ot,null,t)}const Rt=Re.div`
   box-sizing: border-box;
   max-width: 63.75rem;
   width: 100%;
@@ -194,25 +196,25 @@
   ${lt} {
     padding: 2rem 1rem 3.5rem;
   }
-`;function Rt({children:t}){return e.createElement(At,null,t)}const Mt=Re.h2`
+`;function Mt({children:t}){return e.createElement(Rt,null,t)}const Ft=Re.h2`
   padding: 1.25rem 0;
   border-bottom: 1px ${({theme:e})=>e.color.mainTitleBorder} solid;
   background-color: ${({theme:e})=>e.color.mainTitleBackground};
 
   ${et}
   color: ${({theme:e})=>e.color.mainTitleText};
-`;function Ft({title:t}){return e.createElement(Mt,null,t)}var Dt=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0V0z"}),e.createElement("path",{d:"M9 11.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0010.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"}))}));Dt.displayName="Face";const $t=Re.div`
+`;function Dt({title:t}){return e.createElement(Ft,null,t)}var $t=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0V0z"}),e.createElement("path",{d:"M9 11.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.98 5.21-5.37a9.974 9.974 0 0010.41 3.97c.21.71.33 1.47.33 2.26 0 4.41-3.59 8-8 8z"}))}));$t.displayName="Face";const Bt=Re.div`
   overflow: hidden;
   margin: 1.25rem 0;
   border-radius: 10px;
   box-shadow: 0px 4px 6px -2px rgba(0, 0, 0, 0.12),
     0px 2px 2px -1px rgba(0, 0, 0, 0.05);
-`;function Bt({children:t}){return e.createElement($t,null,t)}const jt=Re.i`
+`;function jt({children:t}){return e.createElement(Bt,null,t)}const Vt=Re.i`
   width: 24px;
   height: 24px;
 
   color: ${({theme:e})=>e.color.mainIcon};
-`;function Vt({Icon:t}){return t?e.createElement(jt,{as:t}):null}const Ut=Re.h3`
+`;function Ut({Icon:t}){return t?e.createElement(Vt,{as:t}):null}const Ht=Re.h3`
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -224,13 +226,13 @@
 
   ${Xe}
   color: ${({theme:e})=>e.color.mainContentItemTitleText};
-`;function Ht({title:t,Icon:n}){return e.createElement(Ut,null,e.createElement(Vt,{Icon:n}),t)}const Wt=Re.p`
+`;function Wt({title:t,Icon:n}){return e.createElement(Ht,null,e.createElement(Ut,{Icon:n}),t)}const qt=Re.p`
   box-sizing: border-box;
   padding: 1.5rem;
   background-color: ${({theme:e})=>e.color.mainContentItemContentBackground};
 
   color: ${({theme:e})=>e.color.mainContentItemContentText};
-`;function qt({children:t}){return e.createElement(Wt,null,t)}function Qt(){return e.createElement(Bt,null,e.createElement(Ht,{title:"About me",Icon:Dt}),e.createElement(qt,null,"\nLorem ipsum dolor sit amet consectetur adipisicing elit. Officiis\nrepellendus, quidem animi ducimus praesentium odio eveniet quae doloribus\nnecessitatibus ab cum itaque et amet provident, ex adipisci ut incidunt\nsit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis\nrepellendus, quidem animi ducimus praesentium odio eveniet quae doloribus\nnecessitatibus ab cum itaque et amet provident, ex adipisci ut incidunt\nsit.\n"))}var Yt=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0V0z"}),e.createElement("path",{d:"M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"}))}));Yt.displayName="School";const Gt=Re.ul`
+`;function Qt({children:t}){return e.createElement(qt,null,t)}function Yt(){return e.createElement(jt,null,e.createElement(Wt,{title:"About me",Icon:$t}),e.createElement(Qt,null,"\nLorem ipsum dolor sit amet consectetur adipisicing elit. Officiis\nrepellendus, quidem animi ducimus praesentium odio eveniet quae doloribus\nnecessitatibus ab cum itaque et amet provident, ex adipisci ut incidunt\nsit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis\nrepellendus, quidem animi ducimus praesentium odio eveniet quae doloribus\nnecessitatibus ab cum itaque et amet provident, ex adipisci ut incidunt\nsit.\n"))}var Gt=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("path",{fill:"none",d:"M0 0h24v24H0V0z"}),e.createElement("path",{d:"M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"}))}));Gt.displayName="School";const Kt=Re.ul`
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
@@ -238,25 +240,25 @@
   background-color: ${({theme:e})=>e.color.mainContentItemContentBackground};
 
   color: ${({theme:e})=>e.color.mainContentItemContentText};
-`;function Kt({children:t}){return e.createElement(Gt,null,t)}const Xt=Re.li`
+`;function Xt({children:t}){return e.createElement(Kt,null,t)}const Zt=Re.li`
   width: 50%;
   margin-bottom: 0.5rem;
 
   @media screen and (max-width: 590px) {
     width: 100%;
   }
-`;function Zt({children:t}){return e.createElement(Xt,null,t)}function Jt(){return e.createElement(Bt,null,e.createElement(Ht,{title:"Education & Certificate",Icon:Yt}),e.createElement(Kt,null,e.createElement(Zt,null,"정보처리 산업기사"),e.createElement(Zt,null,"정보보안 산업기사"),e.createElement(Zt,null,"IoT 소프트웨어 개발 수료"),e.createElement(Zt,null,"울산과학대학교 컴퓨터 정보학부 졸업")))}var en=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("rect",{width:24,height:24,fill:"none"}),e.createElement("rect",{width:3,height:8.48,x:16.34,y:12.87,transform:"rotate(-45.001 17.84 17.108)"}),e.createElement("path",{d:"M17.5 10c1.93 0 3.5-1.57 3.5-3.5 0-.58-.16-1.12-.41-1.6l-2.7 2.7-1.49-1.49 2.7-2.7c-.48-.25-1.02-.41-1.6-.41C15.57 3 14 4.57 14 6.5c0 .41.08.8.21 1.16l-1.85 1.85-1.78-1.78.71-.71-1.41-1.41L12 3.49a3 3 0 00-4.24 0L4.22 7.03l1.41 1.41H2.81l-.71.71 3.54 3.54.71-.71V9.15l1.41 1.41.71-.71 1.78 1.78-7.41 7.41 2.12 2.12L16.34 9.79c.36.13.75.21 1.16.21z"}))}));en.displayName="Construction";const tn=Re.dl`
+`;function Jt({children:t}){return e.createElement(Zt,null,t)}function en(){return e.createElement(jt,null,e.createElement(Wt,{title:"Education & Certificate",Icon:Gt}),e.createElement(Xt,null,e.createElement(Jt,null,"정보처리 산업기사"),e.createElement(Jt,null,"정보보안 산업기사"),e.createElement(Jt,null,"IoT 소프트웨어 개발 수료"),e.createElement(Jt,null,"울산과학대학교 컴퓨터 정보학부 졸업")))}var tn=e.forwardRef((function(t,n){return e.createElement(Ue,Fe({iconAttrs:{fill:"currentColor",xmlns:"http://www.w3.org/2000/svg"},iconVerticalAlign:"middle",iconViewBox:"0 0 24 24"},t,{ref:n}),e.createElement("rect",{width:24,height:24,fill:"none"}),e.createElement("rect",{width:3,height:8.48,x:16.34,y:12.87,transform:"rotate(-45.001 17.84 17.108)"}),e.createElement("path",{d:"M17.5 10c1.93 0 3.5-1.57 3.5-3.5 0-.58-.16-1.12-.41-1.6l-2.7 2.7-1.49-1.49 2.7-2.7c-.48-.25-1.02-.41-1.6-.41C15.57 3 14 4.57 14 6.5c0 .41.08.8.21 1.16l-1.85 1.85-1.78-1.78.71-.71-1.41-1.41L12 3.49a3 3 0 00-4.24 0L4.22 7.03l1.41 1.41H2.81l-.71.71 3.54 3.54.71-.71V9.15l1.41 1.41.71-.71 1.78 1.78-7.41 7.41 2.12 2.12L16.34 9.79c.36.13.75.21 1.16.21z"}))}));tn.displayName="Construction";const nn=Re.dl`
   box-sizing: border-box;
   padding: 1.5rem;
   background-color: ${({theme:e})=>e.color.mainContentItemContentBackground};
 
   color: ${({theme:e})=>e.color.mainContentItemContentText};
-`;function nn({children:t}){return e.createElement(tn,null,t)}const rn=Re.dt`
+`;function rn({children:t}){return e.createElement(nn,null,t)}const an=Re.dt`
   ${Ke}
 
   & ~ & {
     margin-top: 1.5rem;
   }
-`;function an({children:t}){return e.createElement(rn,null,t)}const ln=Re.dd`
+`;function ln({children:t}){return e.createElement(an,null,t)}const on=Re.dd`
   margin-left: 1.5rem;
-`;function on({children:t}){return e.createElement(ln,null,t)}function un(){return e.createElement(Bt,null,e.createElement(Ht,{title:"Skills",Icon:en}),e.createElement(nn,null,e.createElement(an,null,"Lorem Ipsum"),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(an,null,"Lorem Ipsum"),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(an,null,"Lorem Ipsum"),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(on,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")))}function sn(){return e.createElement(Ot,null,e.createElement(Rt,null,e.createElement(Ft,{title:"프로필"}),e.createElement(Qt,null),e.createElement(un,null),e.createElement(Jt,null)))}function cn(){return e.createElement(e.Fragment,null,e.createElement(It,null),e.createElement(sn,null))}function fn(){return e.createElement(Et,null,e.createElement(Me,null),e.createElement(cn,null))}t.createRoot(document.getElementById("root")).render(e.createElement(fn,null))})()})();
+`;function un({children:t}){return e.createElement(on,null,t)}function sn(){return e.createElement(jt,null,e.createElement(Wt,{title:"Skills",Icon:tn}),e.createElement(rn,null,e.createElement(ln,null,"Lorem Ipsum"),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(ln,null,"Lorem Ipsum"),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(ln,null,"Lorem Ipsum"),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."),e.createElement(un,null,"Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.")))}function cn(){return e.createElement(At,null,e.createElement(Mt,null,e.createElement(Dt,{title:"프로필"}),e.createElement(Yt,null),e.createElement(sn,null),e.createElement(en,null)))}function fn(){return e.createElement(e.Fragment,null,e.createElement(Lt,null),e.createElement(cn,null))}function dn(){return e.createElement(Pt,null,e.createElement(Me,null),e.createElement(fn,null))}t.createRoot(document.getElementById("root")).render(e.createElement(dn,null))})()})();

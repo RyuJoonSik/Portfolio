@@ -1,12 +1,12 @@
 import React from "react";
 
-import Header from "../../3-organisms/Header";
+import HeaderLogout from "../../3-organisms/HeaderLogout/HeaderLogout";
 import MainProfile from "../../3-organisms/MainProfile";
 
 export default function ProfilePage(): JSX.Element {
   return (
     <>
-      <Header />
+      <HeaderLogout />
       <MainProfile />
     </>
   );

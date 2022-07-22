@@ -5,7 +5,7 @@ export default createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
   }
 
-  body, h1, h2, h3, p, dl, dd, ul {
+  body, h1, h2, h3, p, dl, ul {
     margin: 0;
   }
 
@@ -23,6 +23,8 @@ export default createGlobalStyle`
   }
 
   input:focus {
+    border: 1px solid ${({ theme }) => theme.color.borderAccent};
+
     outline: 0;
   }
 

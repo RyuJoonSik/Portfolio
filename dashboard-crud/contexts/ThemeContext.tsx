@@ -1,7 +1,7 @@
 import React, { useState, Dispatch } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { darkTheme, lightTheme } from "../styles/theme";
+import { DARK_THEME, LIGHT_THEME } from "../styles/theme";
 
 export interface ThemeContextValue {
   isLightMode: boolean;
@@ -21,7 +21,7 @@ export default function ThemeContextProvider({
 
   return (
     <ThemeContext.Provider value={{ isLightMode, setIsLightMode }}>
-      <ThemeProvider theme={isLightMode ? lightTheme : darkTheme}>
+      <ThemeProvider theme={isLightMode ? LIGHT_THEME : DARK_THEME}>
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>
