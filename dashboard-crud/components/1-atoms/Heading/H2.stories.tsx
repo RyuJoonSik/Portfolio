@@ -17,6 +17,7 @@ const Template: ComponentStory<typeof H2> = () => (
     <H2>일상</H2>
     <H2>로그인</H2>
     <H2>로그아웃</H2>
+    <H2>일상</H2>
   </>
 );
 

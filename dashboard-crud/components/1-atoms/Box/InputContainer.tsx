@@ -1,18 +1,25 @@
 import styled from "styled-components";
 
+import CONTENT_ALIGN from "../../../styles/contentAlign";
 import CONTENT_DIRECTION from "../../../styles/contentDirection";
-import BORDER_RADIUS from "../../../styles/borderRadius";
+import SPACE_SIZE from "../../../styles/spaceSize";
 
 const InputContainer = styled.div`
-  position: relative;
-
   ${CONTENT_DIRECTION.HORIZONTAL};
-  ${BORDER_RADIUS.DEFAULT};
-  width: 100%;
-  height: 3.2rem;
-  border: 1px solid ${({ theme }) => theme.color.borderDefault};
+  ${CONTENT_ALIGN.CENTER};
+  border-radius: ${SPACE_SIZE.SMALLER};
+  gap: ${SPACE_SIZE.SMALL};
+  padding-left: ${SPACE_SIZE.SMALL};
+  border: ${SPACE_SIZE.SMALLEST} solid
+    ${({ theme }) => theme.color.borderDefault};
 
-  color: ${({ theme }) => theme.color.textPlaceholder};
+  color: ${({ theme }) => theme.color.borderDefault};
+
+  &:focus-within {
+    border-color: ${({ theme }) => theme.color.borderAccent};
+
+    color: ${({ theme }) => theme.color.borderAccent};
+  }
 `;
 
 export default InputContainer;

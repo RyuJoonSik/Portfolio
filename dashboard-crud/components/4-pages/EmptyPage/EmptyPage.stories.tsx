@@ -1,16 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import MainProfile from ".";
+import EmpityPage from "./EmpityPage";
 
 export default {
-  title: "Organisms/MainProfile",
-  component: MainProfile,
+  title: "Pages/EmpityPage",
+  component: EmpityPage,
   parameters: {
     layout: "fullscreen",
   },
-} as ComponentMeta<typeof MainProfile>;
+} as ComponentMeta<typeof EmpityPage>;
 
-const Template: ComponentStory<typeof MainProfile> = () => <MainProfile />;
+const Template: ComponentStory<typeof EmpityPage> = () => <EmpityPage />;
 
 export const Default = Template.bind({});

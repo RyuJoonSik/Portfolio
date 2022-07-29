@@ -6,9 +6,6 @@ import FullBlueButton from "./FullBlueButton";
 export default {
   title: "Atoms/FullBlueButton",
   component: FullBlueButton,
-  parameters: {
-    layout: "centered",
-  },
 } as ComponentMeta<typeof FullBlueButton>;
 
 const Template: ComponentStory<typeof FullBlueButton> = () => (

@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-import BlueButton from "./BlueButton";
-import FONT_SIZE from "../../../styles/fontSize";
+import BUTTON_STYLE from "./_mixins";
 
-const FullBlueButton = styled(BlueButton)`
-  ${FONT_SIZE.LARGE};
-  width: 100%;
+const FullBlueButton = styled.button`
+  ${BUTTON_STYLE.DEFAULT};
+  ${BUTTON_STYLE.SIZE.FULL};
+  ${BUTTON_STYLE.COLOR.BLUE};
+  ${BUTTON_STYLE.EFFECT.BLUE}
 `;
 
 export default FullBlueButton;

@@ -2,15 +2,12 @@ import React, { useContext } from "react";
 import { Brightness6 } from "@styled-icons/material-outlined/Brightness6";
 import { BrightnessMedium } from "@styled-icons/material/BrightnessMedium";
 
-import {
-  ThemeContextValue,
-  ThemeContext,
-} from "../../../contexts/ThemeContext";
-import MediumBlueButton from "../../1-atoms/Button/MediumBlueButton";
+import { ColorThemeContext } from "../../../contexts/ColorThemeContext";
 import MediumIcon from "../../1-atoms/Icon/MediumIcon";
+import MediumBlueButton from "../../1-atoms/Button/MediumBlueButton";
 
-function toggleMode(isLightMode: boolean) {
-  return isLightMode ? (
+function toggleMode(isDarkMode: boolean) {
+  return isDarkMode ? (
     <>
       <MediumIcon as={Brightness6} />
       다크 모드
@@ -24,17 +21,15 @@ function toggleMode(isLightMode: boolean) {
 }
 
 export default function DarkModeButton(): JSX.Element {
-  const { isLightMode, setIsLightMode } = useContext(
-    ThemeContext
-  ) as ThemeContextValue;
+  const { isDarkMode, setIsDarkMode } = useContext(ColorThemeContext);
 
   const onClick = () => {
-    setIsLightMode(!isLightMode);
+    setIsDarkMode(!isDarkMode);
   };
 
   return (
-    <MediumBlueButton onClick={onClick}>
-      {toggleMode(isLightMode)}
-    </MediumBlueButton>
+    <MediumBlueButton.Default onClick={onClick}>
+      {toggleMode(isDarkMode)}
+    </MediumBlueButton.Default>
   );
 }

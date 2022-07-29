@@ -6,9 +6,9 @@ import MediumIcon from "../../1-atoms/Icon/MediumIcon";
 
 export default function DailyLifeLinkButton(): JSX.Element {
   return (
-    <MediumBlueButton>
+    <MediumBlueButton.Default>
       <MediumIcon as={NearMe} />
       일상
-    </MediumBlueButton>
+    </MediumBlueButton.Default>
   );
 }

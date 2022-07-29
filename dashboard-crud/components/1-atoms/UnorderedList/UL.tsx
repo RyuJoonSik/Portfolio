@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 import CONTENT_DIRECTION from "../../../styles/contentDirection";
+import SPACE_SIZE from "../../../styles/spaceSize";
 
 export const UL = styled.ul`
   ${CONTENT_DIRECTION.HORIZONTAL};
+  padding: ${SPACE_SIZE.LARGER};
   flex-wrap: wrap;
-  box-sizing: border-box;
-  padding: 1.5rem;
 
   color: ${({ theme }) => theme.color.textDefault};
 `;

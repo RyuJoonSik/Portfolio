@@ -1,9 +1,10 @@
 const path = require("path");
+// const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  mode: "production",
+  // mode: "production",
+  mode: "development",
   entry: "./App.tsx",
-  // entry: "./App.ts",
   output: {
     filename: "App.js",
     path: path.resolve(__dirname) + "/public",

@@ -6,14 +6,15 @@ import H3 from "../../1-atoms/Heading/H3";
 import MediumIcon from "../../1-atoms/Icon/MediumIcon";
 import UL from "../../1-atoms/UnorderedList/UL";
 import LI from "../../1-atoms/ListItem/LI";
+import MainContentItemHeader from "../../1-atoms/Header/MainContentItemHeader";
 
 export default function ProfileEducationAndCertificate(): JSX.Element {
   return (
     <MainFullContentItemContainer>
-      <H3>
+      <MainContentItemHeader>
         <MediumIcon as={School} />
-        Education & Certificate
-      </H3>
+        <H3>Education & Certificate</H3>
+      </MainContentItemHeader>
       <UL>
         <LI>정보처리 산업기사</LI>
         <LI>정보보안 산업기사</LI>

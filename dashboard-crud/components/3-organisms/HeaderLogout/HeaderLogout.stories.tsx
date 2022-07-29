@@ -14,3 +14,13 @@ export default {
 const Template: ComponentStory<typeof HeaderLogout> = () => <HeaderLogout />;
 
 export const Default = Template.bind({});
+
+// export const LoggedIn = Template.bind({});
+// LoggedIn.args = {
+//   isLogined: true,
+// };
+
+// export const LoggedOut = Template.bind({});
+// LoggedOut.args = {
+//   isLogined: false,
+// };

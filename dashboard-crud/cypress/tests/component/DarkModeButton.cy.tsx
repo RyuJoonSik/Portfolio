@@ -1,15 +1,15 @@
 import React from "react";
 import { mount } from "cypress/react";
 
-import ThemeContextProvider from "../../../contexts/ThemeContext";
+import ColorThemeContextProvider from "../../../contexts/ColorThemeContext";
 import DarkModeButton from "../../../components/2-molecules/DarkModeButton/DarkModeButton";
 
 describe("DarkModeButton", () => {
   it("라이트 모드로 초기화한다.", () => {
     mount(
-      <ThemeContextProvider>
+      <ColorThemeContextProvider>
         <DarkModeButton />
-      </ThemeContextProvider>
+      </ColorThemeContextProvider>
     );
 
     cy.get("[data-testid=darkModeButton]").should("contain.text", "다크 모드");
@@ -17,9 +17,9 @@ describe("DarkModeButton", () => {
 
   it("모드를 변경하면 모드와 일치하는 텍스트 컨텐츠로 변경된다.", () => {
     mount(
-      <ThemeContextProvider>
+      <ColorThemeContextProvider>
         <DarkModeButton />
-      </ThemeContextProvider>
+      </ColorThemeContextProvider>
     );
 
     cy.get("[data-testid=darkModeButton]")
@@ -31,9 +31,9 @@ describe("DarkModeButton", () => {
 
   it("모드를 변경하면 모드와 일치하는 테마로 변경된다.", () => {
     mount(
-      <ThemeContextProvider>
+      <ColorThemeContextProvider>
         <DarkModeButton />
-      </ThemeContextProvider>
+      </ColorThemeContextProvider>
     );
 
     cy.get("[data-testid=darkModeButton]")

@@ -5,6 +5,7 @@ import MediumIcon from "../../1-atoms/Icon/MediumIcon";
 import H3 from "../../1-atoms/Heading/H3";
 import MainFullContentItemContainer from "../../1-atoms/Box/MainFullContentItemContainer";
 import P from "../../1-atoms/Paragraph/P";
+import MainContentItemHeader from "../../1-atoms/Header/MainContentItemHeader";
 
 const TEXT_CONTENT = `
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
@@ -19,10 +20,13 @@ sit.
 export default function ProfileAboutMe(): JSX.Element {
   return (
     <MainFullContentItemContainer>
-      <H3>
+      <MainContentItemHeader>
         <MediumIcon as={Face} />
-        About me
-      </H3>
+        <H3>
+          About me
+          <div></div>
+        </H3>
+      </MainContentItemHeader>
       <P>{TEXT_CONTENT}</P>
     </MainFullContentItemContainer>
   );

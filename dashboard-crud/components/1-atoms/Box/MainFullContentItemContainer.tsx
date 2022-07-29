@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-import MainDefaultContentItemContainer from "./MainDefaultContentItemContainer";
+import BOX_STYLE from "./_mixins";
 
-const MainFullContentItemContainer = styled(MainDefaultContentItemContainer)`
+const MainFullContentItemContainer = styled.div`
+  ${BOX_STYLE.TYPE.MAIN_CONTENT_ITEM_CONTAINER};
   width: 100%;
 `;
 

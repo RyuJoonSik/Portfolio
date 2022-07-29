@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
+import SPACE_SIZE from "../../../styles/spaceSize";
+
 const P = styled.p`
-  box-sizing: border-box;
-  padding: 1.5rem;
+  padding: ${SPACE_SIZE.LARGER};
 
   color: ${({ theme }) => theme.color.textDefault};
 `;

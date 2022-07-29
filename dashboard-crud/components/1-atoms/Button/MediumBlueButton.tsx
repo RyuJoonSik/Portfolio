@@ -1,18 +1,25 @@
-import styled from "styled-components";
-import BORDER_RADIUS from "../../../styles/borderRadius";
+import styled, { css } from "styled-components";
+import { Link, NavLink } from "react-router-dom";
 
-import FONT_SIZE from "../../../styles/fontSize";
-import RESPONSIVE_SIZE from "../../../styles/responsiveSize";
-import BlueButton from "./BlueButton";
+import BUTTON_STYLE from "./_mixins";
 
-const MediumBlueButton = styled(BlueButton)`
-  ${FONT_SIZE.SMALLEST};
-  min-width: 5rem;
-
-  ${RESPONSIVE_SIZE.MOBILE} {
-    ${BORDER_RADIUS.NONE}
-    flex: 1;
-  }
+const STYLE = css`
+  ${BUTTON_STYLE.DEFAULT};
+  ${BUTTON_STYLE.SIZE.DEFAULT};
+  ${BUTTON_STYLE.COLOR.BLUE};
+  ${BUTTON_STYLE.EFFECT.BLUE};
 `;
+
+const MediumBlueButton = {
+  NavLink: styled(NavLink)`
+    ${STYLE}
+  `,
+  Link: styled(Link)`
+    ${STYLE}
+  `,
+  Default: styled.button`
+    ${STYLE}
+  `,
+};
 
 export default MediumBlueButton;

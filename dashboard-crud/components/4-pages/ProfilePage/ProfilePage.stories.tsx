@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import ProfilePage from ".";
+import ProfilePage from "./ProfilePage";
 
 export default {
   title: "Pages/ProfilePage",

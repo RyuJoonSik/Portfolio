@@ -1,16 +1,16 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import LoginPage from ".";
+import Nav from "./Nav";
 
 export default {
-  title: "Pages/LoginPage",
-  component: LoginPage,
+  title: "Atoms/Nav",
+  component: Nav,
   parameters: {
     layout: "fullscreen",
   },
-} as ComponentMeta<typeof LoginPage>;
+} as ComponentMeta<typeof Nav>;
 
-const Template: ComponentStory<typeof LoginPage> = () => <LoginPage />;
+const Template: ComponentStory<typeof Nav> = () => <Nav></Nav>;
 
 export const Default = Template.bind({});

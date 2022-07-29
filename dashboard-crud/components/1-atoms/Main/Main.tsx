@@ -11,7 +11,6 @@ const HEADER_BUTTON_CONTAINER_HEIGHT = "51px";
 const Main = styled.main`
   ${CONTENT_DIRECTION.HORIZONTAL};
   ${CONTENT_ALIGN.CENTER_START};
-  box-sizing: border-box;
   min-height: 100vh;
   padding-top: ${HEADER_HEIGHT_DESKTOP};
   background-color: ${({ theme }) => theme.color.backgroundDefault};

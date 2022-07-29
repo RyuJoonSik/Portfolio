@@ -7,14 +7,15 @@ import MediumIcon from "../../1-atoms/Icon/MediumIcon";
 import DL from "../../1-atoms/DescriptionList/DL";
 import DT from "../../1-atoms/DescriptionTerm/DT";
 import DD from "../../1-atoms/DescriptionDetails/DD";
+import MainContentItemHeader from "../../1-atoms/Header/MainContentItemHeader";
 
 export default function ProfileSkills(): JSX.Element {
   return (
     <MainFullContentItemContainer>
-      <H3>
+      <MainContentItemHeader>
         <MediumIcon as={Construction} />
-        Skills
-      </H3>
+        <H3>Skills</H3>
+      </MainContentItemHeader>
       <DL>
         <DT>Lorem Ipsum</DT>
         <DD>

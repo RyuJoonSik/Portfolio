@@ -3,8 +3,8 @@ import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import "@storybook/addon-console";
 
 import GlobalStyle from "../styles/GlobalStyle";
-import theme from "../styles/theme";
 import ThemeContextProvider from "../contexts/ThemeContext";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -20,6 +20,7 @@ export const parameters = {
 };
 
 export const decorators = [
+  withRouter,
   (Story) => (
     <>
       <ThemeContextProvider>

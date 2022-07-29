@@ -22,13 +22,19 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
-  input:focus {
-    border: 1px solid ${({ theme }) => theme.color.borderAccent};
-
+  input:focus,
+  a:focus,
+  button:focus {
     outline: 0;
   }
 
   li{
     list-style: none;
+  }
+
+  a{
+    box-sizing: border-box;
+
+    text-decoration: none;
   }
 `;

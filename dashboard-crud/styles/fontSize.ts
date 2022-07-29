@@ -6,10 +6,18 @@ import { css } from "styled-components";
 const FONT_SIZE = {
   /**
    * ```css
-   * font-size: 12px;
+   * font-size: 10px;
    * ```
    */
   SMALLEST: css`
+    font-size: 10px;
+  `,
+  /**
+   * ```css
+   * font-size: 12px;
+   * ```
+   */
+  SMALLER: css`
     font-size: 12px;
   `,
   /**
@@ -41,8 +49,16 @@ const FONT_SIZE = {
    * font-size: 24px;
    * ```
    */
-  LARGEST: css`
+  LARGER: css`
     font-size: 24px;
+  `,
+  /**
+   * ```css
+   * font-size: 28px;
+   * ```
+   */
+  LARGEST: css`
+    font-size: 28px;
   `,
 } as const;
 

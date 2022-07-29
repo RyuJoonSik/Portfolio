@@ -9,6 +9,7 @@ module.exports = {
     "@storybook/addon-interactions",
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
+    "storybook-addon-react-router-v6",
   ],
   framework: "@storybook/react",
   core: {

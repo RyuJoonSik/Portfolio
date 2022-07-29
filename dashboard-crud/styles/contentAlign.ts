@@ -28,8 +28,8 @@ export const CONTENT_ALIGN = {
 
   /**
    * ```css
-   * justify-content: center;
-   * align-items: flex-start;
+   * justify-content: flex-start;
+   * align-items: center;
    * ```
    */
   START_CENTER: css`
