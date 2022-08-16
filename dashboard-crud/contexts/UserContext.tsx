@@ -1,6 +1,6 @@
-import React, { useState, useEffect, Dispatch } from "react";
-import { User } from "firebase/auth";
-import { setLoginedUser } from "../firebase/authentication";
+import React, { useEffect, useRef, useState } from "react";
+import { getAuth, onAuthStateChanged, User } from "firebase/auth";
+import firebaseApp from "../firebase/initFirebase";
 
 interface UserContextProviderProps {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface UserContextProviderProps {
 
 interface UserContextValue {
   user: User | null;
-  setUser: Dispatch<User>;
+  setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 export const UserContext = React.createContext<UserContextValue>(
@@ -19,9 +19,20 @@ export default function UserContextProvider({
   children,
 }: UserContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
+  const isCheckedLoginedUser = useRef(false);
 
   useEffect(() => {
-    setLoginedUser(setUser);
+    const authentication = getAuth(firebaseApp);
+
+    const unsubscribe = onAuthStateChanged(authentication, (loginedUser) => {
+      if (!isCheckedLoginedUser.current) {
+        isCheckedLoginedUser.current = true;
+
+        setUser(loginedUser);
+      }
+    });
+
+    return unsubscribe;
   }, []);
 
   return (

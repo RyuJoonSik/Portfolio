@@ -1,49 +1,49 @@
 /**
  * padding, maring, gap, border, border radius의 너비를 설정합니다.
  */
-const SPACE_SIZE = {
+const spaceSize = {
   /**
    * ```
     1px
    * ```
    */
-  SMALLEST: "1px",
+  smallest: "1px",
   /**
    * ```
     4px
    * ```
    */
-  SMALLER: "4px",
+  smaller: "4px",
   /**
    * ```
     10px
    * ```
    */
-  SMALL: "10px",
+  small: "10px",
   /**
    * ```
     16px
    * ```
    */
-  DEFAULT: "16px",
+  medium: "16px",
   /**
    * ```
     20px
    * ```
    */
-  LARGE: "20px",
+  large: "20px",
   /**
    * ```
     24px
    * ```
    */
-  LARGER: "24px",
+  larger: "24px",
   /**
    * ```
     32px
    * ```
    */
-  LARGEST: "32px",
+  largest: "32px",
 } as const;
 
-export default SPACE_SIZE;
+export default spaceSize;

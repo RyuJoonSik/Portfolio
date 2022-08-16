@@ -3,7 +3,7 @@ import { css } from "styled-components";
 /**
  * 박스 내부 컨텐츠들의 배치 방향을 설정합니다.
  */
-const CONTENT_DIRECTION = {
+const contentDirection = {
   /**
    * 수평 배치
    * ```css
@@ -11,7 +11,7 @@ const CONTENT_DIRECTION = {
    * flex-direction: row;
    * ```
    */
-  HORIZONTAL: css`
+  horizontal: css`
     display: flex;
     flex-direction: row;
   `,
@@ -23,10 +23,10 @@ const CONTENT_DIRECTION = {
    * flex-direction: column;
    * ```
    */
-  VERTICAL: css`
+  vertical: css`
     display: flex;
     flex-direction: column;
   `,
 } as const;
 
-export default CONTENT_DIRECTION;
+export default contentDirection;

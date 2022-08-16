@@ -3,7 +3,7 @@ import { css } from "styled-components";
 /**
  * 스크롤의 가시성을 설정합니다.
  */
-const SCROLL = {
+const scroll = {
   /**
    * 숨김
    * ```css
@@ -16,7 +16,7 @@ const SCROLL = {
    * ```
    */
 
-  HIDDEN: css`
+  hidden: css`
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
 
@@ -27,4 +27,4 @@ const SCROLL = {
   `,
 };
 
-export default SCROLL;
+export default scroll;

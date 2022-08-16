@@ -1,61 +1,78 @@
 import { css } from "styled-components";
 
-import { BLUE, WHITE } from "../../../styles/color";
-import CONTENT_ALIGN from "../../../styles/contentAlign";
-import CONTENT_DIRECTION from "../../../styles/contentDirection";
-import FONT_SIZE from "../../../styles/fontSize";
-import RESPONSIVE_SIZE from "../../../styles/responsiveSize";
-import SPACE_SIZE from "../../../styles/spaceSize";
+import { blue, white } from "../../../styles/color";
+import contentAlign from "../../../styles/contentAlign";
+import contentDirection from "../../../styles/contentDirection";
+import fontSize from "../../../styles/fontSize";
+import spaceSize from "../../../styles/spaceSize";
 
-const BUTTON_STYLE = {
-  DEFAULT: css`
-    ${CONTENT_DIRECTION.VERTICAL};
-    ${CONTENT_ALIGN.CENTER};
-    border-radius: ${SPACE_SIZE.SMALLER};
-    height: 3.2rem;
+const colorStyle = {
+  blue: css`
+    background-color: ${blue.default};
+
+    color: ${white.light};
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: ${blue.light};
+      }
+    }
+
+    &:active {
+      background-color: ${blue.dark};
+    }
   `,
 
-  COLOR: {
-    BLUE: css`
-      background-color: ${BLUE.DEFAULT};
+  white: css`
+    background-color: ${({ theme }) => theme.color.backgroundAccent};
+    border: ${spaceSize.smallest} solid
+      ${({ theme }) => theme.color.borderDefault};
 
-      color: ${WHITE.LIGHT};
-    `,
+    color: ${({ theme }) => theme.color.textDefault};
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: ${({ theme }) => theme.color.backgroundHover};
+      }
+    }
+
+    &:active {
+      background-color: ${({ theme }) => theme.color.backgroundDefault};
+    }
+  `,
+};
+
+const rectangleStyle = {
+  medium: css`
+    ${contentDirection.vertical};
+    ${contentAlign.center};
+    min-width: 5rem;
+    width: 5rem;
+    padding: ${spaceSize.small} 0;
+    border-radius: ${spaceSize.smaller};
+
+    ${fontSize.smaller};
+  `,
+
+  full: css`
+    ${contentDirection.vertical};
+    ${contentAlign.center};
+    width: 100%;
+    padding: ${spaceSize.small} 0;
+    border-radius: ${spaceSize.smaller};
+
+    ${fontSize.large};
+  `,
+};
+
+const buttonStyle = {
+  color: {
+    ...colorStyle,
   },
 
-  EFFECT: {
-    BLUE: css`
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          background-color: ${BLUE.LIGHT};
-        }
-      }
-
-      &:active {
-        background-color: ${BLUE.DARK};
-      }
-
-      &:focus-visible {
-        border: ${SPACE_SIZE.SMALLER} solid red;
-      }
-    `,
-  },
-
-  SIZE: {
-    DEFAULT: css`
-      ${FONT_SIZE.SMALLER};
-      width: 5rem;
-
-      ${RESPONSIVE_SIZE.MOBILE} {
-        border-radius: 0;
-        flex: 1;
-      }
-    `,
-    FULL: css`
-      ${FONT_SIZE.LARGE};
-      width: 100%;
-    `,
+  rectangle: {
+    ...rectangleStyle,
   },
 };
 
-export default BUTTON_STYLE;
+export default buttonStyle;

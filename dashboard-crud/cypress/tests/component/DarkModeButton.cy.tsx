@@ -2,7 +2,7 @@ import React from "react";
 import { mount } from "cypress/react";
 
 import ColorThemeContextProvider from "../../../contexts/ColorThemeContext";
-import DarkModeButton from "../../../components/2-molecules/DarkModeButton/DarkModeButton";
+import DarkModeButton from "../../../components/2-molecules/Button/DarkModeButton/DarkModeButton";
 
 describe("DarkModeButton", () => {
   it("라이트 모드로 초기화한다.", () => {

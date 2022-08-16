@@ -5,11 +5,13 @@ declare module "styled-components" {
     color: {
       backgroundDefault: string;
       backgroundAccent: string;
+      backgroundHover: string;
       textDefault: string;
       textAccent: string;
+      textFocus: string;
       textPlaceholder: string;
       borderDefault: string;
-      borderAccent: string;
+      borderFocus: string;
     };
   }
 }

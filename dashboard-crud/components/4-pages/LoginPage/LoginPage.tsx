@@ -1,13 +1,16 @@
 import React from "react";
 
-import HeaderLogout from "../../3-organisms/HeaderLogout/HeaderLogout";
-import MainLogin from "../../3-organisms/MainLogin/MainLogin";
+import PageContentContainer from "../../1-atoms/Box/PageContentContainer";
+import Header from "../../3-organisms/Header/Header";
+import MainLoginForm from "../../3-organisms/MainLoginForm/MainLoginForm";
 
 export default function LoginPage(): JSX.Element {
   return (
     <>
-      <HeaderLogout />
-      <MainLogin />
+      <Header />
+      <PageContentContainer>
+        <MainLoginForm />
+      </PageContentContainer>
     </>
   );
 }

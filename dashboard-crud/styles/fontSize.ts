@@ -3,13 +3,13 @@ import { css } from "styled-components";
 /**
  *폰트 사이즈를 설정합니다.
  */
-const FONT_SIZE = {
+const fontSize = {
   /**
    * ```css
    * font-size: 10px;
    * ```
    */
-  SMALLEST: css`
+  smallest: css`
     font-size: 10px;
   `,
   /**
@@ -17,7 +17,7 @@ const FONT_SIZE = {
    * font-size: 12px;
    * ```
    */
-  SMALLER: css`
+  smaller: css`
     font-size: 12px;
   `,
   /**
@@ -25,7 +25,7 @@ const FONT_SIZE = {
    * font-size: 14px;
    * ```
    */
-  SMALL: css`
+  small: css`
     font-size: 14px;
   `,
   /**
@@ -33,7 +33,7 @@ const FONT_SIZE = {
    * font-size: 16px;
    * ```
    */
-  DEFAULT: css`
+  medium: css`
     font-size: 16px;
   `,
   /**
@@ -41,7 +41,7 @@ const FONT_SIZE = {
    * font-size: 20px;
    * ```
    */
-  LARGE: css`
+  large: css`
     font-size: 20px;
   `,
   /**
@@ -49,7 +49,7 @@ const FONT_SIZE = {
    * font-size: 24px;
    * ```
    */
-  LARGER: css`
+  larger: css`
     font-size: 24px;
   `,
   /**
@@ -57,9 +57,9 @@ const FONT_SIZE = {
    * font-size: 28px;
    * ```
    */
-  LARGEST: css`
+  largest: css`
     font-size: 28px;
   `,
 } as const;
 
-export default FONT_SIZE;
+export default fontSize;

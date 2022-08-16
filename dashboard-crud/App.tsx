@@ -1,37 +1,57 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import GlobalStyle from "./styles/GlobalStyle";
 import ColorThemeContext from "./contexts/ColorThemeContext";
-import EmptyPage from "./components/4-pages/EmptyPage/EmpityPage";
-import MainProfile from "./components/3-organisms/MainProfile/MainProfile";
-import MainLogin from "./components/3-organisms/MainLogin/MainLogin";
-import MainDailyLifePost from "./components/3-organisms/MainDailyLifePost/MainDailyLifePost";
-import MainRegister from "./components/3-organisms/MainRegister/MainRegister";
 import UserContext from "./contexts/UserContext";
+
+// import EmptyPage from "./components/4-pages/EmptyPage/EmptyPage";
+// import MainProfileContents from "./components/3-organisms/MainProfileContents/MainProfileContents";
+// import MainLoginForm from "./components/3-organisms/MainLoginForm/MainLoginForm";
+// import MainRegisterForm from "./components/3-organisms/MainRegisterForm/MainRegisterForm";
+// import MainDailyLifeContents from "./components/3-organisms/MainDailyLifeContents/MainDailyLifeContents";
+
+const EmptyPage = React.lazy(
+  () => import("./components/4-pages/EmptyPage/EmptyPage")
+);
+const MainProfileContents = React.lazy(
+  () =>
+    import("./components/3-organisms/MainProfileContents/MainProfileContents")
+);
+const MainLoginForm = React.lazy(
+  () => import("./components/3-organisms/MainLoginForm/MainLoginForm")
+);
+const MainRegisterForm = React.lazy(
+  () => import("./components/3-organisms/MainRegisterForm/MainRegisterForm")
+);
+const MainDailyLifeContents = React.lazy(
+  () =>
+    import(
+      "./components/3-organisms/MainDailyLifeContents/MainDailyLifeContents"
+    )
+);
 
 export default function App(): JSX.Element {
   return (
-    <React.StrictMode>
-      <ColorThemeContext>
-        <GlobalStyle />
+    <ColorThemeContext>
+      <GlobalStyle />
+      <BrowserRouter>
         <UserContext>
-          <BrowserRouter>
+          <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<EmptyPage />}>
-                <Route index element={<MainProfile />} />
-                <Route path="profile" element={<MainProfile />} />
-                <Route path="login" element={<MainLogin />} />
-                <Route path="register" element={<MainRegister />} />
-                <Route path="daily-life-post" element={<MainDailyLifePost />} />
+                <Route index element={<MainProfileContents />} />
+                <Route path="profile" element={<MainProfileContents />} />
+                <Route path="login" element={<MainLoginForm />} />
+                <Route path="register" element={<MainRegisterForm />} />
+                <Route path="daily-life" element={<MainDailyLifeContents />} />
               </Route>
             </Routes>
-          </BrowserRouter>
+          </Suspense>
         </UserContext>
-      </ColorThemeContext>
-    </React.StrictMode>
+      </BrowserRouter>
+    </ColorThemeContext>
   );
 }
 

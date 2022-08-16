@@ -3,14 +3,14 @@ import { css } from "styled-components";
 /**
  * 박스 내부 컨텐츠들의 정렬 위치를 설정합니다.
  */
-export const CONTENT_ALIGN = {
+export const contentAlign = {
   /**
    * ```css
    * justify-content: center;
    * align-items: center;
    * ```
    */
-  CENTER: css`
+  center: css`
     justify-content: center;
     align-items: center;
   `,
@@ -21,7 +21,7 @@ export const CONTENT_ALIGN = {
    * align-items: flex-start;
    * ```
    */
-  CENTER_START: css`
+  centerStart: css`
     justify-content: center;
     align-items: flex-start;
   `,
@@ -32,7 +32,7 @@ export const CONTENT_ALIGN = {
    * align-items: center;
    * ```
    */
-  START_CENTER: css`
+  startCenter: css`
     justify-content: flex-start;
     align-items: center;
   `,
@@ -43,7 +43,7 @@ export const CONTENT_ALIGN = {
    * align-items: center;
    * ```
    */
-  END_CENTER: css`
+  endCenter: css`
     justify-content: flex-end;
     align-items: center;
   `,
@@ -54,10 +54,10 @@ export const CONTENT_ALIGN = {
    * align-items: center;
    * ```
    */
-  SPACE_BETWEEN_CENTER: css`
+  spaceBetweenCenter: css`
     justify-content: space-between;
     align-items: center;
   `,
 };
 
-export default CONTENT_ALIGN;
+export default contentAlign;

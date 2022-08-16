@@ -1,26 +1,30 @@
 import { DefaultTheme } from "styled-components";
-import { BLACK, BLUE, WHITE } from "./color";
+import { black, blue, white } from "./color";
 
 export const LIGHT_THEME: DefaultTheme = {
   color: {
-    backgroundDefault: WHITE.DEFAULT,
-    backgroundAccent: WHITE.LIGHT,
-    textDefault: BLACK.DEFAULT,
-    textAccent: BLACK.DARK,
-    textPlaceholder: WHITE.DARK,
-    borderDefault: WHITE.DARK,
-    borderAccent: BLUE.DARK,
+    backgroundDefault: white.default,
+    backgroundAccent: white.light,
+    backgroundHover: white.dark,
+    textDefault: black.default,
+    textAccent: black.dark,
+    textPlaceholder: white.dark,
+    textFocus: blue.dark,
+    borderDefault: white.dark,
+    borderFocus: blue.dark,
   },
 };
 
 export const DARK_THEME: DefaultTheme = {
   color: {
-    backgroundDefault: BLACK.DARK,
-    backgroundAccent: BLACK.DEFAULT,
-    textDefault: WHITE.DARK,
-    textAccent: WHITE.LIGHT,
-    textPlaceholder: BLACK.LIGHT,
-    borderDefault: BLACK.LIGHT,
-    borderAccent: BLUE.LIGHT,
+    backgroundDefault: black.dark,
+    backgroundAccent: black.default,
+    backgroundHover: black.light,
+    textDefault: white.dark,
+    textAccent: white.light,
+    textPlaceholder: black.light,
+    textFocus: blue.light,
+    borderDefault: black.light,
+    borderFocus: blue.light,
   },
 };

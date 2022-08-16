@@ -1,13 +1,16 @@
 import React from "react";
 
-import HeaderLogout from "../../3-organisms/HeaderLogout/HeaderLogout";
-import MainProfile from "../../3-organisms/MainProfile/MainProfile";
+import PageContentContainer from "../../1-atoms/Box/PageContentContainer";
+import Header from "../../3-organisms/Header/Header";
+import MainProfileContents from "../../3-organisms/MainProfileContents/MainProfileContents";
 
-export default function ProfilePage(): JSX.Element {
+export default function EmptyPage(): JSX.Element {
   return (
     <>
-      <HeaderLogout />
-      <MainProfile />
+      <Header />
+      <PageContentContainer>
+        <MainProfileContents />
+      </PageContentContainer>
     </>
   );
 }
