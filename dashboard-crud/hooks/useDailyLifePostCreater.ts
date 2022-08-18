@@ -4,11 +4,16 @@ import {
   getFirestore,
   Timestamp,
 } from "firebase/firestore";
+import { useState } from "react";
 
 import firebaseApp from "../firebase/initFirebase";
 import { DailyLifePostItem } from "../types/dataModel";
 
-export default function useDailyLifePostCreate(callback: () => void) {
+export default function useDailyLifePostCreater() {
+  const [dayilPostIsCreated, setDayilPostIsCreated] = useState<boolean | null>(
+    null
+  );
+
   const db = getFirestore(firebaseApp);
 
   async function createDailyLifePost({
@@ -16,21 +21,21 @@ export default function useDailyLifePostCreate(callback: () => void) {
     content,
     downloadURL,
   }: DailyLifePostItem) {
+    setDayilPostIsCreated((prevState) => !!prevState);
+
     try {
-      const docRef = await addDoc(collection(db, "dailyLifePosts"), {
+      await addDoc(collection(db, "dailyLifePosts"), {
         title,
         content,
         downloadURL: downloadURL || "",
         requestedAt: Timestamp.now(),
       });
 
-      alert(`등록 성공: ${docRef.id}`);
-
-      callback();
+      setDayilPostIsCreated((prevState) => !prevState);
     } catch (e) {
       alert(`등록 실패: ${e}`);
     }
   }
 
-  return createDailyLifePost;
+  return { createDailyLifePost, dayilPostIsCreated };
 }

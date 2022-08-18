@@ -2,13 +2,13 @@ import React from "react";
 import { NearMe } from "@styled-icons/material-outlined/NearMe";
 
 import Icon from "../../1-atoms/Icon/Icon";
-import PageHeaderButton from "./PageHeaderButton";
+import PageHeaderLinkButton from "../../1-atoms/Button/PageHeaderLinkButton";
 
 export default function DailyLifeLinkButton(): JSX.Element {
   return (
-    <PageHeaderButton.Link to="/daily-life">
+    <PageHeaderLinkButton to="/daily-life">
       <Icon.Large as={NearMe} />
       일상
-    </PageHeaderButton.Link>
+    </PageHeaderLinkButton>
   );
 }

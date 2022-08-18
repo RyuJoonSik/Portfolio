@@ -4,14 +4,16 @@ import InputContainer from "../../1-atoms/Box/InputContainer";
 
 interface PasswordInputProps {
   value: string;
-  handleChange({ target }: { target: HTMLInputElement }): void;
+  id: string;
+  handleChange: ({ target }: { target: HTMLInputElement }) => void;
   handleEnter?: () => void;
 }
 
 export default function PasswordInput({
+  value,
+  id,
   handleChange,
   handleEnter,
-  ...restProps
 }: PasswordInputProps): JSX.Element {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (!handleEnter) {
@@ -29,10 +31,10 @@ export default function PasswordInput({
       <input
         placeholder="비밀번호 6자리를 입력해 주세요."
         type="password"
-        id="password"
+        value={value}
+        id={id}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        {...restProps}
       />
     </InputContainer>
   );

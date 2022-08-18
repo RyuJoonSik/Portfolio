@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 
-import { DARK_THEME, LIGHT_THEME } from "../styles/theme";
+import { darkTheme, lightTheme } from "../styles/theme";
 
 interface ColorThemeContextProviderProps {
   children: React.ReactNode;
@@ -23,7 +23,7 @@ export default function ColorThemeContextProvider({
 
   return (
     <ColorThemeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
-      <ThemeProvider theme={isDarkMode ? DARK_THEME : LIGHT_THEME}>
+      <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         {children}
       </ThemeProvider>
     </ColorThemeContext.Provider>

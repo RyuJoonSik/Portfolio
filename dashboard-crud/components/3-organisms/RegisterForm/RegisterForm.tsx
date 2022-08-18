@@ -1,6 +1,5 @@
 import React from "react";
 
-import BlueButton from "../../1-atoms/Button/BlueButton";
 import EmailInput from "../../2-molecules/Input/EmailInput";
 import Article from "../../1-atoms/Article/Article";
 import ArticleHeader from "../../1-atoms/Header/ArticleHeader";
@@ -9,6 +8,7 @@ import PasswordInput from "../../2-molecules/Input/PasswordInput";
 import useUserRegister from "../../../hooks/useUserRegister";
 import useInputsValue from "../../../hooks/useInputsValue";
 import PreventedSubmitForm from "../../1-atoms/Form/PreventedSubmitForm";
+import FormSubmitButton from "../../1-atoms/Button/FormSubmitButton";
 
 export default function RegisterForm(): JSX.Element {
   const handleRegister = useUserRegister();
@@ -31,17 +31,19 @@ export default function RegisterForm(): JSX.Element {
         <PreventedSubmitForm>
           <EmailInput
             value={userAuthInfo.email}
+            id="email"
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />
           <PasswordInput
             value={userAuthInfo.password}
+            id="password"
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />
-          <BlueButton.Rectangle.Full type="button" onClick={handleClick}>
+          <FormSubmitButton type="button" onClick={handleClick}>
             회원가입
-          </BlueButton.Rectangle.Full>
+          </FormSubmitButton>
         </PreventedSubmitForm>
       </ArticleContentContainer>
     </Article.Small>

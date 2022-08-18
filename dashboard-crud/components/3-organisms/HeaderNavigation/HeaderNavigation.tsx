@@ -4,12 +4,10 @@ import styled from "styled-components";
 import contentDirection from "../../../styles/contentDirection";
 import scroll from "../../../styles/scroll";
 import responsiveSize from "../../../styles/responsiveSize";
-import DarkModeButton from "../../2-molecules/Button//DarkModeButton";
-import UserLoginStateButton from "../../2-molecules/Button//UserLoginStateButton";
 import ProfileLinkButton from "../../2-molecules/Button/ProfileLinkButton";
 import DailyLifeLinkButton from "../../2-molecules/Button/DailyLifeLinkButton";
 
-const HeaderButtonsContainer = styled.div`
+const StyledHeaderNavigation = styled.nav`
   ${contentDirection.horizontal};
 
   overflow: scroll;
@@ -23,13 +21,11 @@ const HeaderButtonsContainer = styled.div`
   }
 `;
 
-export default function HeaderButtonsBox(): JSX.Element {
+export default function HeaderNavigation(): JSX.Element {
   return (
-    <HeaderButtonsContainer>
-      {/* <DarkModeButton /> */}
+    <StyledHeaderNavigation>
       <ProfileLinkButton />
       <DailyLifeLinkButton />
-      <UserLoginStateButton />
-    </HeaderButtonsContainer>
+    </StyledHeaderNavigation>
   );
 }

@@ -1,16 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-import responsiveSize from "../../../styles/responsiveSize";
+const ImageWrapper = styled.div`
+  background-color: black;
+`;
 
 const Image = styled.img`
-  /* height: 50vh; */
-  width: 100%;
-
-  ${responsiveSize.mobile} {
-    width: 100%;
-    height: auto;
-  }
+  display: block;
+  width: 50%;
+  min-width: 310px;
+  margin: 0 auto;
 `;
 
 interface ArticleImg {
@@ -26,7 +25,10 @@ export default function ArticleImg({
 }: ArticleImg): JSX.Element {
   return (
     <figure>
-      <Image src={src} alt={alt} />;<figcaption>{textContent}</figcaption>
+      <ImageWrapper>
+        <Image src={src} alt={alt} />
+      </ImageWrapper>
+      <figcaption>{textContent}</figcaption>
     </figure>
   );
 }

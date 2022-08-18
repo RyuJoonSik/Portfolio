@@ -12,7 +12,7 @@ import {
 import firebaseApp from "../firebase/initFirebase";
 import { DailyLifePostDocument } from "../types/dataModel";
 
-export default function useDailyLifePostDocsRead() {
+export default function useDailyLifePostDocsReader() {
   const [dailyLifePostDocs, setDailyLifePostDocs] = useState<
     DailyLifePostDocument[]
   >([]);

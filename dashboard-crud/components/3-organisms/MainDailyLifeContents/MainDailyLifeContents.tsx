@@ -1,37 +1,38 @@
 import React, { useRef, useState } from "react";
 
-import useDailyLifePostDocsRead from "../../../hooks/useDailyLifePostDocsRead";
-import BlueButton from "../../1-atoms/Button/BlueButton";
+import useDailyLifePostDocsReader from "../../../hooks/useDailyLifePostDocsReader";
 import SectionHeader from "../../1-atoms/Header/SectionHeader";
 import Main from "../../1-atoms/Main/Main";
 import ModalPortal from "../../1-atoms/Portal/ModalPortal";
 import DailyLifePostItem from "../../2-molecules/Item/DailyLifePostItem";
 import DailyLifePostForm from "../DailyLifePostForm/DailyLifePostForm";
+import PostAddButton from "../../2-molecules/Button/PostAddButton";
 
 export default function MainDailyLifeContents(): JSX.Element {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
 
-  const modalButtonRef = useRef<HTMLButtonElement>(null);
+  const modalOpenButtonRef = useRef<HTMLButtonElement>(null);
 
-  const dailyLifePostDocs = useDailyLifePostDocsRead();
+  const dailyLifePostDocs = useDailyLifePostDocsReader();
 
-  const handleShow = () => {
+  const handleShowForm = () => {
     setIsVisibleModal(true);
   };
 
-  const handleHide = () => {
+  const handleHideForm = () => {
     setIsVisibleModal(false);
 
-    modalButtonRef.current?.focus();
+    modalOpenButtonRef.current?.focus();
   };
 
   return (
     <Main>
       <SectionHeader>
         <h2>일상</h2>
-        <BlueButton.Rectangle.Medium onClick={handleShow} ref={modalButtonRef}>
-          포스트 추가
-        </BlueButton.Rectangle.Medium>
+        <PostAddButton
+          handleClick={handleShowForm}
+          buttonRef={modalOpenButtonRef}
+        />
       </SectionHeader>
       {dailyLifePostDocs.map(
         ({ title, content, id, requestedAt, downloadURL }) => (
@@ -47,7 +48,7 @@ export default function MainDailyLifeContents(): JSX.Element {
       )}
       {isVisibleModal && (
         <ModalPortal>
-          <DailyLifePostForm handleHide={handleHide} />
+          <DailyLifePostForm handleHideForm={handleHideForm} />
         </ModalPortal>
       )}
     </Main>

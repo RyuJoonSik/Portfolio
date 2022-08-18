@@ -6,7 +6,7 @@ import contentDirection from "../../../styles/contentDirection";
 import responsiveSize from "../../../styles/responsiveSize";
 import spaceSize from "../../../styles/spaceSize";
 import { blue } from "../../../styles/color";
-import HeaderButtonsBox from "../HeaderButtonsBox/HeaderButtonsBox";
+import HeaderNavigation from "../HeaderNavigation/HeaderNavigation";
 
 const StyledHeader = styled.header`
   position: fixed;
@@ -34,7 +34,7 @@ export default function Header(): JSX.Element {
   return (
     <StyledHeader>
       <h1>{TITLE}</h1>
-      <HeaderButtonsBox />
+      <HeaderNavigation />
     </StyledHeader>
   );
 }

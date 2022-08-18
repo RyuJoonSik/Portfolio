@@ -4,21 +4,23 @@ import InputContainer from "../../1-atoms/Box/InputContainer";
 
 interface TitleInputProps {
   value: string;
+  id: string;
   handleChange({ target }: { target: HTMLInputElement }): void;
 }
 
 export default function TitleInput({
+  value,
+  id,
   handleChange,
-  ...restProps
 }: TitleInputProps): JSX.Element {
   return (
     <InputContainer>
-      <label htmlFor="title">제목</label>
+      <label htmlFor={id}>제목</label>
       <input
         placeholder="제목을 입력해 주세요."
-        id="title"
+        value={value}
+        id={id}
         onChange={handleChange}
-        {...restProps}
       />
     </InputContainer>
   );

@@ -2,8 +2,9 @@ import React from "react";
 
 import InputContainer from "../../1-atoms/Box/InputContainer";
 
-interface ContentInputProps {
+interface TextContentInputProps {
   value: string;
+  id: string;
   handleChange({
     target,
   }: {
@@ -11,18 +12,19 @@ interface ContentInputProps {
   }): void;
 }
 
-export default function ContentInput({
+export default function TextContentInput({
+  value,
+  id,
   handleChange,
-  ...restProps
-}: ContentInputProps): JSX.Element {
+}: TextContentInputProps): JSX.Element {
   return (
     <InputContainer>
-      <label htmlFor="content">내용</label>
+      <label htmlFor={id}>내용</label>
       <textarea
         placeholder="내용을 입력해 주세요."
-        id="content"
+        value={value}
+        id={id}
         onChange={handleChange}
-        {...restProps}
       />
     </InputContainer>
   );

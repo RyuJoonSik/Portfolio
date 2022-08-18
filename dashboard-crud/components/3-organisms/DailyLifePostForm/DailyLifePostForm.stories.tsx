@@ -8,8 +8,8 @@ export default {
   component: DailyLifePostForm,
 } as ComponentMeta<typeof DailyLifePostForm>;
 
-const Template: ComponentStory<typeof DailyLifePostForm> = () => (
-  <DailyLifePostForm handleHide={() => console.log("hi")} />
+const Template: ComponentStory<typeof DailyLifePostForm> = (args) => (
+  <DailyLifePostForm {...args} />
 );
 
 export const Default = Template.bind({});

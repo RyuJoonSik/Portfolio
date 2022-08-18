@@ -4,14 +4,16 @@ import InputContainer from "../../1-atoms/Box/InputContainer";
 
 interface EmailInputProps {
   value: string;
+  id: string;
   handleChange: ({ target }: { target: HTMLInputElement }) => void;
   handleEnter?: () => void;
 }
 
 export default function EmailInput({
+  value,
+  id,
   handleChange,
   handleEnter,
-  ...restProps
 }: EmailInputProps): JSX.Element {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (!handleEnter) {
@@ -25,14 +27,14 @@ export default function EmailInput({
 
   return (
     <InputContainer>
-      <label htmlFor="email">이메일</label>
+      <label htmlFor={id}>이메일</label>
       <input
         placeholder="id@email.com 형식으로 입력해 주세요."
         type="email"
-        id="email"
+        value={value}
+        id={id}
         onChange={handleChange}
         onKeyDown={handleKeyDown}
-        {...restProps}
       />
     </InputContainer>
   );

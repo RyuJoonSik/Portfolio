@@ -1,6 +1,5 @@
 import React from "react";
 
-import BlueButton from "../../1-atoms/Button/BlueButton";
 import Article from "../../1-atoms/Article/Article";
 import ArticleHeader from "../../1-atoms/Header/ArticleHeader";
 import ArticleContentContainer from "../../1-atoms/Box/ArticleContentContainer";
@@ -9,6 +8,7 @@ import useUserLogin from "../../../hooks/useUserLogin";
 import EmailInput from "../../2-molecules/Input/EmailInput";
 import useInputsValue from "../../../hooks/useInputsValue";
 import PreventedSubmitForm from "../../1-atoms/Form/PreventedSubmitForm";
+import FormSubmitButton from "../../1-atoms/Button/FormSubmitButton";
 
 export default function LoginForm(): JSX.Element {
   const handleLogin = useUserLogin();
@@ -30,17 +30,19 @@ export default function LoginForm(): JSX.Element {
         <PreventedSubmitForm>
           <EmailInput
             value={userAuthInfo.email}
+            id="email"
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />
           <PasswordInput
             value={userAuthInfo.password}
+            id="password"
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />
-          <BlueButton.Rectangle.Full type="button" onClick={handleClick}>
+          <FormSubmitButton type="button" onClick={handleClick}>
             로그인
-          </BlueButton.Rectangle.Full>
+          </FormSubmitButton>
         </PreventedSubmitForm>
       </ArticleContentContainer>
     </Article.Small>

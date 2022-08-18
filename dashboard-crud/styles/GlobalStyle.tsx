@@ -46,6 +46,10 @@ const normalizeAndResetStyle = css`
     line-height: 1.5;
   }
 
+  progress {
+    vertical-align: baseline;
+  }
+
   button,
   input,
   textarea {
@@ -109,16 +113,8 @@ const customInittStyle = css`
     ${fontSize.smaller};
   }
 
-  ul {
-    ${contentDirection.horizontal};
-    flex-wrap: wrap;
-    li {
-      width: 50%;
-    }
-  }
-
   textarea {
-    height: 150px;
+    height: 100px;
 
     resize: none;
   }
@@ -148,11 +144,13 @@ const customInittStyle = css`
 
     &::after {
       position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
 
-      box-sizing: border-box;
-      width: 100%;
-      height: 100%;
       border: ${spaceSize.smaller} solid transparent;
+      border-radius: inherit;
 
       content: "";
     }
@@ -174,8 +172,8 @@ const customInittStyle = css`
   }
 
   form {
-    ${contentDirection.vertical}
-    gap: ${spaceSize.larger};
+    ${contentDirection.vertical};
+    gap: ${spaceSize.small};
     width: 100%;
   }
 
@@ -211,10 +209,6 @@ const customInittStyle = css`
   input:focus,
   textarea:focus {
     border-color: ${({ theme }) => theme.color.borderFocus};
-  }
-
-  textarea {
-    height: 200px;
   }
 
   dd {

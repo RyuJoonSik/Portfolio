@@ -6,6 +6,7 @@ import { School } from "@styled-icons/material-sharp/School";
 import Main from "../../1-atoms/Main/Main";
 import SectionHeader from "../../1-atoms/Header/SectionHeader";
 import ProfileItem from "../../2-molecules/Item/ProfileItem";
+import HorizontalList from "../../1-atoms/List/HorizontalList";
 
 const ProfileAboutMeContent = `
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
@@ -62,12 +63,12 @@ const SkillsContent = (
 );
 
 const EducationAndCertificateContent = (
-  <ul>
+  <HorizontalList>
     <li>정보처리 산업기사</li>
     <li>정보보안 산업기사</li>
     <li>IoT 소프트웨어 개발 수료</li>
     <li>울산과학대학교 컴퓨터 정보학부 졸업</li>
-  </ul>
+  </HorizontalList>
 );
 
 export default function MainProfileContents(): JSX.Element {

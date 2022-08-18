@@ -1,10 +1,38 @@
 import React, { useContext } from "react";
-import { Brightness6 } from "@styled-icons/material-outlined/Brightness6";
-import { BrightnessMedium } from "@styled-icons/material/BrightnessMedium";
+import { DarkMode } from "@styled-icons/material/DarkMode";
+import { LightMode } from "@styled-icons/material/LightMode";
+import styled from "styled-components";
 
 import { ColorThemeContext } from "../../../contexts/ColorThemeContext";
 import Icon from "../../1-atoms/Icon/Icon";
-import PageHeaderButton from "./PageHeaderButton";
+import { blue, yellow } from "../../../styles/color";
+import FixedButton from "../../1-atoms/Button/FixedButton";
+import Text from "../../1-atoms/Text/Text";
+import responsiveSize from "../../../styles/responsiveSize";
+
+const StyledFixedButton = styled(FixedButton)`
+  border-radius: 1.5rem;
+
+  ${responsiveSize.mobile} {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+  }
+`;
+
+const StyledText = styled(Text.Medium)`
+  ${responsiveSize.mobile} {
+    display: none;
+  }
+`;
+
+const LightModeIcon = styled(Icon.Medium)`
+  color: ${yellow.default};
+`;
+
+const DarkModeIcon = styled(Icon.Medium)`
+  color: ${blue.dark};
+`;
 
 export default function DarkModeButton(): JSX.Element {
   const { isDarkMode, setIsDarkMode } = useContext(ColorThemeContext);
@@ -14,18 +42,18 @@ export default function DarkModeButton(): JSX.Element {
   };
 
   return (
-    <PageHeaderButton.Default onClick={onClick}>
+    <StyledFixedButton onClick={onClick}>
       {isDarkMode ? (
         <>
-          <Icon.Large as={BrightnessMedium} />
-          라이트 모드
+          <LightModeIcon as={LightMode} />
+          <StyledText>라이트 모드</StyledText>
         </>
       ) : (
         <>
-          <Icon.Large as={Brightness6} />
-          다크 모드
+          <DarkModeIcon as={DarkMode} />
+          <StyledText>다크 모드</StyledText>
         </>
       )}
-    </PageHeaderButton.Default>
+    </StyledFixedButton>
   );
 }

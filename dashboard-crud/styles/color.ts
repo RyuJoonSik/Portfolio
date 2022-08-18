@@ -15,3 +15,7 @@ export const black = {
   default: "rgb(44, 44, 44)",
   dark: "rgb(39, 39, 39)",
 } as const;
+
+export const yellow = {
+  default: "rgb(255,214, 0)",
+};
