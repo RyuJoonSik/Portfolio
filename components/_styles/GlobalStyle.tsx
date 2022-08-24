@@ -30,7 +30,8 @@ const normalizeAndResetStyle = css`
   nav,
   h1,
   h2,
-  h3 {
+  h3,
+  h4 {
     margin: 0;
     padding: 0;
     border: 0;
@@ -40,8 +41,6 @@ const normalizeAndResetStyle = css`
   }
 
   body {
-    position: relative;
-
     font-family: "Noto Sans KR", sans-serif;
     line-height: 1.5;
   }
@@ -105,6 +104,10 @@ const normalizeAndResetStyle = css`
 const customInittStyle = css`
   body {
     background-color: ${({ theme }) => theme.color.backgroundDefault};
+  }
+
+  progress {
+    width: 100%;
   }
 
   time {

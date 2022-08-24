@@ -19,18 +19,12 @@ export default function UserContextProvider({
   children,
 }: UserContextProviderProps) {
   const [user, setUser] = useState<User | null>(null);
-  const isCheckedLoginedUser = useRef(false);
-
   useEffect(() => {
     const authentication = getAuth(firebaseApp);
 
     const unsubscribe = onAuthStateChanged(authentication, (loginedUser) => {
-      console.log(loginedUser)
-      if (!isCheckedLoginedUser.current) {
-        isCheckedLoginedUser.current = true;
-
-        setUser(loginedUser);
-      }
+      console.log(loginedUser);
+      setUser(loginedUser);
     });
 
     return unsubscribe;

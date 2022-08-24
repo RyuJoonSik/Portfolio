@@ -1,12 +1,12 @@
 import React from "react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { withRouter } from "storybook-addon-react-router-v6";
-import styled from "styled-components";
 import "@storybook/addon-console";
+import { withThemesProvider } from "storybook-addon-styled-component-theme";
+import { ThemeProvider } from "styled-components";
 
 import GlobalStyle from "../components/_styles/GlobalStyle";
-import ColorThemeContext from "../contexts/ColorThemeContext";
-import DarkModeButton from "../components/2-molecules/Button/DarkModeButton";
+import { lightTheme, darkTheme } from "../components/_styles/theme";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -21,19 +21,15 @@ export const parameters = {
   },
 };
 
-const StyledDarkModeButton = styled(DarkModeButton)`
-  position: fixed;
-  right: 16px;
-  bottom: 16px;
-`;
+const themes = [lightTheme, darkTheme];
 
 export const decorators = [
   withRouter,
   (Story) => (
-    <ColorThemeContext>
+    <>
       <GlobalStyle />
       <Story />
-      <StyledDarkModeButton />
-    </ColorThemeContext>
+    </>
   ),
+  withThemesProvider(themes, ThemeProvider),
 ];

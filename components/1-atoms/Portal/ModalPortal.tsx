@@ -7,7 +7,7 @@ import contentAlign from "../../../styles/contentAlign";
 import spaceSize from "../../../styles/spaceSize";
 
 const ModalBackground = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 1;
   top: 0;
   bottom: 0;

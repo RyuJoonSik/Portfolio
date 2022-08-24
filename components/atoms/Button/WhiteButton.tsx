@@ -11,6 +11,8 @@ export const whiteButtonStyle = css`
   }
 `;
 
-export default styled.button`
+const WhiteButtno = styled.button`
   ${whiteButtonStyle};
 `;
+
+export default WhiteButtno;

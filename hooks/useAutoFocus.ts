@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-import { HTMLFocusableElement } from "../types/htmlElement";
+import { HTMLFocusableElements } from "../types/htmlElement";
 
 export default function useAutoFocus(
-  target: React.RefObject<HTMLFocusableElement>
+  target: React.RefObject<HTMLFocusableElements>
 ) {
   useEffect(() => {
     target.current?.focus();

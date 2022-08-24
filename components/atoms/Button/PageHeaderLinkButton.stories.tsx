@@ -5,7 +5,7 @@ import { AccountCircle } from "@styled-icons/material-outlined/AccountCircle";
 import PageHeaderLinkButton from "./PageHeaderLinkButton";
 
 export default {
-  title: "Modules/Button/PageHeaderLinkButton",
+  title: "Atoms/Button/PageHeaderLinkButton",
   component: PageHeaderLinkButton,
   parameters: {
     layout: "centered",

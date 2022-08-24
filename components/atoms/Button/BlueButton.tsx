@@ -16,6 +16,8 @@ export const blueButtonStyle = css`
   }
 `;
 
-export default styled.button`
+const BlueButton = styled.button`
   ${blueButtonStyle};
 `;
+
+export default BlueButton;

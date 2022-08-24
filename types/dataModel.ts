@@ -1,6 +1,6 @@
 import { Timestamp } from "firebase/firestore";
 
-export interface DailyLifePostDocument {
+export interface DailyLifePost {
   id: string;
   title: string;
   content: string;
@@ -8,7 +8,7 @@ export interface DailyLifePostDocument {
   requestedAt: Timestamp;
 }
 
-export interface DailyLifePostItem {
+export interface DailyLifePostInput {
   title: string;
   content: string;
   downloadURL?: string;

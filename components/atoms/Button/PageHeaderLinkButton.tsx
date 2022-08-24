@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 
 import contentDirection from "../../_styles/contentDirection";
@@ -8,7 +8,7 @@ import fontSize from "../../_styles/fontSize";
 import responsiveSize from "../../_styles/responsiveSize";
 import { blueButtonStyle } from "../../atoms/Button/BlueButton";
 
-const PageHeaderLinkButton = styled(Link)`
+export const pageHeaderLinkButtonStyle = css`
   ${blueButtonStyle};
   ${contentDirection.vertical};
   ${contentAlign.center};
@@ -23,6 +23,10 @@ const PageHeaderLinkButton = styled(Link)`
     border-radius: 0;
     flex: 1;
   }
+`;
+
+const PageHeaderLinkButton = styled(Link)`
+  ${pageHeaderLinkButtonStyle};
 `;
 
 export default PageHeaderLinkButton;

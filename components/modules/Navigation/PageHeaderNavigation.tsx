@@ -5,7 +5,8 @@ import { NearMe } from "@styled-icons/material-outlined/NearMe";
 
 import contentDirection from "../../_styles/contentDirection";
 import responsiveSize from "../../_styles/responsiveSize";
-import PageHeaderLinkButton from "../Button/PageHeaderLinkButton";
+import PageHeaderLinkButton from "../../atoms/Button/PageHeaderLinkButton";
+import UserAuthLinkButton from "../Button/UserAuthLinkButton";
 
 const StyledPageHeaderNavigation = styled.nav`
   ${contentDirection.horizontal};
@@ -38,6 +39,7 @@ export default function PageHeaderNavigation(): JSX.Element {
         <NearMe size={24} />
         일상
       </PageHeaderLinkButton>
+      <UserAuthLinkButton />
     </StyledPageHeaderNavigation>
   );
 }

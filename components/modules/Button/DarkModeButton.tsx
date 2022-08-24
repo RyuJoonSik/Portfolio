@@ -1,18 +1,19 @@
 import React, { useContext } from "react";
 import { DarkMode } from "@styled-icons/material/DarkMode";
 import { LightMode } from "@styled-icons/material/LightMode";
-import styled from "styled-components";
+import styled, { ThemeContext } from "styled-components";
 
 import { whiteButtonStyle } from "../../atoms/Button/WhiteButton";
 import contentDirection from "../../_styles/contentDirection";
 import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
 import responsiveSize from "../../_styles/responsiveSize";
-import { ColorThemeContext } from "../../../contexts/ColorThemeContext";
 import { blue, yellow } from "../../_styles/color";
 import CustomText from "../../atoms/Text/CustomText";
+import { darkTheme, lightTheme } from "../../_styles/theme";
+import { ThemeContext as ParentThemeContext } from "../../../contexts/ThemeContext";
 
-const StyledFixedButton = styled.button`
+const StyledDarkModeButton = styled.button`
   ${whiteButtonStyle};
   ${contentDirection.horizontal};
   ${contentAlign.center};
@@ -40,22 +41,19 @@ const StyledFixedButton = styled.button`
   }
 `;
 
-interface DarkModeButtonProps {
-  className?: string;
-}
-
-export default function DarkModeButton({
-  className,
-}: DarkModeButtonProps): JSX.Element {
-  const { isDarkMode, setIsDarkMode } = useContext(ColorThemeContext);
+export default function DarkModeButton(): JSX.Element {
+  const { name } = useContext(ThemeContext);
+  const { setTheme } = useContext(ParentThemeContext);
 
   const onClick = () => {
-    setIsDarkMode((prevState) => !prevState);
+    setTheme((prevState) =>
+      prevState.name === "lightTheme" ? darkTheme : lightTheme
+    );
   };
 
   return (
-    <StyledFixedButton onClick={onClick} className={className}>
-      {isDarkMode ? (
+    <StyledDarkModeButton onClick={onClick}>
+      {name == "darkTheme" ? (
         <>
           <LightMode size={16} fill={yellow.default} />
           <CustomText size="small">라이트 모드</CustomText>
@@ -66,6 +64,6 @@ export default function DarkModeButton({
           <CustomText>다크 모드</CustomText>
         </>
       )}
-    </StyledFixedButton>
+    </StyledDarkModeButton>
   );
 }

@@ -1,7 +1,10 @@
 import "styled-components";
 
+type ThemeName = "lightTheme" | "darkTheme";
+
 declare module "styled-components" {
   export interface DefaultTheme {
+    name: ThemeName;
     color: {
       backgroundDefault: string;
       backgroundAccent: string;

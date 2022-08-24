@@ -3,6 +3,7 @@ import {
   getStorage,
   ref,
   uploadBytesResumable,
+  UploadTaskSnapshot,
 } from "firebase/storage";
 import { useState } from "react";
 
@@ -14,7 +15,9 @@ export default function useFileUploader() {
   function uploadFile(
     filePath: string,
     file: Blob | Uint8Array | ArrayBuffer,
-    callback: (downloadURL: string) => void
+    onComplete?: (downloadURL: string) => void,
+    onChange?: (snapshot: UploadTaskSnapshot) => void,
+    onError?: (error: unknown) => void
   ) {
     const storage = getStorage(firebaseApp);
     const storageRef = ref(storage, filePath);
@@ -26,19 +29,18 @@ export default function useFileUploader() {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
+        onChange && onChange(snapshot);
         setUploadPercent(progress);
       },
       (error) => {
-        // Handle unsuccessful uploads
+        onError && onError(error);
       },
       async () => {
-        // Handle successful uploads on complete
-        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        callback(downloadURL);
+        onComplete && onComplete(downloadURL);
       }
     );
   }
 
-  return { uploadPercent, uploadFile };
+  return [uploadPercent, uploadFile] as const;
 }
