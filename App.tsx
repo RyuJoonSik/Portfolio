@@ -9,7 +9,7 @@ import DefaultTemplate from "./components/templates/DefaultTemplate";
 import ProfileContents from "./components/modules/MainContents/ProfileContents";
 import DailyLifeContents from "./components/modules/MainContents/DailyLifeContents";
 import LoginContents from "./components/modules/MainContents/LoginContents";
-import LogoutContents from "./components/modules/MainContents/LogoutContents";
+import RegisterContents from "./components/modules/MainContents/RegisterContents";
 
 // import EmptyPage from "./components/4-pages/EmptyPage/EmptyPage";
 // import MainProfileContents from "./components/3-organisms/MainProfileContents/MainProfileContents";
@@ -57,8 +57,8 @@ export default function App(): JSX.Element {
                 <Route path="profile" element={<ProfileContents />} />
                 <Route path="daily-life" element={<DailyLifeContents />} />
                 <Route path="login" element={<LoginContents />} />
-                <Route path="logout" element={<LogoutContents />} />
-                {/* <Route path="register" element={<MainRegisterForm />} /> */}
+                <Route path="register" element={<RegisterContents />} />
+                {/* <Route path="logout" element={<LogoutContents />} /> */}
               </Route>
             </Routes>
           </Suspense>

@@ -33,7 +33,6 @@ export default function DailyLifePostItem({
     <Article>
       <ArticleHeader>
         <h3>{title}</h3>
-
         <time>{requestedAt.toDate().toLocaleString("ko-KR", dateOption)}</time>
         {/* <button type="button" onClick={removeDailyLifePost}> */}
         {/* 삭제 */}

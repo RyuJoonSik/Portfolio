@@ -12,17 +12,17 @@ const Image = styled.img`
   margin: 0 auto;
 `;
 
-interface ArticleImg {
+interface ArticleImgContents {
   src: string;
   alt: string;
   textContent: string;
 }
 
-export default function ArticleImg({
+export default function ArticleImgContents({
   src,
   alt,
   textContent,
-}: ArticleImg): JSX.Element {
+}: ArticleImgContents): JSX.Element {
   return (
     <figure>
       <ImageWrapper>

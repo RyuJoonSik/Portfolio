@@ -7,6 +7,7 @@ import {
   Timestamp,
 } from "firebase/firestore";
 import { useState } from "react";
+import { dailyLifePostPath } from "../firebase/fireStore";
 
 import firebaseApp from "../firebase/initFirebase";
 import { DailyLifePostInput } from "../types/dataModel";
@@ -26,7 +27,7 @@ export default function useDailyLifePostCreater() {
     setIsDailyLifePostCreated((prevState) => !!prevState);
 
     try {
-      const doc = await addDoc(collection(db, "dailyLifePosts"), {
+      const doc = await addDoc(collection(db, dailyLifePostPath), {
         title,
         content,
         downloadURL: downloadURL || "",

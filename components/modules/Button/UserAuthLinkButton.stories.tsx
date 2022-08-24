@@ -1,6 +1,5 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { AccountCircle } from "@styled-icons/material-outlined/AccountCircle";
 
 import UserAuthLinkButton from "./UserAuthLinkButton";
 

@@ -13,7 +13,6 @@ import useDailyLifePostReader from "../../../hooks/useDailyLifePostReader";
 export default function DailyLifeContents(): JSX.Element {
   const createFormOpenButtonRef = useRef<HTMLButtonElement>(null);
   const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
-
   const dailyLifePostDocs = useDailyLifePostReader();
 
   const handleShowForm = () => {

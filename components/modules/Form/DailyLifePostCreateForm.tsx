@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
+import { imagePath } from "../../../firebase/storage";
 import useAutoFocus from "../../../hooks/useAutoFocus";
 import useDailyLifePostCreater from "../../../hooks/useDailyLifePostCreater";
 import useFileUploader from "../../../hooks/useFileUploader";
@@ -49,9 +50,13 @@ export default function DailyLifePostCreateForm({
     const files = inputFileRef.current?.files;
 
     if (files?.length) {
-      uploadFile(`images/${Date.now()}`, files[0], (downloadURL: string) => {
-        createDailyLifePost({ ...dailyLifePost, downloadURL });
-      });
+      uploadFile(
+        `${imagePath + Date.now()}`,
+        files[0],
+        (downloadURL: string) => {
+          createDailyLifePost({ ...dailyLifePost, downloadURL });
+        }
+      );
 
       return;
     }

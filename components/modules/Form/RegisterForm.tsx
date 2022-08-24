@@ -1,41 +1,32 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import useInputsValue from "../../../hooks/useInputsValue";
-import useUserLogin from "../../../hooks/useUserLogin";
+import { useNavigate } from "react-router-dom";
 
+import useInputsValue from "../../../hooks/useInputsValue";
+import useUserRegister from "../../../hooks/useUserRegister";
 import SmallArticle from "../../atoms/Article/SmallArticle";
-import FormLinkButton from "../../atoms/Button/FormLinkButton";
 import SubmitButton from "../../atoms/Button/SubmitButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
-import CustomContainer from "../../atoms/Container/CustomContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
 import ArticleHeader from "../../atoms/Header/ArticleHeader";
 import EmailInput from "../Input/EmailInput";
 import PasswordInput from "../Input/PasswordInput";
 
-export default function LoginForm(): JSX.Element {
-  const login = useUserLogin();
-  const navigation = useNavigate();
-
+export default function RegisterForm(): JSX.Element {
   const [userAuthInfo, setUserAuthInfo] = useInputsValue({
     email: "",
     password: "",
   });
+  const navigation = useNavigate();
+  const register = useUserRegister();
 
-  const handleClick = () => {
-    login(
-      userAuthInfo,
-      () => {
-        navigation(-1);
-      },
-      alert
-    );
+  const handleClick = async () => {
+    register(userAuthInfo, () => navigation("/"), alert);
   };
 
   return (
     <SmallArticle>
       <ArticleHeader>
-        <h3>로그인 시작하기</h3>
+        <h3>회원가입 시작하기</h3>
       </ArticleHeader>
       <ArticleContentsContainer>
         <PreventDefaultForm>
@@ -52,12 +43,9 @@ export default function LoginForm(): JSX.Element {
             handleEnter={handleClick}
           />
           <SubmitButton type="button" onClick={handleClick}>
-            로그인
+            회원가입
           </SubmitButton>
         </PreventDefaultForm>
-        <CustomContainer align="center">
-          <FormLinkButton to="/register">회원가입</FormLinkButton>
-        </CustomContainer>
       </ArticleContentsContainer>
     </SmallArticle>
   );

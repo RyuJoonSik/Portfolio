@@ -12,6 +12,7 @@ import {
 
 import firebaseApp from "../firebase/initFirebase";
 import { DailyLifePost } from "../types/dataModel";
+import { dailyLifePostPath } from "../firebase/fireStore";
 
 function getQueriedDailyLifePosts(querySnapshot: QuerySnapshot<DocumentData>) {
   const queriedDailyLifePosts: DailyLifePost[] = [];
@@ -42,7 +43,7 @@ export default function useDailyLifePostReader() {
 
     const unsubscribe = onSnapshot(
       query(
-        collection(fireStore, "dailyLifePosts"),
+        collection(fireStore, dailyLifePostPath),
         orderBy("requestedAt", "desc"),
         limit(5)
       ),

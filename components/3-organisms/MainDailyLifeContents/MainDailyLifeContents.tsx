@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import useDailyLifePostDocsReader from "../../../hooks/useDailyLifePostDocsReader";
+import useDailyLifePostDocsReader from "../../../hooks/useDailyLifePostReader";
 import SectionHeader from "../../1-atoms/Header/SectionHeader";
 import Main from "../../1-atoms/Main/Main";
 import ModalPortal from "../../1-atoms/Portal/ModalPortal";
