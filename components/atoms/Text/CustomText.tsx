@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-import fontSize from "../../../styles/fontSize";
+import fontSize from "../../_styles/fontSize";
 import { FontSizeLiteral } from "../../_styles/fontSize";
 
 interface CustomTextProps {

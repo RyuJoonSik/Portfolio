@@ -20,7 +20,7 @@ export default function ProfileItem({
   return (
     <Article>
       <ArticleHeader>
-        <CustomContainer direction="horizontal" align="center" gap="small">
+        <CustomContainer direction="horizontal" align="startCenter" gap="small">
           <TitleIcon size={24} />
           <h3>{title}</h3>
         </CustomContainer>

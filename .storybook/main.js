@@ -4,13 +4,13 @@ module.exports = {
     "../components/**/*.stories.@(js|jsx|ts|tsx)",
   ],
   addons: [
-    "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "@storybook/addon-links",
     "@storybook/addon-interactions",
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
     "storybook-addon-react-router-v6",
-    "storybook-addon-styled-component-theme/dist/preset",
+    "@react-theming/storybook-addon",
   ],
   framework: "@storybook/react",
   core: {

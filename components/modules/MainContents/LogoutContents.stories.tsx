@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import LogoutContents from "./LogoutContents";
 
 export default {
-  title: "Modules/LogoutContents",
+  title: "Modules/MainContents/LogoutContents",
   component: LogoutContents,
 } as ComponentMeta<typeof LogoutContents>;
 

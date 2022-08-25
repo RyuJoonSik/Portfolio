@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 
 import { DailyLifePost } from "../../../types/dataModel";
 import Article from "../../atoms/Article/Article";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
+import CenterFixedContainer from "../../atoms/Container/CenterFixedContainer";
+import CustomContainer from "../../atoms/Container/CustomContainer";
+import ModalContentsContainer from "../../atoms/Container/ModalContentsContainer";
 import ArticleHeader from "../../atoms/Header/ArticleHeader";
+import ModalPortal from "../../atoms/Portal/ModalPortal";
+import PostRemoveButton from "../Button/PostRemoveButton";
+import PostUpdateButton from "../Button/PostUpdateButton";
+import DailyLifePostUpdateForm from "../Form/DailyLifePostUpdateForm";
 import ArticleImgContents from "../Img/ArticleImgContents";
 
 const dateOption = {
@@ -16,27 +23,40 @@ const dateOption = {
   second: "numeric",
 } as const;
 
-export default function DailyLifePostItem({
-  id,
-  title,
-  content,
-  downloadURL,
-  requestedAt,
-}: DailyLifePost): JSX.Element {
-  // async function removeDailyLifePost() {
-  //   const db = getFirestore(firebaseApp);
+export default function DailyLifePostItem(
+  DailyLifePost: DailyLifePost
+): JSX.Element {
+  const updateFormOpenButtonRef = useRef<HTMLButtonElement>(null);
+  const [isUpdateFormVisible, setIsUpdateFormVisible] = useState(false);
 
-  //   await deleteDoc(doc(db, "dailyLifePosts", id));
-  // }
+  const handleShowForm = () => {
+    setIsUpdateFormVisible(true);
+  };
+
+  const handleHideForm = () => {
+    setIsUpdateFormVisible(false);
+
+    updateFormOpenButtonRef.current?.focus();
+  };
+
+  const { id, title, content, downloadURL, requestedAt } = DailyLifePost;
 
   return (
     <Article>
       <ArticleHeader>
         <h3>{title}</h3>
-        <time>{requestedAt.toDate().toLocaleString("ko-KR", dateOption)}</time>
-        {/* <button type="button" onClick={removeDailyLifePost}> */}
-        {/* 삭제 */}
-        {/* </button> */}
+        <CustomContainer align="spaceBetweenCenter" width="100%">
+          <time>
+            {requestedAt.toDate().toLocaleString("ko-KR", dateOption)}
+          </time>
+          <CustomContainer gap="small">
+            <PostRemoveButton id={id} />
+            <PostUpdateButton
+              buttonRef={updateFormOpenButtonRef}
+              handleShowForm={handleShowForm}
+            />
+          </CustomContainer>
+        </CustomContainer>
       </ArticleHeader>
       <ArticleContentsContainer>
         {downloadURL ? (
@@ -49,6 +69,18 @@ export default function DailyLifePostItem({
           <p>{content}</p>
         )}
       </ArticleContentsContainer>
+      {isUpdateFormVisible && (
+        <ModalPortal>
+          <ModalContentsContainer>
+            <CenterFixedContainer>
+              <DailyLifePostUpdateForm
+                handleHideForm={handleHideForm}
+                currentDailyLifePost={DailyLifePost}
+              />
+            </CenterFixedContainer>
+          </ModalContentsContainer>
+        </ModalPortal>
+      )}
     </Article>
   );
 }

@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ImageFileInput from "./ImageFileInput";
 
 export default {
-  title: "Molecules/Input/ImageFileInput",
+  title: "Modules/Input/ImageFileInput",
   component: ImageFileInput,
 } as ComponentMeta<typeof ImageFileInput>;
 

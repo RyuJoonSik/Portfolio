@@ -111,14 +111,13 @@ const customInittStyle = css`
   }
 
   time {
-    width: 100%;
-
     ${fontSize.smaller};
   }
 
   textarea {
     height: 100px;
 
+    word-break: break-all;
     resize: none;
   }
 

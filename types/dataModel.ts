@@ -8,8 +8,8 @@ export interface DailyLifePost {
   requestedAt: Timestamp;
 }
 
-export interface DailyLifePostInput {
+export type DailyLifePostInput = {
   title: string;
   content: string;
   downloadURL?: string;
-}
+};

@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import EmailInput from "./EmailInput";
 
 export default {
-  title: "Molecules/Input/EmailInput",
+  title: "Modules/Input/EmailInput",
   component: EmailInput,
 } as ComponentMeta<typeof EmailInput>;
 

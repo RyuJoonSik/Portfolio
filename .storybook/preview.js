@@ -2,11 +2,11 @@ import React from "react";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { withRouter } from "storybook-addon-react-router-v6";
 import "@storybook/addon-console";
-import { withThemesProvider } from "storybook-addon-styled-component-theme";
-import { ThemeProvider } from "styled-components";
+import { withThemes } from "@react-theming/storybook-addon";
 
 import GlobalStyle from "../components/_styles/GlobalStyle";
 import { lightTheme, darkTheme } from "../components/_styles/theme";
+import ThemeProvider from "../contexts/ThemeContext";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -27,9 +27,11 @@ export const decorators = [
   withRouter,
   (Story) => (
     <>
-      <GlobalStyle />
-      <Story />
+      <ThemeProvider>
+        <GlobalStyle />
+        <Story />
+      </ThemeProvider>
     </>
   ),
-  withThemesProvider(themes, ThemeProvider),
+  // withThemes(ThemeProvider, themes),
 ];

@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import PageContentsContainer from "./PageContentsContainer";
 
 export default {
-  title: "Atoms/Box/PageContentsContainer ",
+  title: "Atoms/Container/PageContentsContainer ",
   component: PageContentsContainer,
 } as ComponentMeta<typeof PageContentsContainer>;
 

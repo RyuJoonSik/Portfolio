@@ -1,14 +1,15 @@
 import React, { useRef, useState } from "react";
+import { Create } from "@styled-icons/material-outlined/Create";
 
 import SectionHeader from "../../atoms/Header/SectionHeader";
 import Main from "../../atoms/Main/Main";
-import PostCreateButton from "../Button/PostCreateButton";
 import ModalPortal from "../../atoms/Portal/ModalPortal";
 import CenterFixedContainer from "../../atoms/Container/CenterFixedContainer";
 import DailyLifePostCreateForm from "../Form/DailyLifePostCreateForm";
 import ModalContentsContainer from "../../atoms/Container/ModalContentsContainer";
 import DailyLifePostItem from "../Item/DailyLifePostItem";
 import useDailyLifePostReader from "../../../hooks/useDailyLifePostReader";
+import FormOpenButton from "../../atoms/Button/FormOpenButton";
 
 export default function DailyLifeContents(): JSX.Element {
   const createFormOpenButtonRef = useRef<HTMLButtonElement>(null);
@@ -29,10 +30,10 @@ export default function DailyLifeContents(): JSX.Element {
     <Main>
       <SectionHeader>
         <h2>일상</h2>
-        <PostCreateButton
-          handleClick={handleShowForm}
-          buttonRef={createFormOpenButtonRef}
-        />
+        <FormOpenButton onClick={handleShowForm} ref={createFormOpenButtonRef}>
+          <Create size={20} />
+          포스트 작성
+        </FormOpenButton>
       </SectionHeader>
       {dailyLifePostDocs.map(
         ({ title, content, id, requestedAt, downloadURL }) => (
