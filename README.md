@@ -13,3 +13,6 @@
 + Firebase Cloud Firestore
 + Firebase Cloud Storage
 + Firebase Hosting
+
+## Todo List
+## Idea Note
