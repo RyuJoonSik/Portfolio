@@ -10,7 +10,7 @@ import ProfileContents from "./components/modules/MainContents/ProfileContents";
 import DailyLifeContents from "./components/modules/MainContents/DailyLifeContents";
 import LoginContents from "./components/modules/MainContents/LoginContents";
 import RegisterContents from "./components/modules/MainContents/RegisterContents";
-console.log('test');
+
 // import EmptyPage from "./components/4-pages/EmptyPage/EmptyPage";
 // import MainProfileContents from "./components/3-organisms/MainProfileContents/MainProfileContents";
 // import MainLoginForm from "./components/3-organisms/MainLoginForm/MainLoginForm";
