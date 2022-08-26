@@ -1,16 +1,15 @@
 const path = require("path");
 // const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
-// const TerserPlugin = require("terser-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
-  // mode: "production",
-  mode: "development",
-  // optimization: {
-  //   minimize: true,
-  //   minimizer: [new TerserPlugin()],
-  // },
+  mode: "production",
+  // mode: "development",
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
   entry: "./App.tsx",
-  // entry: "./Temp.tsx",
   output: {
     filename: "App.js",
     path: path.resolve(__dirname) + "/public",
