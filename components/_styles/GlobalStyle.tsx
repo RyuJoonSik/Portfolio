@@ -119,7 +119,7 @@ const customInittStyle = css`
 
       width: 5px;
       height: 5px;
-      background: black;
+      background: ${({ theme }) => theme.color.textDefault};
       border-radius: 50%;
 
       transform: translate(-10px, -50%);
