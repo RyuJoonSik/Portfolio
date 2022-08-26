@@ -14,5 +14,5 @@
 + Firebase Cloud Storage
 + Firebase Hosting
 
-## Todo List
-## Idea Note
+## Todo list
+## Idea note
