@@ -10,7 +10,6 @@ import UserContext from "./contexts/UserContext";
 // import DailyLifeContents from "./components/modules/MainContents/DailyLifeContents";
 // import LoginContents from "./components/modules/MainContents/LoginContents";
 // import RegisterContents from "./components/modules/MainContents/RegisterContents";
-console.log("action test!!!");
 const DefaultTemplate = React.lazy(
   () => import("./components/templates/DefaultTemplate")
 );
@@ -28,6 +27,7 @@ const RegisterContents = React.lazy(
 );
 
 export default function App(): JSX.Element {
+  alert("hello");
   return (
     <ThemeContext>
       <GlobalStyle />
