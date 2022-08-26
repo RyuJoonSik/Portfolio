@@ -9,7 +9,7 @@ const HorizontalList = styled.ul`
   flex-wrap: wrap;
 
   li {
-    flex: 1 1 250px;
+    flex: 1 1 300px;
   }
 `;
 

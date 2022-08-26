@@ -17,6 +17,7 @@ const normalizeAndResetStyle = css`
   dt,
   dd,
   ul,
+  ol,
   li,
   time,
   figure,
@@ -96,7 +97,8 @@ const normalizeAndResetStyle = css`
     background-color: transparent;
   }
 
-  ul {
+  ul,
+  ol {
     list-style: none;
   }
 `;
@@ -104,6 +106,34 @@ const normalizeAndResetStyle = css`
 const customInittStyle = css`
   body {
     background-color: ${({ theme }) => theme.color.backgroundDefault};
+  }
+
+  ul li {
+    position: relative;
+
+    padding-left: ${spaceSize.small};
+
+    &::before {
+      position: absolute;
+      top: 12px;
+
+      width: 5px;
+      height: 5px;
+      background: black;
+      border-radius: 50%;
+
+      transform: translate(-10px, -50%);
+      content: "";
+    }
+  }
+
+  ol li {
+    counter-reset: section;
+
+    &::before {
+      counter-increment: section;
+      content: counters(section, ".") ". ";
+    }
   }
 
   progress {
