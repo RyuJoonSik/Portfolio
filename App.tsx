@@ -10,7 +10,7 @@ import UserContext from "./contexts/UserContext";
 // import DailyLifeContents from "./components/modules/MainContents/DailyLifeContents";
 // import LoginContents from "./components/modules/MainContents/LoginContents";
 // import RegisterContents from "./components/modules/MainContents/RegisterContents";
-console.log("test");
+console.log("action test");
 const DefaultTemplate = React.lazy(
   () => import("./components/templates/DefaultTemplate")
 );
