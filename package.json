@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack -w",
-    "build-with-github-actions": "webpack",
+    "build-development": "webpack -w --config webpack-development.config.ts",
+    "build": "webpack",
     "test": "jest --watchAll",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",

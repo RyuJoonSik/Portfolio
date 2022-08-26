@@ -27,7 +27,6 @@ const RegisterContents = React.lazy(
 );
 
 export default function App(): JSX.Element {
-  alert("hello");
   return (
     <ThemeContext>
       <GlobalStyle />
