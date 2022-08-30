@@ -7,14 +7,12 @@ import ModalPortal from "../../atoms/Portal/ModalPortal";
 import CenterFixedContainer from "../../atoms/Container/CenterFixedContainer";
 import DailyLifePostCreateForm from "../Form/DailyLifePostCreateForm";
 import ModalContentsContainer from "../../atoms/Container/ModalContentsContainer";
-import DailyLifePostItem from "../Item/DailyLifePostItem";
-import useDailyLifePostReader from "../../../hooks/useDailyLifePostReader";
 import FormOpenButton from "../../atoms/Button/FormOpenButton";
+import DailyLifePostList from "../List/DailyLifePostList";
 
 export default function DailyLifeContents(): JSX.Element {
   const createFormOpenButtonRef = useRef<HTMLButtonElement>(null);
   const [isCreateFormVisible, setIsCreateFormVisible] = useState(false);
-  const dailyLifePostDocs = useDailyLifePostReader();
 
   const handleShowForm = () => {
     setIsCreateFormVisible(true);
@@ -35,19 +33,7 @@ export default function DailyLifeContents(): JSX.Element {
           포스트 작성
         </FormOpenButton>
       </SectionHeader>
-      {dailyLifePostDocs.map(
-        ({ title, content, id, requestedAt, downloadURL }) => (
-          <DailyLifePostItem
-            key={id}
-            id={id}
-            title={title}
-            content={content}
-            downloadURL={downloadURL}
-            requestedAt={requestedAt}
-          />
-        )
-      )}
-
+      <DailyLifePostList />
       {isCreateFormVisible && (
         <ModalPortal>
           <ModalContentsContainer>

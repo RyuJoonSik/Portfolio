@@ -36,6 +36,7 @@
   dt,
   dd,
   ul,
+  ol,
   li,
   time,
   figure,
@@ -115,12 +116,41 @@
     background-color: transparent;
   }
 
-  ul {
+  ul,
+  ol {
     list-style: none;
   }
 `,f=a.iv`
   body {
     background-color: ${({theme:e})=>e.color.backgroundDefault};
+  }
+
+  ul li {
+    position: relative;
+
+    padding-left: ${c.Z.small};
+
+    &::before {
+      position: absolute;
+      top: 12px;
+
+      width: 5px;
+      height: 5px;
+      background: ${({theme:e})=>e.color.textDefault};
+      border-radius: 50%;
+
+      transform: translate(-10px, -50%);
+      content: "";
+    }
+  }
+
+  ol li {
+    counter-reset: section;
+
+    &::before {
+      counter-increment: section;
+      content: counters(section, ".") ". ";
+    }
   }
 
   progress {
@@ -253,4 +283,4 @@
 `,h=a.vJ`
   ${d};
   ${f};
-`;var p=i(488),m=i(5302);const g=e.lazy((()=>i.e(552).then(i.bind(i,6552)))),v=e.lazy((()=>i.e(5).then(i.bind(i,3005)))),y=e.lazy((()=>Promise.all([i.e(817),i.e(326)]).then(i.bind(i,9326)))),b=e.lazy((()=>i.e(816).then(i.bind(i,3816)))),w=e.lazy((()=>i.e(671).then(i.bind(i,4671))));function k(){return e.createElement(p.Z,null,e.createElement(h,null),e.createElement(n.VK,null,e.createElement(m.Z,null,e.createElement(e.Suspense,{fallback:e.createElement(g,null)},e.createElement(r.Z5,null,e.createElement(r.AW,{path:"/",element:e.createElement(g,null,e.createElement(r.j3,null))},e.createElement(r.AW,{index:!0,element:e.createElement(v,null)}),e.createElement(r.AW,{path:"profile",element:e.createElement(v,null)}),e.createElement(r.AW,{path:"daily-life",element:e.createElement(y,null)}),e.createElement(r.AW,{path:"login",element:e.createElement(b,null)}),e.createElement(r.AW,{path:"register",element:e.createElement(w,null)})))))))}t.createRoot(document.getElementById("root")).render(e.createElement(k,null))})()})();
+`;var p=i(488),m=i(5302);const g=e.lazy((()=>i.e(552).then(i.bind(i,6552)))),v=e.lazy((()=>i.e(819).then(i.bind(i,9819)))),y=e.lazy((()=>Promise.all([i.e(817),i.e(326)]).then(i.bind(i,9326)))),b=e.lazy((()=>i.e(816).then(i.bind(i,3816)))),w=e.lazy((()=>i.e(671).then(i.bind(i,4671))));function k(){return e.createElement(p.Z,null,e.createElement(h,null),e.createElement(n.VK,null,e.createElement(m.Z,null,e.createElement(e.Suspense,{fallback:e.createElement(g,null)},e.createElement(r.Z5,null,e.createElement(r.AW,{path:"/",element:e.createElement(g,null,e.createElement(r.j3,null))},e.createElement(r.AW,{index:!0,element:e.createElement(v,null)}),e.createElement(r.AW,{path:"profile",element:e.createElement(v,null)}),e.createElement(r.AW,{path:"daily-life",element:e.createElement(y,null)}),e.createElement(r.AW,{path:"login",element:e.createElement(b,null)}),e.createElement(r.AW,{path:"register",element:e.createElement(w,null)})))))))}t.createRoot(document.getElementById("root")).render(e.createElement(k,null))})()})();

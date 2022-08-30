@@ -23,9 +23,15 @@ const dateOption = {
   second: "numeric",
 } as const;
 
-export default function DailyLifePostItem(
-  DailyLifePost: DailyLifePost
-): JSX.Element {
+interface DailyLifePostItemProps {
+  dailyLifePost: DailyLifePost;
+  itemRef?: React.RefObject<HTMLElement>;
+}
+
+export default function DailyLifePostItem({
+  dailyLifePost,
+  itemRef,
+}: DailyLifePostItemProps): JSX.Element {
   const updateFormOpenButtonRef = useRef<HTMLButtonElement>(null);
   const [isUpdateFormVisible, setIsUpdateFormVisible] = useState(false);
 
@@ -39,10 +45,10 @@ export default function DailyLifePostItem(
     updateFormOpenButtonRef.current?.focus();
   };
 
-  const { id, title, content, downloadURL, requestedAt } = DailyLifePost;
+  const { id, title, content, downloadURL, requestedAt } = dailyLifePost;
 
   return (
-    <Article>
+    <Article ref={itemRef}>
       <ArticleHeader>
         <h3>{title}</h3>
         <CustomContainer align="spaceBetweenCenter" width="100%">
@@ -75,7 +81,7 @@ export default function DailyLifePostItem(
             <CenterFixedContainer>
               <DailyLifePostUpdateForm
                 handleHideForm={handleHideForm}
-                currentDailyLifePost={DailyLifePost}
+                currentDailyLifePost={dailyLifePost}
               />
             </CenterFixedContainer>
           </ModalContentsContainer>
