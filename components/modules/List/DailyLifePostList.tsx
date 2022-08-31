@@ -1,29 +1,26 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import DailyLifePostItem from "../Item/DailyLifePostItem";
 import useDailyLifePostReader from "../../../hooks/useDailyLifePostReader";
 
 export default function DailyLifePostList(): JSX.Element {
-  console.log("list render");
   const lastItemRef = useRef<HTMLElement>(null);
-  const [dailyLifePosts, loadDailyLifePosts] = useDailyLifePostReader();
-
-  useEffect(() => {
-    loadDailyLifePosts();
-    // const handleIntersect = (
-    //   entries: IntersectionObserverEntry[],
-    //   observer?: IntersectionObserver
-    // ) => {
-    //   console.log();
-    // };
-    // const observer = new IntersectionObserver(handleIntersect);
-  }, []);
-
+  const {
+    dailyLifePosts,
+    handleOrderByDesc,
+    handleOrderByAsc,
+    loadDayilyLifePosts,
+    isInitialLoading,
+    isMorePostLoading,
+  } = useDailyLifePostReader();
+  // console.log("isLoading: ", isLoading);
   return (
     <>
-      <button onClick={loadDailyLifePosts}>load</button>
-      <button>내림차순</button>
-      <button>오름차순</button>
+      <div>{isInitialLoading ? "초기 값 로딩 중..." : "초기화 완료"}</div>
+      <div>{isMorePostLoading ? "추가 값 로딩 중..." : "추가 로딩 완료"}</div>
+      <button onClick={loadDayilyLifePosts}>load</button>
+      <button onClick={handleOrderByDesc}>내림차순</button>
+      <button onClick={handleOrderByAsc}>오름차순</button>
       {dailyLifePosts.map((dailyLifePost, index) =>
         index === dailyLifePosts.length - 1 ? (
           <DailyLifePostItem

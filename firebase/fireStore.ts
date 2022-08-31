@@ -1,29 +1,48 @@
 import {
+  collection,
   DocumentData,
+  DocumentSnapshot,
   getFirestore,
+  limit,
+  orderBy,
+  OrderByDirection,
   query,
   Query,
   QueryConstraint,
   QueryDocumentSnapshot,
+  startAfter,
 } from "firebase/firestore";
 
 import firebaseApp from "./initFirebase";
 
 export const dailyLifePostPath = "dailyLifePosts";
 
-export function getDocsData(docs: QueryDocumentSnapshot[]) {
-  return docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+export function getDocsData<T>(docs: QueryDocumentSnapshot[]) {
+  return docs.map((doc) => ({ ...(doc.data() as T), id: doc.id }));
 }
 
-export function queryWithUndefined(
-  queryBase: Query<DocumentData>,
-  ...queryConstraints: (QueryConstraint | undefined)[]
+export function queryWithNull(
+  baseQuery: Query<DocumentData>,
+  ...queryConstraints: (QueryConstraint | null)[]
 ) {
   const filteredArgs = queryConstraints.filter(
     (queryConstraint) => queryConstraint
   ) as QueryConstraint[];
 
-  return query(queryBase, ...filteredArgs);
+  return query(baseQuery, ...filteredArgs);
+}
+
+export function createQueryByOrder(
+  orderDirection: OrderByDirection,
+  lastSnapshot: DocumentSnapshot | null,
+  offset = 5
+) {
+  return queryWithNull(
+    collection(fireStore, dailyLifePostPath),
+    orderBy("requestedAt", orderDirection),
+    lastSnapshot ? startAfter(lastSnapshot) : null,
+    limit(offset)
+  );
 }
 
 const fireStore = getFirestore(firebaseApp);

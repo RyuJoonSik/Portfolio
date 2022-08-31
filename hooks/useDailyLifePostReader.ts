@@ -1,105 +1,94 @@
-import { useEffect, useRef, useState, useReducer } from "react";
+import { useEffect, useState } from "react";
 import {
-  collection,
-  doc,
-  DocumentData,
   DocumentSnapshot,
   getDocs,
-  getFirestore,
-  limit,
-  onSnapshot,
-  orderBy,
-  Query,
-  query,
-  QueryConstraint,
-  QueryDocumentSnapshot,
-  QuerySnapshot,
-  startAfter,
-  startAt,
+  OrderByDirection,
 } from "firebase/firestore";
 
-import firebaseApp from "../firebase/initFirebase";
 import { DailyLifePost } from "../types/dataModel";
-import fireStore, {
-  dailyLifePostPath,
-  getDocsData,
-  queryWithUndefined,
-} from "../firebase/fireStore";
-
-type ACTIONTYPE =
-  | { type: "orderByDesc" }
-  | { type: "orderByAsc" }
-  | { type: "orderByDescFrom"; payload: DocumentSnapshot }
-  | { type: "orderByAscFrom"; payload: DocumentSnapshot };
-
-const queryOrderByDesc = queryWithUndefined(
-  collection(fireStore, dailyLifePostPath),
-  orderBy("requestedAt", "desc"),
-  limit(10)
-);
-
-const queryOrderByAsc = query(
-  collection(fireStore, dailyLifePostPath),
-  orderBy("requestedAt"),
-  limit(10)
-);
-
-const initialQuery = queryOrderByDesc;
-
-function reducer(state: typeof initialQuery, action: ACTIONTYPE) {
-  switch (action.type) {
-    case "orderByDesc":
-      return queryOrderByDesc;
-    case "orderByAsc":
-      return queryOrderByAsc;
-    case "orderByDescFrom":
-      return query(
-        collection(fireStore, dailyLifePostPath),
-        orderBy("requestedAt", "desc"),
-        startAfter(action.payload),
-        limit(10)
-      );
-    case "orderByAscFrom":
-      return query(
-        collection(fireStore, dailyLifePostPath),
-        orderBy("requestedAt"),
-        startAfter(action.payload),
-        limit(10)
-      );
-    default:
-      throw new Error();
-  }
-}
+import { createQueryByOrder, getDocsData } from "../firebase/fireStore";
 
 export default function useDailyLifePostReader() {
   const [dailyLifePosts, setDailyLifePosts] = useState<DailyLifePost[]>([]);
-  const { current: fireStore } = useRef(getFirestore(firebaseApp));
-  const [query, dispatch] = useReducer(reducer, initialQuery);
+  const [order, setOrder] = useState<OrderByDirection>("desc");
+  const [isInitialLoading, setIsInitialLoading] = useState(false);
+  const [isMorePostLoading, setIsMorePostLoading] = useState(false);
+  const [lastSnapshot, setLastSnapshot] = useState<DocumentSnapshot | null>(
+    null
+  );
 
-  async function loadDailyLifePosts() {
-    const { docs } = await getDocs(query);
-    const lastVisible = docs[docs.length - 1];
+  useEffect(() => {
+    setIsInitialLoading(true);
+  }, []);
 
-    if (!lastVisible) {
-      console.log("마지막");
-      return;
+  useEffect(() => {
+    console.log("second Effect");
+    async function initDailyLifePosts() {
+      if (isInitialLoading) {
+        const { docs } = await getDocs(createQueryByOrder(order, null, 5));
+        setLastSnapshot(docs[docs.length - 1]);
+        setDailyLifePosts(getDocsData<DailyLifePost>(docs));
+        setIsInitialLoading(false);
+      }
     }
 
-    const newDailyLifePosts = getDocsData(docs) as DailyLifePost[];
-    setDailyLifePosts((prevPosts) => [...prevPosts, ...newDailyLifePosts]);
-  }
+    initDailyLifePosts();
+  }, [order, isInitialLoading]);
 
-  function setOrderByDesc() {
-    dispatch({ type: "orderByDesc" });
+  useEffect(() => {
+    async function loadDailyLifePosts() {
+      if (isMorePostLoading) {
+        const { docs } = await getDocs(
+          createQueryByOrder(order, lastSnapshot, 5)
+        );
+        setLastSnapshot(docs[docs.length - 1]);
+        setDailyLifePosts((prevDailyLifePosts) => [
+          ...prevDailyLifePosts,
+          ...getDocsData<DailyLifePost>(docs),
+        ]);
+        setIsMorePostLoading(false);
+      }
+    }
 
-    setDailyLifePosts([]);
-  }
+    loadDailyLifePosts();
+  }, [isMorePostLoading]);
 
-  function setOrderByAsc() {
-    dispatch({ type: "orderByAsc" });
+  const loadDayilyLifePosts = async () => {
+    setIsMorePostLoading(true);
+    // if (!lastSnapshot) {
+    //   alert("포스트가 없습니다.");
+    //   return;
+    // }
+    // const { docs } = await getDocs(createQueryByOrder(order, lastSnapshot, 5));
+    // const lastDoc = docs[docs.length - 1];
+    // if (!lastDoc) {
+    //   alert("포스트가 없습니다.");
+    //   setLastSnapshot(null);
+    //   return;
+    // }
+    // setLastSnapshot(lastDoc);
+    // setDailyLifePosts((prevDailyLifePosts) => [
+    //   ...prevDailyLifePosts,
+    //   ...getDocsData<DailyLifePost>(docs),
+    // ]);
+  };
 
-    setDailyLifePosts([]);
-  }
+  const handleOrderByDesc = () => {
+    setOrder("desc");
+    // setIsLoading(true);
+  };
 
-  return [dailyLifePosts, loadDailyLifePosts] as const;
+  const handleOrderByAsc = () => {
+    setOrder("asc");
+    // setIsLoading(true);
+  };
+
+  return {
+    dailyLifePosts,
+    handleOrderByDesc,
+    handleOrderByAsc,
+    loadDayilyLifePosts,
+    isInitialLoading,
+    isMorePostLoading,
+  } as const;
 }
