@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import {
   DocumentSnapshot,
   getDocs,
@@ -8,87 +8,102 @@ import {
 import { DailyLifePost } from "../types/dataModel";
 import { createQueryByOrder, getDocsData } from "../firebase/fireStore";
 
+type Action =
+  | { type: "setOrderByDesc" }
+  | { type: "setOrderByAsc" }
+  | {
+      type: "setPosts";
+      posts: DailyLifePost[];
+      lastDoc: DocumentSnapshot | null;
+    }
+  | {
+      type: "load";
+    };
+
+interface InitialState {
+  dailyLifePosts: DailyLifePost[];
+  orderBy: OrderByDirection;
+  cursor: DocumentSnapshot | null;
+  isLoading: boolean;
+}
+
+const initialState: InitialState = {
+  dailyLifePosts: [],
+  cursor: null,
+  orderBy: "desc",
+  isLoading: true,
+};
+
+function reducer(state: InitialState, action: Action): InitialState {
+  switch (action.type) {
+    case "setOrderByDesc":
+      return {
+        dailyLifePosts: [],
+        cursor: null,
+        orderBy: "desc",
+        isLoading: true,
+      };
+    case "setOrderByAsc":
+      return {
+        dailyLifePosts: [],
+        cursor: null,
+        orderBy: "asc",
+        isLoading: true,
+      };
+    case "setPosts":
+      return {
+        ...state,
+        dailyLifePosts: [...state.dailyLifePosts, ...action.posts],
+        cursor: action.lastDoc,
+        isLoading: false,
+      };
+    case "load":
+      return {
+        ...state,
+        isLoading: true,
+      };
+    default:
+      throw new Error();
+  }
+}
+
 export default function useDailyLifePostReader() {
-  const [dailyLifePosts, setDailyLifePosts] = useState<DailyLifePost[]>([]);
-  const [order, setOrder] = useState<OrderByDirection>("desc");
-  const [isInitialLoading, setIsInitialLoading] = useState(false);
-  const [isMorePostLoading, setIsMorePostLoading] = useState(false);
-  const [lastSnapshot, setLastSnapshot] = useState<DocumentSnapshot | null>(
-    null
-  );
+  const [postManager, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    setIsInitialLoading(true);
-  }, []);
-
-  useEffect(() => {
-    console.log("second Effect");
     async function initDailyLifePosts() {
-      if (isInitialLoading) {
-        const { docs } = await getDocs(createQueryByOrder(order, null, 5));
-        setLastSnapshot(docs[docs.length - 1]);
-        setDailyLifePosts(getDocsData<DailyLifePost>(docs));
-        setIsInitialLoading(false);
+      if (postManager.isLoading) {
+        console.log("data fetch 진입");
+        const { orderBy, cursor } = postManager;
+        const { docs } = await getDocs(createQueryByOrder(orderBy, cursor));
+
+        dispatch({
+          type: "setPosts",
+          posts: getDocsData(docs),
+          lastDoc: docs[docs.length - 1],
+        });
       }
     }
 
     initDailyLifePosts();
-  }, [order, isInitialLoading]);
-
-  useEffect(() => {
-    async function loadDailyLifePosts() {
-      if (isMorePostLoading) {
-        const { docs } = await getDocs(
-          createQueryByOrder(order, lastSnapshot, 5)
-        );
-        setLastSnapshot(docs[docs.length - 1]);
-        setDailyLifePosts((prevDailyLifePosts) => [
-          ...prevDailyLifePosts,
-          ...getDocsData<DailyLifePost>(docs),
-        ]);
-        setIsMorePostLoading(false);
-      }
-    }
-
-    loadDailyLifePosts();
-  }, [isMorePostLoading]);
+  }, [postManager]);
 
   const loadDayilyLifePosts = async () => {
-    setIsMorePostLoading(true);
-    // if (!lastSnapshot) {
-    //   alert("포스트가 없습니다.");
-    //   return;
-    // }
-    // const { docs } = await getDocs(createQueryByOrder(order, lastSnapshot, 5));
-    // const lastDoc = docs[docs.length - 1];
-    // if (!lastDoc) {
-    //   alert("포스트가 없습니다.");
-    //   setLastSnapshot(null);
-    //   return;
-    // }
-    // setLastSnapshot(lastDoc);
-    // setDailyLifePosts((prevDailyLifePosts) => [
-    //   ...prevDailyLifePosts,
-    //   ...getDocsData<DailyLifePost>(docs),
-    // ]);
+    dispatch({ type: "load" });
   };
 
   const handleOrderByDesc = () => {
-    setOrder("desc");
-    // setIsLoading(true);
+    dispatch({ type: "setOrderByDesc" });
   };
 
   const handleOrderByAsc = () => {
-    setOrder("asc");
-    // setIsLoading(true);
+    dispatch({ type: "setOrderByAsc" });
   };
 
   return {
-    dailyLifePosts,
+    postManager,
     handleOrderByDesc,
     handleOrderByAsc,
     loadDayilyLifePosts,
-    isInitialLoading,
-    isMorePostLoading,
   } as const;
 }
