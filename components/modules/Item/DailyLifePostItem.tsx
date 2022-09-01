@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { DailyLifePost } from "../../../types/dataModel";
 import Article from "../../atoms/Article/Article";
@@ -25,12 +25,12 @@ const dateOption = {
 
 interface DailyLifePostItemProps {
   dailyLifePost: DailyLifePost;
-  itemRef?: React.RefObject<HTMLElement>;
+  setLastItem?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
 }
 
 export default function DailyLifePostItem({
   dailyLifePost,
-  itemRef,
+  setLastItem,
 }: DailyLifePostItemProps): JSX.Element {
   const updateFormOpenButtonRef = useRef<HTMLButtonElement>(null);
   const [isUpdateFormVisible, setIsUpdateFormVisible] = useState(false);
@@ -48,7 +48,8 @@ export default function DailyLifePostItem({
   const { id, title, content, downloadURL, requestedAt } = dailyLifePost;
 
   return (
-    <Article ref={itemRef}>
+    <Article ref={setLastItem}>
+      <div>{setLastItem && "Pointer"}</div>
       <ArticleHeader>
         <h3>{title}</h3>
         <CustomContainer align="spaceBetweenCenter" width="100%">

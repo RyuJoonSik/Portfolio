@@ -5,6 +5,7 @@ import DefaultTemplate from "./DefaultTemplate";
 import ProfileContents from "../modules/MainContents/ProfileContents";
 import LoginContents from "../modules/MainContents/LoginContents";
 import LogoutContents from "../modules/MainContents/LogoutContents";
+import DailyLifeContents from "../modules/MainContents/DailyLifeContents";
 
 export default {
   title: "Templates/DefaultTemplate",
@@ -33,4 +34,9 @@ Login.args = {
 export const Logout = Template.bind({});
 Logout.args = {
   children: <LogoutContents />,
+};
+
+export const DailyLife = Template.bind({});
+DailyLife.args = {
+  children: <DailyLifeContents />,
 };

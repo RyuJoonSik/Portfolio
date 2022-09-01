@@ -1,5 +1,6 @@
-import { useEffect, useReducer } from "react";
+import { useCallback, useEffect, useReducer } from "react";
 import {
+  doc,
   DocumentSnapshot,
   getDocs,
   OrderByDirection,
@@ -9,15 +10,17 @@ import { DailyLifePost } from "../types/dataModel";
 import { createQueryByOrder, getDocsData } from "../firebase/fireStore";
 
 type Action =
-  | { type: "setOrderByDesc" }
-  | { type: "setOrderByAsc" }
+  | { type: "init"; orderBy: OrderByDirection }
   | {
-      type: "setPosts";
+      type: "set";
       posts: DailyLifePost[];
       lastDoc: DocumentSnapshot | null;
     }
   | {
       type: "load";
+    }
+  | {
+      type: "end";
     };
 
 interface InitialState {
@@ -25,32 +28,25 @@ interface InitialState {
   orderBy: OrderByDirection;
   cursor: DocumentSnapshot | null;
   isLoading: boolean;
+  hasMore: boolean;
 }
 
-const initialState: InitialState = {
-  dailyLifePosts: [],
-  cursor: null,
-  orderBy: "desc",
-  isLoading: true,
-};
+function initState(orderBy: OrderByDirection): InitialState {
+  return {
+    dailyLifePosts: [],
+    cursor: null,
+    orderBy: orderBy,
+    isLoading: true,
+    hasMore: true,
+  };
+}
 
 function reducer(state: InitialState, action: Action): InitialState {
   switch (action.type) {
-    case "setOrderByDesc":
-      return {
-        dailyLifePosts: [],
-        cursor: null,
-        orderBy: "desc",
-        isLoading: true,
-      };
-    case "setOrderByAsc":
-      return {
-        dailyLifePosts: [],
-        cursor: null,
-        orderBy: "asc",
-        isLoading: true,
-      };
-    case "setPosts":
+    case "init":
+      return initState(action.orderBy);
+
+    case "set":
       return {
         ...state,
         dailyLifePosts: [...state.dailyLifePosts, ...action.posts],
@@ -62,23 +58,38 @@ function reducer(state: InitialState, action: Action): InitialState {
         ...state,
         isLoading: true,
       };
-    default:
+    case "end":
+      return {
+        ...state,
+        isLoading: false,
+        hasMore: false,
+      };
       throw new Error();
   }
 }
 
 export default function useDailyLifePostReader() {
-  const [postManager, dispatch] = useReducer(reducer, initialState);
+  const [postManager, dispatch] = useReducer(reducer, {
+    dailyLifePosts: [],
+    cursor: null,
+    orderBy: "desc",
+    isLoading: true,
+    hasMore: true,
+  });
 
   useEffect(() => {
     async function initDailyLifePosts() {
       if (postManager.isLoading) {
-        console.log("data fetch 진입");
         const { orderBy, cursor } = postManager;
-        const { docs } = await getDocs(createQueryByOrder(orderBy, cursor));
+        const { docs } = await getDocs(createQueryByOrder(orderBy, cursor, 5));
+
+        if (docs.length === 0) {
+          dispatch({ type: "end" });
+          return;
+        }
 
         dispatch({
-          type: "setPosts",
+          type: "set",
           posts: getDocsData(docs),
           lastDoc: docs[docs.length - 1],
         });
@@ -88,16 +99,18 @@ export default function useDailyLifePostReader() {
     initDailyLifePosts();
   }, [postManager]);
 
-  const loadDayilyLifePosts = async () => {
-    dispatch({ type: "load" });
+  const loadDayilyLifePosts = () => {
+    if (postManager.cursor) {
+      dispatch({ type: "load" });
+    }
   };
 
   const handleOrderByDesc = () => {
-    dispatch({ type: "setOrderByDesc" });
+    dispatch({ type: "init", orderBy: "desc" });
   };
 
   const handleOrderByAsc = () => {
-    dispatch({ type: "setOrderByAsc" });
+    dispatch({ type: "init", orderBy: "asc" });
   };
 
   return {
