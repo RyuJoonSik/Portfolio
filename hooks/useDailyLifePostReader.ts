@@ -81,13 +81,11 @@ export default function useDailyLifePostReader() {
     async function initDailyLifePosts() {
       if (postManager.isLoading) {
         const { orderBy, cursor } = postManager;
-        const { docs } = await getDocs(createQueryByOrder(orderBy, cursor, 5));
-
+        const { docs } = await getDocs(createQueryByOrder(orderBy, cursor));
         if (docs.length === 0) {
           dispatch({ type: "end" });
           return;
         }
-
         dispatch({
           type: "set",
           posts: getDocsData(docs),

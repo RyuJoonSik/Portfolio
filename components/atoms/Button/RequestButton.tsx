@@ -4,7 +4,7 @@ import spaceSize from "../../_styles/spaceSize";
 import fontSize from "../../_styles/fontSize";
 import { blueButtonStyle } from "./BlueButton";
 
-export const submitButtonStyle = css`
+export const requestButtonStyle = css`
   ${blueButtonStyle}
   width: 100%;
   padding: ${spaceSize.small} 0;
@@ -14,8 +14,8 @@ export const submitButtonStyle = css`
   text-align: center;
 `;
 
-const SubmitButton = styled.button`
-  ${submitButtonStyle};
+const RequestButton = styled.button`
+  ${requestButtonStyle};
 `;
 
-export default SubmitButton;
+export default RequestButton;

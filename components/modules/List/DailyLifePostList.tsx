@@ -1,14 +1,12 @@
-import React, {
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import React from "react";
 
 import DailyLifePostItem from "../Item/DailyLifePostItem";
 import useDailyLifePostReader from "../../../hooks/useDailyLifePostReader";
-// import useIntersectionObserver from "../../../hooks/useIntersectionObserver";
+import useIntersectionObserver from "../../../hooks/useIntersectionObserver";
+import CustomContainer from "../../atoms/Container/CustomContainer";
+import RequestButton from "../../atoms/Button/RequestButton";
+import InfiniteScrollToggleButton from "../Button/InfiniteScrollToggleButton";
+import DailyLifePostQueryButtonList from "./DailyLifePostQueryButtonList";
 
 export default function DailyLifePostList(): JSX.Element {
   const {
@@ -18,49 +16,26 @@ export default function DailyLifePostList(): JSX.Element {
     loadDayilyLifePosts,
   } = useDailyLifePostReader();
   const { dailyLifePosts, isLoading, hasMore } = postManager;
-  const [target, setTarget] = useState<HTMLElement | null>(null);
-  const [hasInfiniteScroll, setHasInfiniteScroll] = useState(false);
-  // const observer = useRef<IntersectionObserver | null>(null);
+  const { setTarget, isScrollHandlerOn, setIsScrollHandlerOn } =
+    useIntersectionObserver(loadDayilyLifePosts);
 
-  const handleInfiniteScroll = () => {
-    setHasInfiniteScroll((prevState) => !prevState);
+  const handleInfiniteScrollToggle = () => {
+    setIsScrollHandlerOn((prevState) => !prevState);
   };
-
-  useEffect(() => {
-    if (!hasInfiniteScroll) {
-      return;
-    }
-
-    const currentObserver = new IntersectionObserver(
-      (
-        entries: IntersectionObserverEntry[],
-        observer: IntersectionObserver
-      ) => {
-        const [entryElement] = entries;
-        console.log(entryElement.isIntersecting);
-        if (entryElement.isIntersecting) {
-          loadDayilyLifePosts();
-          observer.unobserve(entryElement.target);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0.1,
-      }
-    );
-
-    if (target) {
-      currentObserver.observe(target);
-    }
-  }, [target, hasInfiniteScroll]);
 
   return (
     <>
-      <button onClick={handleOrderByDesc}>desc</button>
-      <button onClick={handleOrderByAsc}>asc</button>
-      <button onClick={handleInfiniteScroll}>infinite scroll</button>
-      <div>{isLoading && "포스트를 불러오는 중..."}</div>
+      <CustomContainer align="spaceBetweenCenter" width="100%">
+        <DailyLifePostQueryButtonList
+          handleOrderByDesc={handleOrderByDesc}
+          handleOrderByAsc={handleOrderByAsc}
+        />
+        <InfiniteScrollToggleButton
+          isScrollHandlerOn={isScrollHandlerOn}
+          handleToggle={handleInfiniteScrollToggle}
+        />
+      </CustomContainer>
+      {isLoading && <div>포스트를 불러오는 중...</div>}
       {dailyLifePosts.map((dailyLifePost, index) =>
         index === dailyLifePosts.length - 1 ? (
           <DailyLifePostItem
@@ -75,10 +50,12 @@ export default function DailyLifePostList(): JSX.Element {
           />
         )
       )}
-      {hasMore && !hasInfiniteScroll && (
-        <button onClick={loadDayilyLifePosts}>load</button>
+      {hasMore && !isScrollHandlerOn && (
+        <RequestButton onClick={loadDayilyLifePosts}>더 불러오기</RequestButton>
       )}
-      <div>{!hasMore && "더 이상 포스트가 없습니다."}</div>
+      <CustomContainer>
+        {!hasMore && "더 이상 포스트가 없습니다."}
+      </CustomContainer>
     </>
   );
 }

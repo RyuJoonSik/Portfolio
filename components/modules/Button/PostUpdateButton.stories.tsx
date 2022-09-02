@@ -11,8 +11,8 @@ export default {
   },
 } as ComponentMeta<typeof PostUpdateButton>;
 
-const Template: ComponentStory<typeof PostUpdateButton> = () => (
-  <PostUpdateButton />
+const Template: ComponentStory<typeof PostUpdateButton> = (args) => (
+  <PostUpdateButton {...args} />
 );
 
 export const Default = Template.bind({});

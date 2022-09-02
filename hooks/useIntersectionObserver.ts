@@ -1,37 +1,36 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useIntersectionObserver(handler: () => void) {
   const [target, setTarget] = useState<HTMLElement | null>(null);
-
-  const handleScroll = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      const [entryElement] = entries;
-      if (entryElement.isIntersecting) {
-        handler();
-      }
-    },
-    [handler]
-  );
+  const [isScrollHandlerOn, setIsScrollHandlerOn] = useState(false);
 
   useEffect(() => {
-    const currentObserver = new IntersectionObserver(handleScroll, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
-    });
+    if (!isScrollHandlerOn) {
+      return;
+    }
 
-    // const { current: currentObserver } = observer;
+    const currentObserver = new IntersectionObserver(
+      (
+        entries: IntersectionObserverEntry[],
+        observer: IntersectionObserver
+      ) => {
+        const [entryElement] = entries;
+        if (entryElement.isIntersecting) {
+          handler();
+          observer.unobserve(entryElement.target);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      }
+    );
 
     if (target) {
       currentObserver.observe(target);
     }
+  }, [target, isScrollHandlerOn]);
 
-    return () => {
-      if (target) {
-        currentObserver.unobserve(target);
-      }
-    };
-  }, [target, handleScroll]);
-
-  return [setTarget];
+  return { setTarget, isScrollHandlerOn, setIsScrollHandlerOn };
 }

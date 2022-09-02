@@ -23,7 +23,11 @@ export default function UserContextProvider({
     const authentication = getAuth(firebaseApp);
 
     const unsubscribe = onAuthStateChanged(authentication, (loginedUser) => {
-      console.log(loginedUser);
+      console.log(
+        loginedUser
+          ? `${loginedUser.email}로 로그인했습니다.`
+          : "로그인한 이메일이 없습니다."
+      );
       setUser(loginedUser);
     });
 

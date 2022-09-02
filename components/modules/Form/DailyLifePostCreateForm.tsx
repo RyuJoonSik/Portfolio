@@ -7,7 +7,7 @@ import useFileUploader from "../../../hooks/useFileUploader";
 import useInputsValue from "../../../hooks/useInputsValue";
 import SmallArticle from "../../atoms/Article/SmallArticle";
 import ModalCloseButton from "../../atoms/Button/ModalCloseButton";
-import SubmitButton from "../../atoms/Button/SubmitButton";
+import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
 import ArticleHeader from "../../atoms/Header/ArticleHeader";
@@ -86,13 +86,13 @@ export default function DailyLifePostCreateForm({
             handleChange={setDailyLifePostPost}
           />
           <ImageFileInput inputFileRef={inputFileRef} />
-          <SubmitButton
+          <RequestButton
             type="button"
             ref={endPointButtonRef}
             onClick={handleSubmit}
           >
             작성하기
-          </SubmitButton>
+          </RequestButton>
         </PreventDefaultForm>
         {uploadPercent !== null && (
           <ImageUploadProgressBar value={uploadPercent} />

@@ -5,7 +5,7 @@ import useUserLogin from "../../../hooks/useUserLogin";
 
 import SmallArticle from "../../atoms/Article/SmallArticle";
 import FormLinkButton from "../../atoms/Button/FormLinkButton";
-import SubmitButton from "../../atoms/Button/SubmitButton";
+import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import CustomContainer from "../../atoms/Container/CustomContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
@@ -51,9 +51,9 @@ export default function LoginForm(): JSX.Element {
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />
-          <SubmitButton type="button" onClick={handleClick}>
+          <RequestButton type="button" onClick={handleClick}>
             로그인
-          </SubmitButton>
+          </RequestButton>
         </PreventDefaultForm>
         <CustomContainer align="center">
           <FormLinkButton to="/register">회원가입</FormLinkButton>

@@ -49,7 +49,6 @@ export default function DailyLifePostItem({
 
   return (
     <Article ref={setLastItem}>
-      <div>{setLastItem && "Pointer"}</div>
       <ArticleHeader>
         <h3>{title}</h3>
         <CustomContainer align="spaceBetweenCenter" width="100%">

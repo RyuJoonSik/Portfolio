@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import useInputsValue from "../../../hooks/useInputsValue";
 import useUserRegister from "../../../hooks/useUserRegister";
 import SmallArticle from "../../atoms/Article/SmallArticle";
-import SubmitButton from "../../atoms/Button/SubmitButton";
+import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
 import ArticleHeader from "../../atoms/Header/ArticleHeader";
@@ -42,9 +42,9 @@ export default function RegisterForm(): JSX.Element {
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />
-          <SubmitButton type="button" onClick={handleClick}>
+          <RequestButton type="button" onClick={handleClick}>
             회원가입
-          </SubmitButton>
+          </RequestButton>
         </PreventDefaultForm>
       </ArticleContentsContainer>
     </SmallArticle>
