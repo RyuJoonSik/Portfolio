@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
-import { blueButtonStyle } from "./BlueButton";
 import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
 import contentDirection from "../../_styles/contentDirection";
+import elementColor from "../../_styles/elementColor";
 
-const formOpenButtonStyle = css`
-  ${blueButtonStyle};
+const sectionHeaderButtonStyle = css`
+  ${elementColor.blue};
   ${contentDirection.horizontal};
   ${contentAlign.center};
   gap: ${spaceSize.smaller};
@@ -14,8 +14,8 @@ const formOpenButtonStyle = css`
   border-radius: ${spaceSize.smaller};
 `;
 
-const FormOpenButton = styled.button`
-  ${formOpenButtonStyle};
+const SectionHeaderButton = styled.button`
+  ${sectionHeaderButtonStyle};
 `;
 
-export default FormOpenButton;
+export default SectionHeaderButton;

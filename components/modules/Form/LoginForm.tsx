@@ -4,7 +4,7 @@ import useInputsValue from "../../../hooks/useInputsValue";
 import useUserLogin from "../../../hooks/useUserLogin";
 
 import Article from "../../atoms/Article/Article";
-import FormLinkButton from "../../atoms/Button/FormLinkButton";
+import TextLinkButton from "../../atoms/Button/TextLinkButton";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import CustomContainer from "../../atoms/Container/CustomContainer";
@@ -56,7 +56,7 @@ export default function LoginForm(): JSX.Element {
           </RequestButton>
         </PreventDefaultForm>
         <CustomContainer align="center">
-          <FormLinkButton to="/register">회원가입</FormLinkButton>
+          <TextLinkButton to="/register">회원가입</TextLinkButton>
         </CustomContainer>
       </ArticleContentsContainer>
     </Article>

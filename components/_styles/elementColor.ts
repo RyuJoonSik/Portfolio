@@ -1,0 +1,20 @@
+import { css } from "styled-components";
+
+import { blue, white, red, green } from "./color";
+
+const elementColor = {
+  red: css`
+    background-color: ${red.default};
+    color: ${white.light};
+  `,
+  green: css`
+    background-color: ${green.default};
+    color: ${white.light};
+  `,
+  blue: css`
+    background-color: ${blue.default};
+    color: ${white.light};
+  `,
+};
+
+export default elementColor;

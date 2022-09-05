@@ -1,9 +1,15 @@
 import styled, { css } from "styled-components";
 import { blue, white } from "../../_styles/color";
 
-export const blueButtonStyle = css<Temp>`
+export interface BlueButton {
+  hasHover?: boolean;
+  hasActive?: boolean;
+}
+
+export const blueButtonStyle = css<BlueButton>`
   background-color: ${blue.default};
   color: ${white.light};
+
   ${(props) =>
     props.hasHover &&
     css`
@@ -14,16 +20,16 @@ export const blueButtonStyle = css<Temp>`
       }
     `}
 
-  &:active {
-    background-color: ${blue.dark};
-  }
+  ${(props) =>
+    props.hasActive &&
+    css`
+      &:active {
+        background-color: ${blue.dark};
+      }
+    `}
 `;
 
-interface Temp {
-  hasHover: boolean;
-}
-
-const BlueButton = styled.button<Temp>`
+const BlueButton = styled.button<BlueButton>`
   ${blueButtonStyle};
 `;
 

@@ -6,7 +6,7 @@ import useDailyLifePostUpdater from "../../../hooks/useDailyLifePostUpdater";
 import useFileUploader from "../../../hooks/useFileUploader";
 import useInputsValue from "../../../hooks/useInputsValue";
 import { DailyLifePost } from "../../../types/dataModel";
-import SmallArticle from "../../atoms/Article/SmallArticle";
+import Article from "../../atoms/Article/Article";
 import ModalCloseButton from "../../atoms/Button/ModalCloseButton";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
@@ -76,7 +76,7 @@ export default function DailyLifePostUpdateForm({
   };
 
   return (
-    <SmallArticle>
+    <Article size="small">
       <FocusInitButton focusableElRef={endPointButtonRef} />
       <ArticleHeader>
         <h4>일상 포스트 수정하기</h4>
@@ -113,6 +113,6 @@ export default function DailyLifePostUpdateForm({
         )}
       </ArticleContentsContainer>
       <FocusInitButton focusableElRef={entryPointButtonRef} />
-    </SmallArticle>
+    </Article>
   );
 }

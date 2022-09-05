@@ -6,10 +6,10 @@ import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
 import fontSize from "../../_styles/fontSize";
 import responsiveSize from "../../_styles/responsiveSize";
-import { blueButtonStyle } from "../../atoms/Button/BlueButton";
+import elementColor from "../../_styles/elementColor";
 
 export const pageHeaderLinkButtonStyle = css`
-  ${blueButtonStyle};
+  ${elementColor.blue};
   ${contentDirection.vertical};
   ${contentAlign.center};
   min-width: 5rem;

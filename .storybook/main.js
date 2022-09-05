@@ -10,7 +10,7 @@ module.exports = {
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
     "storybook-addon-react-router-v6",
-    "@react-theming/storybook-addon",
+    "storybook-addon-styled-component-theme/dist/preset",
   ],
   framework: "@storybook/react",
   core: {
