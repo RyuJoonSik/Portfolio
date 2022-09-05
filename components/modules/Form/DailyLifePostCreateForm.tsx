@@ -5,7 +5,7 @@ import useAutoFocus from "../../../hooks/useAutoFocus";
 import useDailyLifePostCreater from "../../../hooks/useDailyLifePostCreater";
 import useFileUploader from "../../../hooks/useFileUploader";
 import useInputsValue from "../../../hooks/useInputsValue";
-import SmallArticle from "../../atoms/Article/SmallArticle";
+import Article from "../../atoms/Article/Article";
 import ModalCloseButton from "../../atoms/Button/ModalCloseButton";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
@@ -65,7 +65,7 @@ export default function DailyLifePostCreateForm({
   };
 
   return (
-    <SmallArticle>
+    <Article size="small">
       <FocusInitButton focusableElRef={endPointButtonRef} />
       <ArticleHeader>
         <h4>일상 포스트 작성하기</h4>
@@ -102,6 +102,6 @@ export default function DailyLifePostCreateForm({
         )}
       </ArticleContentsContainer>
       <FocusInitButton focusableElRef={entryPointButtonRef} />
-    </SmallArticle>
+    </Article>
   );
 }

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useInputsValue from "../../../hooks/useInputsValue";
 import useUserLogin from "../../../hooks/useUserLogin";
 
-import SmallArticle from "../../atoms/Article/SmallArticle";
+import Article from "../../atoms/Article/Article";
 import FormLinkButton from "../../atoms/Button/FormLinkButton";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
@@ -33,7 +33,7 @@ export default function LoginForm(): JSX.Element {
   };
 
   return (
-    <SmallArticle>
+    <Article size="small">
       <ArticleHeader>
         <h3>로그인 시작하기</h3>
       </ArticleHeader>
@@ -59,6 +59,6 @@ export default function LoginForm(): JSX.Element {
           <FormLinkButton to="/register">회원가입</FormLinkButton>
         </CustomContainer>
       </ArticleContentsContainer>
-    </SmallArticle>
+    </Article>
   );
 }

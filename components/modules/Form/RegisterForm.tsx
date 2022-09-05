@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import useInputsValue from "../../../hooks/useInputsValue";
 import useUserRegister from "../../../hooks/useUserRegister";
-import SmallArticle from "../../atoms/Article/SmallArticle";
+import Article from "../../atoms/Article/Article";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
@@ -24,7 +24,7 @@ export default function RegisterForm(): JSX.Element {
   };
 
   return (
-    <SmallArticle>
+    <Article size="small">
       <ArticleHeader>
         <h3>회원가입 시작하기</h3>
       </ArticleHeader>
@@ -47,6 +47,6 @@ export default function RegisterForm(): JSX.Element {
           </RequestButton>
         </PreventDefaultForm>
       </ArticleContentsContainer>
-    </SmallArticle>
+    </Article>
   );
 }

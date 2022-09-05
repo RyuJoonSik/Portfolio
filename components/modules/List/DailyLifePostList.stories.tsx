@@ -8,8 +8,8 @@ export default {
   component: DailyLifePostList,
 } as ComponentMeta<typeof DailyLifePostList>;
 
-const Template: ComponentStory<typeof DailyLifePostList> = (args) => (
-  <DailyLifePostList {...args} />
+const Template: ComponentStory<typeof DailyLifePostList> = () => (
+  <DailyLifePostList />
 );
 
 export const Default = Template.bind({});

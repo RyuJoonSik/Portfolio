@@ -8,9 +8,9 @@ export default {
   component: Article,
 } as ComponentMeta<typeof Article>;
 
-const Template: ComponentStory<typeof Article> = () => (
+const Template: ComponentStory<typeof Article> = (args) => (
   <>
-    <Article>Article</Article>
+    <Article {...args}>Article</Article>
   </>
 );
 
