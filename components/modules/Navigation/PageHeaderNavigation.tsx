@@ -5,7 +5,7 @@ import { NearMe } from "@styled-icons/material-outlined/NearMe";
 
 import contentDirection from "../../_styles/contentDirection";
 import responsiveSize from "../../_styles/responsiveSize";
-import PageHeaderLinkButton from "../../atoms/Button/PageHeaderLinkButton";
+import { PageHeaderLinkButton } from "../../atoms/Button/PageHeaderButton";
 import UserAuthLinkButton from "../Button/UserAuthLinkButton";
 
 const StyledPageHeaderNavigation = styled.nav`

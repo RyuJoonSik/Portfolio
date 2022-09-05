@@ -2,11 +2,11 @@ import React from "react";
 import { Logout } from "@styled-icons/material-sharp/Logout";
 import styled from "styled-components";
 
-import { pageHeaderLinkButtonStyle } from "../../atoms/Button/PageHeaderLinkButton";
+import { pageHeaderButtonStyle } from "../../atoms/Button/PageHeaderButton";
 import useUserLogout from "../../../hooks/useUserLogout";
 
 const StyledLogoutButton = styled.button`
-  ${pageHeaderLinkButtonStyle};
+  ${pageHeaderButtonStyle};
 `;
 
 export default function LogoutButton(): JSX.Element {

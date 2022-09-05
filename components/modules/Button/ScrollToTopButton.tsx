@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-import { whiteButtonStyle } from "../../atoms/Button/WhiteButton";
 import contentAlign from "../../_styles/contentAlign";
 import contentDirection from "../../_styles/contentDirection";
+import elementColor from "../../_styles/elementColor";
 import fontSize from "../../_styles/fontSize";
 import spaceSize from "../../_styles/spaceSize";
 
 const StyledScrollToTopButton = styled.button`
-  ${whiteButtonStyle};
+  ${elementColor.white};
   ${contentDirection.horizontal};
   ${contentAlign.center};
   gap: ${spaceSize.small};

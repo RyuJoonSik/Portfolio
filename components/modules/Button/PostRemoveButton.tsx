@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Delete } from "@styled-icons/material-outlined/Delete";
 
-import { redButtonStyle } from "../../atoms/Button/RedButton";
 import { postMangementButtonStyle } from "../../atoms/Button/PostMangementButton";
 import useDailyLifePostRemover from "../../../hooks/useDailyLifePostRemover";
+import elementColor from "../../_styles/elementColor";
 
 const StyledPostRemoveButton = styled.button`
-  ${redButtonStyle};
+  ${elementColor.red};
   ${postMangementButtonStyle};
 `;
 

@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { BorderColor } from "@styled-icons/material-outlined/BorderColor";
 
 import { postMangementButtonStyle } from "../../atoms/Button/PostMangementButton";
-import { greenButtonStyle } from "../../atoms/Button/GreenButton";
+import elementColor from "../../_styles/elementColor";
 
 const StyledPostUpdateButton = styled.button`
-  ${greenButtonStyle};
+  ${elementColor.green};
   ${postMangementButtonStyle};
 `;
 

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { blueButtonStyle } from "../../atoms/Button/BlueButton";
 import { postMangementButtonStyle } from "../../atoms/Button/PostMangementButton";
 import contentDirection from "../../_styles/contentDirection";
+import elementColor from "../../_styles/elementColor";
 
 interface DailyLifePostQueryButtonListProps {
   handleOrderByDesc: () => void;
@@ -14,7 +14,7 @@ const StyledDailyLifePostQueryButtonList = styled.div`
   ${contentDirection.horizontal};
 
   button {
-    ${blueButtonStyle};
+    ${elementColor.blue};
     ${postMangementButtonStyle};
     width: 100%;
     border-radius: 0;

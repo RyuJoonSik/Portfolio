@@ -3,7 +3,6 @@ import { DarkMode } from "@styled-icons/material/DarkMode";
 import { LightMode } from "@styled-icons/material/LightMode";
 import styled, { ThemeContext } from "styled-components";
 
-import { whiteButtonStyle } from "../../atoms/Button/WhiteButton";
 import contentDirection from "../../_styles/contentDirection";
 import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
@@ -12,9 +11,10 @@ import { blue, yellow } from "../../_styles/color";
 import CustomText from "../../atoms/Text/CustomText";
 import { darkTheme, lightTheme } from "../../_styles/theme";
 import { ThemeContext as ParentThemeContext } from "../../../contexts/ThemeContext";
+import elementColor from "../../_styles/elementColor";
 
 const StyledDarkModeButton = styled.button`
-  ${whiteButtonStyle};
+  ${elementColor.white};
   ${contentDirection.horizontal};
   ${contentAlign.center};
   gap: ${spaceSize.small};

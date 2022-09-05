@@ -24,6 +24,13 @@ const hoverEffect = {
       }
     }
   `,
+  white: css`
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: ${({ theme }) => theme.color.backgroundHover};
+      }
+    }
+  `,
 };
 
 export default hoverEffect;

@@ -7,9 +7,13 @@ import spaceSize from "../../_styles/spaceSize";
 import fontSize from "../../_styles/fontSize";
 import responsiveSize from "../../_styles/responsiveSize";
 import elementColor from "../../_styles/elementColor";
+import hoverEffect from "../../_styles/hoverEffect";
+import activeEffect from "../../_styles/activeEffect";
 
-export const pageHeaderLinkButtonStyle = css`
+export const pageHeaderButtonStyle = css`
   ${elementColor.blue};
+  ${hoverEffect.blue};
+  ${activeEffect.blue};
   ${contentDirection.vertical};
   ${contentAlign.center};
   min-width: 5rem;
@@ -25,8 +29,12 @@ export const pageHeaderLinkButtonStyle = css`
   }
 `;
 
-const PageHeaderLinkButton = styled(Link)`
-  ${pageHeaderLinkButtonStyle};
+const PageHeaderButton = styled.button`
+  ${pageHeaderButtonStyle};
 `;
 
-export default PageHeaderLinkButton;
+export const PageHeaderLinkButton = styled(Link)`
+  ${pageHeaderButtonStyle};
+`;
+
+export default PageHeaderButton;

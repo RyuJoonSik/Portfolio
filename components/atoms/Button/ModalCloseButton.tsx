@@ -1,10 +1,10 @@
 import styled, { css } from "styled-components";
+import elementColor from "../../_styles/elementColor";
 
 import spaceSize from "../../_styles/spaceSize";
-import { whiteButtonStyle } from "../../atoms/Button/WhiteButton";
 
 const modalCloseButtonStyle = css`
-  ${whiteButtonStyle};
+  ${elementColor.white};
   padding: ${spaceSize.smaller} ${spaceSize.medium};
   border-radius: ${spaceSize.smaller};
   border: ${spaceSize.smallest} solid

@@ -15,6 +15,10 @@ const elementColor = {
     background-color: ${blue.default};
     color: ${white.light};
   `,
+  white: css`
+    background-color: ${({ theme }) => theme.color.backgroundAccent};
+    color: ${({ theme }) => theme.color.textAccent};
+  `,
 };
 
 export default elementColor;

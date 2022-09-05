@@ -2,24 +2,24 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Create } from "@styled-icons/material-outlined/Create";
 
-import SectionHeaderButton from "./SectionHeaderButton";
+import ArticleHeaderButton from "./ArticleHeaderButton";
 import CustomContainer from "../Container/CustomContainer";
 
 export default {
-  title: "Atoms/Button/SectionHeaderButton",
-  component: SectionHeaderButton,
+  title: "Atoms/Button/ArticleHeaderButton",
+  component: ArticleHeaderButton,
   parameters: {
     layout: "centered",
   },
-} as ComponentMeta<typeof SectionHeaderButton>;
+} as ComponentMeta<typeof ArticleHeaderButton>;
 
-const Template: ComponentStory<typeof SectionHeaderButton> = () => (
+const Template: ComponentStory<typeof ArticleHeaderButton> = () => (
   <CustomContainer gap="medium">
-    <SectionHeaderButton>SectionHeaderButton</SectionHeaderButton>
-    <SectionHeaderButton>
+    <ArticleHeaderButton>ArticleHeaderButton</ArticleHeaderButton>
+    <ArticleHeaderButton>
       <Create size={20} />
-      SectionHeaderButtonWithIcon
-    </SectionHeaderButton>
+      ArticleHeaderButtonWithIcon
+    </ArticleHeaderButton>
   </CustomContainer>
 );
 

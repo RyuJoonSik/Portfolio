@@ -4,13 +4,13 @@ import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
 import contentDirection from "../../_styles/contentDirection";
 import elementColor from "../../_styles/elementColor";
-import hoverEffect from "../../_styles/hoverEffect";
-import activeEffect from "../../_styles/activeEffect";
 
-const sectionHeaderButtonStyle = css`
+interface ArticleHeaderButton {
+  color: "red" | "green" | "blue" | "white";
+}
+
+const articleHeaderButtonStyle = css<ArticleHeaderButton>`
   ${elementColor.blue};
-  ${hoverEffect.blue};
-  ${activeEffect.blue};
   ${contentDirection.horizontal};
   ${contentAlign.center};
   gap: ${spaceSize.smaller};
@@ -18,8 +18,8 @@ const sectionHeaderButtonStyle = css`
   border-radius: ${spaceSize.smaller};
 `;
 
-const SectionHeaderButton = styled.button`
-  ${sectionHeaderButtonStyle};
+const ArticleHeaderButton = styled.button<ArticleHeaderButton>`
+  ${articleHeaderButtonStyle};
 `;
 
-export default SectionHeaderButton;
+export default ArticleHeaderButton;

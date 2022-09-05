@@ -2,21 +2,21 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { AccountCircle } from "@styled-icons/material-outlined/AccountCircle";
 
-import PageHeaderLinkButton from "./PageHeaderLinkButton";
+import PageHeaderButton from "./PageHeaderButton";
 
 export default {
-  title: "Atoms/Button/PageHeaderLinkButton",
-  component: PageHeaderLinkButton,
+  title: "Atoms/Button/PageHeaderButton",
+  component: PageHeaderButton,
   parameters: {
     layout: "centered",
   },
-} as ComponentMeta<typeof PageHeaderLinkButton>;
+} as ComponentMeta<typeof PageHeaderButton>;
 
-const Template: ComponentStory<typeof PageHeaderLinkButton> = () => (
-  <PageHeaderLinkButton to="">
+const Template: ComponentStory<typeof PageHeaderButton> = () => (
+  <PageHeaderButton>
     <AccountCircle size={24} />
     프로필
-  </PageHeaderLinkButton>
+  </PageHeaderButton>
 );
 
 export const Default = Template.bind({});
