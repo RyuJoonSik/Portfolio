@@ -8,6 +8,13 @@ import { lightTheme, darkTheme } from "../components/_styles/theme";
 import { withThemesProvider } from "storybook-addon-styled-component-theme";
 import { ThemeProvider } from "styled-components";
 import { addDecorator } from "@storybook/react";
+// .storybook/preview.js
+
+// import { ThemeProvider } from 'styled-components';
+// import { addDecorator } from '@storybook/react';
+import { withThemes } from "@react-theming/storybook-addon";
+
+// pass ThemeProvider and array of your themes to decorator
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -31,5 +38,6 @@ export const decorators = [
       <Story />
     </>
   ),
-  withThemesProvider(themes, ThemeProvider),
+  withThemes(ThemeProvider, themes),
+  // withThemesProvider(themes, ThemeProvider),
 ];

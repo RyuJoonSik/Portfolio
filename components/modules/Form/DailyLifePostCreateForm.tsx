@@ -6,7 +6,7 @@ import useDailyLifePostCreater from "../../../hooks/useDailyLifePostCreater";
 import useFileUploader from "../../../hooks/useFileUploader";
 import useInputsValue from "../../../hooks/useInputsValue";
 import Article from "../../atoms/Article/Article";
-import ModalCloseButton from "../../atoms/Button/ModalCloseButton";
+import ArticleHeaderButton from "../../atoms/Button/ArticleHeaderButton";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
@@ -69,9 +69,13 @@ export default function DailyLifePostCreateForm({
       <FocusInitButton focusableElRef={endPointButtonRef} />
       <ArticleHeader>
         <h4>일상 포스트 작성하기</h4>
-        <ModalCloseButton ref={entryPointButtonRef} onClick={handleHideForm}>
+        <ArticleHeaderButton
+          color="white"
+          ref={entryPointButtonRef}
+          onClick={handleHideForm}
+        >
           닫기
-        </ModalCloseButton>
+        </ArticleHeaderButton>
       </ArticleHeader>
       <ArticleContentsContainer>
         <PreventDefaultForm>

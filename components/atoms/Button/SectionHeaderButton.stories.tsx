@@ -14,12 +14,13 @@ export default {
 } as ComponentMeta<typeof SectionHeaderButton>;
 
 const Template: ComponentStory<typeof SectionHeaderButton> = () => (
-  <CustomContainer gap="medium">
-    <SectionHeaderButton>SectionHeaderButton</SectionHeaderButton>
-    <SectionHeaderButton>
-      <Create size={20} />
-      SectionHeaderButtonWithIcon
-    </SectionHeaderButton>
+  <CustomContainer direction="vertical">
+    <div>Examples</div>
+    <SectionHeaderButton buttonName="SectionHeaderButton" />
+    <SectionHeaderButton
+      Icon={Create}
+      buttonName="SectionHeaderButtonWithIcon"
+    />
   </CustomContainer>
 );
 

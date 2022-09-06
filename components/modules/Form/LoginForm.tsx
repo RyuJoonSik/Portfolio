@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useInputsValue from "../../../hooks/useInputsValue";
 import useUserLogin from "../../../hooks/useUserLogin";
 
 import Article from "../../atoms/Article/Article";
-import TextLinkButton from "../../atoms/Button/TextLinkButton";
+import { TextLinkButton } from "../../atoms/Button/TextButton";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import CustomContainer from "../../atoms/Container/CustomContainer";

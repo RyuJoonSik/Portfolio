@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { postMangementButtonStyle } from "../../atoms/Button/PostMangementButton";
 import contentDirection from "../../_styles/contentDirection";
 import elementColor from "../../_styles/elementColor";
 
@@ -15,7 +14,6 @@ const StyledDailyLifePostQueryButtonList = styled.div`
 
   button {
     ${elementColor.blue};
-    ${postMangementButtonStyle};
     width: 100%;
     border-radius: 0;
   }

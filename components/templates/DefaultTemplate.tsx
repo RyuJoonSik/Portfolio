@@ -1,7 +1,7 @@
 import React from "react";
 
 import PageHeader from "../modules/Header/PageHeader";
-import FixedButtonsBox from "../modules/Box/FixedButtonsBox";
+import FixedButtonList from "../modules/List/FixedButtonList";
 import PageContentsContainer from "../atoms/Container/PageContentsContainer";
 
 interface DefaultTemplate {
@@ -15,7 +15,7 @@ export default function DefaultTemplate({
     <>
       <PageHeader />
       <PageContentsContainer>{children}</PageContentsContainer>
-      <FixedButtonsBox />
+      <FixedButtonList />
     </>
   );
 }

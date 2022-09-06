@@ -11,9 +11,9 @@ export default {
 
 const Template: ComponentStory<typeof Article> = (args) => (
   <CustomContainer direction="vertical" gap="medium">
-    <Article {...args}>Default = Full</Article>
-    <Article size="full">Full</Article>
-    <Article size="small">Small</Article>
+    <Article {...args}>default size(full)</Article>
+    <Article size="full">full size</Article>
+    <Article size="small">small size</Article>
   </CustomContainer>
 );
 

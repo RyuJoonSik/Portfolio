@@ -5,7 +5,7 @@ import { NearMe } from "@styled-icons/material-outlined/NearMe";
 
 import contentDirection from "../../_styles/contentDirection";
 import responsiveSize from "../../_styles/responsiveSize";
-import { PageHeaderLinkButton } from "../../atoms/Button/PageHeaderButton";
+import PageHeaderButton from "../../atoms/Button/PageHeaderButton";
 import UserAuthLinkButton from "../Button/UserAuthLinkButton";
 
 const StyledPageHeaderNavigation = styled.nav`
@@ -31,14 +31,12 @@ const StyledPageHeaderNavigation = styled.nav`
 export default function PageHeaderNavigation(): JSX.Element {
   return (
     <StyledPageHeaderNavigation>
-      <PageHeaderLinkButton to="/profile">
-        <AccountCircle size={24} />
-        프로필
-      </PageHeaderLinkButton>
-      <PageHeaderLinkButton to="/daily-life">
-        <NearMe size={24} />
-        일상
-      </PageHeaderLinkButton>
+      <PageHeaderButton
+        Icon={AccountCircle}
+        buttonName="프로필"
+        to="/profile"
+      />
+      <PageHeaderButton Icon={NearMe} buttonName="일상" to="/daily-life" />
       <UserAuthLinkButton />
     </StyledPageHeaderNavigation>
   );

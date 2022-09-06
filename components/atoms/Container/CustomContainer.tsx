@@ -19,7 +19,7 @@ const CustomContainer = styled.div<CustomContainerProps>`
   ${({ direction, size, align, gap, width }) => css`
     ${direction ? contentDirection[direction] : contentDirection["horizontal"]};
     ${align ? contentAlign[align] : contentAlign["startStart"]};
-    gap: ${gap ? spaceSize[gap] : "initial"};
+    gap: ${gap ? spaceSize[gap] : spaceSize["medium"]};
     ${size ? fontSize[size as FontSizeLiteral] : fontSize["medium"]};
     width: ${width ? width : "auto"};
   `}

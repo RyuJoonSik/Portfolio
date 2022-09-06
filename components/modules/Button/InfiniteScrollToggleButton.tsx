@@ -3,15 +3,14 @@ import styled from "styled-components";
 import { CheckBox } from "@styled-icons/material-outlined/CheckBox";
 import { CheckBoxOutlineBlank } from "@styled-icons/material-outlined/CheckBoxOutlineBlank";
 
-import { postMangementButtonStyle } from "../../atoms/Button/PostMangementButton";
 import { blue, white } from "../../_styles/color";
+import ArticleHeaderButton from "../../atoms/Button/ArticleHeaderButton";
 
 interface StyledInfiniteScrollToggleButtonProps {
   isOn: boolean;
 }
 
 const StyledInfiniteScrollToggleButton = styled.button<StyledInfiniteScrollToggleButtonProps>`
-  ${postMangementButtonStyle};
   background-color: ${({ isOn }) => (isOn ? blue.default : white.dark)};
 
   color: ${white.default};
@@ -28,16 +27,13 @@ export default function InfiniteScrollToggleButton({
 }: InfiniteScrollToggleButtonProps): JSX.Element {
   console.log(isScrollHandlerOn);
   return (
-    <StyledInfiniteScrollToggleButton
-      onClick={handleToggle}
-      isOn={isScrollHandlerOn}
-    >
+    <ArticleHeaderButton onClick={handleToggle}>
       {isScrollHandlerOn ? (
         <CheckBox size={20} />
       ) : (
         <CheckBoxOutlineBlank size={20} />
       )}
       자동 불러오기{isScrollHandlerOn}
-    </StyledInfiniteScrollToggleButton>
+    </ArticleHeaderButton>
   );
 }

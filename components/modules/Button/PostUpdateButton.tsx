@@ -1,14 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 import { BorderColor } from "@styled-icons/material-outlined/BorderColor";
 
-import { postMangementButtonStyle } from "../../atoms/Button/PostMangementButton";
-import elementColor from "../../_styles/elementColor";
-
-const StyledPostUpdateButton = styled.button`
-  ${elementColor.green};
-  ${postMangementButtonStyle};
-`;
+import ArticleHeaderButton from "../../atoms/Button/ArticleHeaderButton";
 
 interface PostUpdateButtonProps {
   buttonRef: React.RefObject<HTMLButtonElement>;
@@ -28,9 +21,12 @@ export default function PostUpdateButton({
   };
 
   return (
-    <StyledPostUpdateButton ref={buttonRef} onClick={handleClick}>
-      <BorderColor size={16} />
-      수정
-    </StyledPostUpdateButton>
+    <ArticleHeaderButton
+      Icon={BorderColor}
+      buttonName="수정"
+      color="green"
+      buttonRef={buttonRef}
+      handleClick={handleClick}
+    />
   );
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import TextButton from "./TextLinkButton";
+import TextButton from "./TextButton";
 
 export default {
   title: "Atoms/Button/TextButton",
@@ -11,8 +11,8 @@ export default {
   },
 } as ComponentMeta<typeof TextButton>;
 
-const Template: ComponentStory<typeof TextButton> = (args) => (
-  <TextButton {...args}>TextButton</TextButton>
+const Template: ComponentStory<typeof TextButton> = () => (
+  <TextButton>TextButton</TextButton>
 );
 
 export const Default = Template.bind({});

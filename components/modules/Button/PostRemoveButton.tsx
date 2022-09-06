@@ -1,15 +1,8 @@
-import React, { useEffect } from "react";
-import styled from "styled-components";
+import React from "react";
 import { Delete } from "@styled-icons/material-outlined/Delete";
 
-import { postMangementButtonStyle } from "../../atoms/Button/PostMangementButton";
 import useDailyLifePostRemover from "../../../hooks/useDailyLifePostRemover";
-import elementColor from "../../_styles/elementColor";
-
-const StyledPostRemoveButton = styled.button`
-  ${elementColor.red};
-  ${postMangementButtonStyle};
-`;
+import ArticleHeaderButton from "../../atoms/Button/ArticleHeaderButton";
 
 interface PostRemoveButtonProps {
   id: string;
@@ -29,9 +22,11 @@ export default function PostRemoveButton({
   };
 
   return (
-    <StyledPostRemoveButton onClick={handleClick}>
-      <Delete size={16} />
-      삭제
-    </StyledPostRemoveButton>
+    <ArticleHeaderButton
+      Icon={Delete}
+      buttonName="삭제"
+      color="red"
+      handleClick={handleClick}
+    />
   );
 }

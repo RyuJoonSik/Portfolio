@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
+import { StyledIcon } from "@styled-icons/styled-icon";
 import { Link } from "react-router-dom";
+import React from "react";
 
 import contentDirection from "../../_styles/contentDirection";
 import contentAlign from "../../_styles/contentAlign";
@@ -29,12 +31,45 @@ export const pageHeaderButtonStyle = css`
   }
 `;
 
-const PageHeaderButton = styled.button`
+const PageHeaderButtonDefault = styled.button`
   ${pageHeaderButtonStyle};
 `;
 
-export const PageHeaderLinkButton = styled(Link)`
+const PageHeaderLinkButton = styled(Link)`
   ${pageHeaderButtonStyle};
 `;
+
+interface PageHeaderButtonProps {
+  to?: string;
+  Icon?: StyledIcon;
+  buttonName?: string;
+  handleClick?: () => void;
+}
+
+function PageHeaderButton({
+  to,
+  Icon,
+  buttonName,
+  handleClick,
+}: PageHeaderButtonProps): JSX.Element {
+  const Children = () => (
+    <>
+      {Icon && <Icon size={24} />}
+      {buttonName && buttonName}
+    </>
+  );
+  const Button = () =>
+    to ? (
+      <PageHeaderLinkButton to={to} onClick={handleClick}>
+        <Children />
+      </PageHeaderLinkButton>
+    ) : (
+      <PageHeaderButtonDefault onClick={handleClick}>
+        <Children />
+      </PageHeaderButtonDefault>
+    );
+
+  return <Button />;
+}
 
 export default PageHeaderButton;

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Login } from "@styled-icons/material-sharp/Login";
 
 import { UserContext } from "../../../contexts/UserContext";
-import { PageHeaderLinkButton } from "../../atoms/Button/PageHeaderButton";
+import PageHeaderButton from "../../atoms/Button/PageHeaderButton";
 import LogoutButton from "./LogoutButton";
 
 export default function UserAuthLinkButton() {
@@ -11,9 +11,6 @@ export default function UserAuthLinkButton() {
   return user ? (
     <LogoutButton />
   ) : (
-    <PageHeaderLinkButton to="/login">
-      <Login size={24} />
-      로그인
-    </PageHeaderLinkButton>
+    <PageHeaderButton Icon={Login} buttonName="로그인" to="/login" />
   );
 }

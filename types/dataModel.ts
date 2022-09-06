@@ -4,7 +4,7 @@ export interface DailyLifePost {
   id: string;
   title: string;
   content: string;
-  downloadURL: string;
+  downloadURL: string | null;
   requestedAt: Timestamp;
 }
 

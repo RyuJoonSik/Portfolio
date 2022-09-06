@@ -9,7 +9,7 @@ import ScrollToTopButton from "../Button/ScrollToTopButton";
 
 const navigationBarHeight = "62px";
 
-const StyledFixedButtonsBox = styled.div`
+const StyledFixedButtonList = styled.div`
   position: fixed;
   right: 1rem;
   bottom: 1rem;
@@ -26,11 +26,11 @@ const StyledFixedButtonsBox = styled.div`
   }
 `;
 
-export default function FixedButtonsBox(): JSX.Element {
+export default function FixedButtonList(): JSX.Element {
   return (
-    <StyledFixedButtonsBox>
+    <StyledFixedButtonList>
       <DarkModeButton />
       <ScrollToTopButton />
-    </StyledFixedButtonsBox>
+    </StyledFixedButtonList>
   );
 }

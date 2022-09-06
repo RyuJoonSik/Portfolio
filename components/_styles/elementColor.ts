@@ -1,6 +1,7 @@
 import { css } from "styled-components";
 
 import { blue, white, red, green } from "./color";
+import spaceSize from "./spaceSize";
 
 const elementColor = {
   red: css`
@@ -18,7 +19,11 @@ const elementColor = {
   white: css`
     background-color: ${({ theme }) => theme.color.backgroundAccent};
     color: ${({ theme }) => theme.color.textAccent};
+    border: ${spaceSize.smallest} solid
+      ${({ theme }) => theme.color.borderDefault};
   `,
 };
-
 export default elementColor;
+
+type ElementColor = typeof elementColor;
+export type ElementColorKey = keyof ElementColor;

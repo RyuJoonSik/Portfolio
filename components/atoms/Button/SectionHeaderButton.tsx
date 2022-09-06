@@ -1,4 +1,6 @@
 import styled, { css } from "styled-components";
+import { StyledIcon } from "@styled-icons/styled-icon";
+import React from "react";
 
 import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
@@ -18,8 +20,25 @@ const sectionHeaderButtonStyle = css`
   border-radius: ${spaceSize.smaller};
 `;
 
-const SectionHeaderButton = styled.button`
+const StyledSectionHeaderButton = styled.button`
   ${sectionHeaderButtonStyle};
 `;
 
-export default SectionHeaderButton;
+interface ArticleHeaderButtonProps {
+  Icon?: StyledIcon;
+  buttonName?: string;
+  handleClick?: () => void;
+}
+
+export default function SectionHeaderButton({
+  Icon,
+  buttonName,
+  handleClick,
+}: ArticleHeaderButtonProps): JSX.Element {
+  return (
+    <StyledSectionHeaderButton onClick={handleClick}>
+      {Icon && <Icon size={20} />}
+      {buttonName && buttonName}
+    </StyledSectionHeaderButton>
+  );
+}

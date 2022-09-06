@@ -30,7 +30,7 @@ export default function useDailyLifePostCreater() {
       const doc = await addDoc(collection(db, dailyLifePostPath), {
         title,
         content,
-        downloadURL: downloadURL || "",
+        downloadURL: downloadURL || null,
         requestedAt: Timestamp.now(),
       });
 
