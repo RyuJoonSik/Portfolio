@@ -8,7 +8,7 @@ import contentDirection from "../../_styles/contentDirection";
 import elementColor, { ElementColorKey } from "../../_styles/elementColor";
 import hoverEffect from "../../_styles/hoverEffect";
 
-interface StyledArticleHeaderButton {
+interface StyledDefaultButton {
   color?: ElementColorKey;
 }
 
@@ -21,7 +21,7 @@ function getButtonStyle(color?: ElementColorKey) {
   `;
 }
 
-const articleHeaderButtonStyle = css<StyledArticleHeaderButton>`
+const defaultButtonStyle = css<StyledDefaultButton>`
   ${({ color }) => getButtonStyle(color)};
   ${contentDirection.horizontal};
   ${contentAlign.center};
@@ -32,32 +32,28 @@ const articleHeaderButtonStyle = css<StyledArticleHeaderButton>`
   word-break: keep-all;
 `;
 
-const StyledArticleHeaderButton = styled.button<StyledArticleHeaderButton>`
-  ${articleHeaderButtonStyle};
+const StyledDefaultButton = styled.button<StyledDefaultButton>`
+  ${defaultButtonStyle};
 `;
 
-interface ArticleHeaderButtonProps extends StyledArticleHeaderButton {
+interface DefaultButtonProps extends StyledDefaultButton {
   Icon?: StyledIcon;
   buttonName?: string;
   buttonRef?: React.RefObject<HTMLButtonElement>;
   handleClick?: () => void;
 }
 
-export default function ArticleHeaderButton({
+export default function DefaultButton({
   Icon,
   buttonName,
   buttonRef,
   handleClick,
   color,
-}: ArticleHeaderButtonProps): JSX.Element {
+}: DefaultButtonProps): JSX.Element {
   return (
-    <StyledArticleHeaderButton
-      color={color}
-      onClick={handleClick}
-      ref={buttonRef}
-    >
+    <StyledDefaultButton color={color} onClick={handleClick} ref={buttonRef}>
       {Icon && <Icon size={20} />}
       {buttonName && buttonName}
-    </StyledArticleHeaderButton>
+    </StyledDefaultButton>
   );
 }

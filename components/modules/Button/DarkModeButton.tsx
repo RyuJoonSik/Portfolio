@@ -8,10 +8,14 @@ import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
 import responsiveSize from "../../_styles/responsiveSize";
 import { blue, yellow } from "../../_styles/color";
-import CustomText from "../../atoms/Text/CustomText";
+import { customTextStyle } from "../../atoms/Text/CustomText";
 import { darkTheme, lightTheme } from "../../_styles/theme";
 import { ThemeContext as ParentThemeContext } from "../../../contexts/ThemeContext";
 import elementColor from "../../_styles/elementColor";
+
+const ButtonName = styled.span`
+  ${customTextStyle};
+`;
 
 const StyledDarkModeButton = styled.button`
   ${elementColor.white};
@@ -19,6 +23,7 @@ const StyledDarkModeButton = styled.button`
   ${contentAlign.center};
   gap: ${spaceSize.small};
   padding: ${spaceSize.small};
+  width: 160px;
   border-radius: 1.5rem;
   opacity: 0.7;
   box-shadow: 0px 4px 6px -2px rgb(0 0 0 / 12%),
@@ -30,12 +35,12 @@ const StyledDarkModeButton = styled.button`
     }
   }
 
-  ${responsiveSize.mobile} {
+  ${responsiveSize.tablet} {
     width: 44px;
     height: 44px;
     border-radius: 50%;
 
-    ${CustomText} {
+    ${ButtonName} {
       display: none;
     }
   }
@@ -51,19 +56,23 @@ export default function DarkModeButton(): JSX.Element {
     );
   };
 
+  const Light = () => (
+    <>
+      <LightMode size={16} fill={yellow.default} />
+      <ButtonName size="small">라이트 모드로 보기</ButtonName>
+    </>
+  );
+
+  const Dark = () => (
+    <>
+      <DarkMode size={16} fill={blue.dark} />
+      <ButtonName>다크 모드로 보기</ButtonName>
+    </>
+  );
+
   return (
     <StyledDarkModeButton onClick={onClick}>
-      {name == "darkTheme" ? (
-        <>
-          <LightMode size={16} fill={yellow.default} />
-          <CustomText size="small">라이트 모드</CustomText>
-        </>
-      ) : (
-        <>
-          <DarkMode size={16} fill={blue.dark} />
-          <CustomText>다크 모드</CustomText>
-        </>
-      )}
+      {name == "darkTheme" ? <Light /> : <Dark />}
     </StyledDarkModeButton>
   );
 }

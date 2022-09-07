@@ -15,7 +15,7 @@ const StyledFixedButtonList = styled.div`
   bottom: 1rem;
 
   ${contentDirection.horizontal};
-  gap: ${spaceSize.medium};
+  gap: ${spaceSize.small};
 
   ${responsiveSize.mobile} {
     right: 0;

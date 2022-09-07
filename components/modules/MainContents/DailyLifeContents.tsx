@@ -7,8 +7,8 @@ import ModalPortal from "../../atoms/Portal/ModalPortal";
 import CenterFixedContainer from "../../atoms/Container/CenterFixedContainer";
 import DailyLifePostCreateForm from "../Form/DailyLifePostCreateForm";
 import ModalContentsContainer from "../../atoms/Container/ModalContentsContainer";
-import SectionHeaderButton from "../../atoms/Button/SectionHeaderButton";
 import DailyLifePostList from "../List/DailyLifePostList";
+import DefaultButton from "../../atoms/Button/DefaultButton";
 
 export default function DailyLifeContents(): JSX.Element {
   const createFormOpenButtonRef = useRef<HTMLButtonElement>(null);
@@ -28,13 +28,12 @@ export default function DailyLifeContents(): JSX.Element {
     <Main>
       <SectionHeader>
         <h2>일상</h2>
-        <SectionHeaderButton
-          onClick={handleShowForm}
-          ref={createFormOpenButtonRef}
-        >
-          <Create size={20} />
-          포스트 작성
-        </SectionHeaderButton>
+        <DefaultButton
+          Icon={Create}
+          buttonName="포스트 작성"
+          buttonRef={createFormOpenButtonRef}
+          handleClick={handleShowForm}
+        />
       </SectionHeader>
       <DailyLifePostList />
       {isCreateFormVisible && (

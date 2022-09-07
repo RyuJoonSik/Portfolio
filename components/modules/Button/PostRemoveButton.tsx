@@ -2,7 +2,7 @@ import React from "react";
 import { Delete } from "@styled-icons/material-outlined/Delete";
 
 import useDailyLifePostRemover from "../../../hooks/useDailyLifePostRemover";
-import ArticleHeaderButton from "../../atoms/Button/ArticleHeaderButton";
+import DefaultButton from "../../atoms/Button/DefaultButton";
 
 interface PostRemoveButtonProps {
   id: string;
@@ -22,7 +22,7 @@ export default function PostRemoveButton({
   };
 
   return (
-    <ArticleHeaderButton
+    <DefaultButton
       Icon={Delete}
       buttonName="삭제"
       color="red"

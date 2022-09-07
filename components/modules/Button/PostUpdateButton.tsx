@@ -1,7 +1,7 @@
 import React from "react";
 import { BorderColor } from "@styled-icons/material-outlined/BorderColor";
 
-import ArticleHeaderButton from "../../atoms/Button/ArticleHeaderButton";
+import DefaultButton from "../../atoms/Button/DefaultButton";
 
 interface PostUpdateButtonProps {
   buttonRef: React.RefObject<HTMLButtonElement>;
@@ -21,7 +21,7 @@ export default function PostUpdateButton({
   };
 
   return (
-    <ArticleHeaderButton
+    <DefaultButton
       Icon={BorderColor}
       buttonName="수정"
       color="green"

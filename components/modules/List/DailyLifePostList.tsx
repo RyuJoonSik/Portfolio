@@ -5,8 +5,8 @@ import useDailyLifePostReader from "../../../hooks/useDailyLifePostReader";
 import useIntersectionObserver from "../../../hooks/useIntersectionObserver";
 import CustomContainer from "../../atoms/Container/CustomContainer";
 import RequestButton from "../../atoms/Button/RequestButton";
-import InfiniteScrollToggleButton from "../Button/InfiniteScrollToggleButton";
 import DailyLifePostQueryButtonList from "./DailyLifePostQueryButtonList";
+import CheckButton from "../../atoms/Button/CheckButton";
 
 export default function DailyLifePostList(): JSX.Element {
   const {
@@ -30,9 +30,10 @@ export default function DailyLifePostList(): JSX.Element {
           handleOrderByDesc={handleOrderByDesc}
           handleOrderByAsc={handleOrderByAsc}
         />
-        <InfiniteScrollToggleButton
-          isScrollHandlerOn={isScrollHandlerOn}
+        <CheckButton
+          isChecked={isScrollHandlerOn}
           handleToggle={handleInfiniteScrollToggle}
+          buttonName="자동 불러오기"
         />
       </CustomContainer>
       {isLoading && <div>포스트를 불러오는 중...</div>}

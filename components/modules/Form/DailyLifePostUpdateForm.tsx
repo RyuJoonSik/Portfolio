@@ -7,7 +7,7 @@ import useFileUploader from "../../../hooks/useFileUploader";
 import useInputsValue from "../../../hooks/useInputsValue";
 import { DailyLifePost } from "../../../types/dataModel";
 import Article from "../../atoms/Article/Article";
-import ArticleHeaderButton from "../../atoms/Button/ArticleHeaderButton";
+import DefaultButton from "../../atoms/Button/DefaultButton";
 import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
@@ -80,13 +80,12 @@ export default function DailyLifePostUpdateForm({
       <FocusInitButton focusableElRef={endPointButtonRef} />
       <ArticleHeader>
         <h4>일상 포스트 수정하기</h4>
-        <ArticleHeaderButton
+        <DefaultButton
           color="white"
-          ref={entryPointButtonRef}
-          onClick={handleHideForm}
-        >
-          닫기
-        </ArticleHeaderButton>
+          buttonName="닫기"
+          buttonRef={entryPointButtonRef}
+          handleClick={handleHideForm}
+        />
       </ArticleHeader>
       <ArticleContentsContainer>
         <PreventDefaultForm>
