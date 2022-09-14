@@ -4,6 +4,4 @@ export type HTMLFocusableElements =
   | HTMLTextAreaElement
   | HTMLInputElement;
 
-export type HTMLInputElements = HTMLInputElement | HTMLTextAreaElement;
-
 export type HTMLInputFileElement = HTMLInputElement & { files: FileList };

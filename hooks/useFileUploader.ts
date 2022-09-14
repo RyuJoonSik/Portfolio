@@ -15,7 +15,7 @@ export default function useFileUploader() {
   function uploadFile(
     filePath: string,
     file: Blob | Uint8Array | ArrayBuffer,
-    onComplete?: (downloadURL: string) => void,
+    onComplete?: (downloadURL: string, filePath: string) => void,
     onChange?: (snapshot: UploadTaskSnapshot) => void,
     onError?: (error: unknown) => void
   ) {
@@ -37,7 +37,7 @@ export default function useFileUploader() {
       },
       async () => {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        onComplete && onComplete(downloadURL);
+        onComplete && onComplete(downloadURL, filePath);
       }
     );
   }

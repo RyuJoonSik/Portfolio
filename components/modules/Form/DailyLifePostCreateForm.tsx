@@ -11,28 +11,28 @@ import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
 import ArticleHeader from "../../atoms/Header/ArticleHeader";
+import CustomInput from "../../atoms/Input/CustomInput";
+import CustomProgressBar from "../../atoms/ProgressBar/CustomProgressBar";
 import FocusInitButton from "../Button/FocusInitButton";
 import ImageFileInput from "../Input/ImageFileInput";
-import TextContentInput from "../Input/TextContentInput";
-import TitleInput from "../Input/TitleInput";
-import ImageUploadProgressBar from "../ProgressBar/ImageUploadProgressBar";
-import PostAddProgressBar from "../ProgressBar/PostAddProgressBar";
+import { HTMLInputFileElement } from "../../../types/htmlElement";
 
 interface DailyLifePostCreateFormProps {
   handleHideForm(): void;
+  children?: React.ReactNode;
 }
 
 export default function DailyLifePostCreateForm({
   handleHideForm,
+  children,
 }: DailyLifePostCreateFormProps): JSX.Element {
   const entryPointButtonRef = useRef<HTMLButtonElement>(null);
   const endPointButtonRef = useRef<HTMLButtonElement>(null);
-  const inputFileRef = useRef<HTMLInputElement>(null);
+  const inputFileRef = useRef<HTMLInputFileElement>(null);
 
   useAutoFocus(entryPointButtonRef);
 
   const [dailyLifePost, setDailyLifePostPost] = useInputsValue({
-    // 프로퍼티와 일치하는 id 어트리뷰트를 사용
     title: "",
     content: "",
   });
@@ -47,22 +47,30 @@ export default function DailyLifePostCreateForm({
   }, [isDailyLifePostCreated, handleHideForm]);
 
   const handleSubmit = async () => {
-    const files = inputFileRef.current?.files;
+    if (!inputFileRef.current) {
+      return;
+    }
 
-    if (files?.length) {
+    const files = inputFileRef.current.files;
+    if (files.length > 0) {
       uploadFile(
         `${imagePath + Date.now()}`,
         files[0],
-        (downloadURL: string) => {
-          createDailyLifePost({ ...dailyLifePost, downloadURL });
+        (imageURL: string, imagePath: string) => {
+          createDailyLifePost({
+            ...dailyLifePost,
+            imageURL,
+            imagePath,
+          });
         }
       );
-
       return;
     }
 
     createDailyLifePost(dailyLifePost);
   };
+
+  const { title, content } = dailyLifePost;
 
   return (
     <Article size="small">
@@ -78,13 +86,18 @@ export default function DailyLifePostCreateForm({
       </ArticleHeader>
       <ArticleContentsContainer>
         <PreventDefaultForm>
-          <TitleInput
-            value={dailyLifePost.title}
+          <CustomInput
+            placeholder="제목을 입력해 주세요."
+            label="제목"
+            value={title}
             id="title"
             handleChange={setDailyLifePostPost}
           />
-          <TextContentInput
-            value={dailyLifePost.content}
+          <CustomInput
+            placeholder="내용을 입력해 주세요."
+            label="내용"
+            type="textarea"
+            value={content}
             id="content"
             handleChange={setDailyLifePostPost}
           />
@@ -98,11 +111,15 @@ export default function DailyLifePostCreateForm({
           </RequestButton>
         </PreventDefaultForm>
         {uploadPercent !== null && (
-          <ImageUploadProgressBar value={uploadPercent} />
+          <CustomProgressBar work="사진 업로드" value={uploadPercent} />
         )}
         {isDailyLifePostCreated !== null && (
-          <PostAddProgressBar value={isDailyLifePostCreated ? 100 : 0} />
+          <CustomProgressBar
+            work="포스트 게시"
+            value={isDailyLifePostCreated ? 100 : 0}
+          />
         )}
+        {children}
       </ArticleContentsContainer>
       <FocusInitButton focusableElRef={entryPointButtonRef} />
     </Article>

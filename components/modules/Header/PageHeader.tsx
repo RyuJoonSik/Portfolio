@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import boxShadow from "../../_styles/boxShadow";
 import { blue } from "../../_styles/color";
 import contentAlign from "../../_styles/contentAlign";
 
@@ -19,8 +20,7 @@ const StyledPageHeader = styled.header`
   background-color: ${blue.default};
   box-sizing: border-box;
   width: 100%;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12);
+  ${boxShadow.header};
 
   ${responsiveSize.mobile} {
     ${contentAlign.center};

@@ -20,23 +20,25 @@ export default function useDailyLifePostCreater() {
   const db = getFirestore(firebaseApp);
 
   async function createDailyLifePost(
-    { title, content, downloadURL }: DailyLifePostInput,
+    { title, content, imageURL, imagePath }: DailyLifePostInput,
     onSuccess?: (doc: DocumentReference<DocumentData>) => void,
     onError?: (e: unknown) => void
   ) {
     setIsDailyLifePostCreated((prevState) => !!prevState);
-
     try {
       const doc = await addDoc(collection(db, dailyLifePostPath), {
         title,
         content,
-        downloadURL: downloadURL || null,
+        imageURL: imageURL || null,
+        imagePath: imagePath || null,
         requestedAt: Timestamp.now(),
       });
+      console.log(doc);
 
       onSuccess && onSuccess(doc);
       setIsDailyLifePostCreated((prevState) => !prevState);
     } catch (e) {
+      console.log(e);
       onError && onError(e);
     }
   }

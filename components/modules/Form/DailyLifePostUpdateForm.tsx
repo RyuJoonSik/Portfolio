@@ -12,36 +12,39 @@ import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
 import ArticleHeader from "../../atoms/Header/ArticleHeader";
+import CustomInput from "../../atoms/Input/CustomInput";
+import CustomProgressBar from "../../atoms/ProgressBar/CustomProgressBar";
 import FocusInitButton from "../Button/FocusInitButton";
 import ImageFileInput from "../Input/ImageFileInput";
-import TextContentInput from "../Input/TextContentInput";
-import TitleInput from "../Input/TitleInput";
-import ImageUploadProgressBar from "../ProgressBar/ImageUploadProgressBar";
-import PostAddProgressBar from "../ProgressBar/PostAddProgressBar";
+import { HTMLInputFileElement } from "../../../types/htmlElement";
+import useFileDeleter from "../../../hooks/useFileDeleter";
 
 interface DailyLifePostUpdateFormProps {
   handleHideForm(): void;
-  currentDailyLifePost: DailyLifePost;
+  prevDailyLifePost: DailyLifePost;
+  children?: React.ReactNode;
 }
 
 export default function DailyLifePostUpdateForm({
   handleHideForm,
-  currentDailyLifePost,
+  prevDailyLifePost,
+  children,
 }: DailyLifePostUpdateFormProps): JSX.Element {
   const entryPointButtonRef = useRef<HTMLButtonElement>(null);
   const endPointButtonRef = useRef<HTMLButtonElement>(null);
-  const inputFileRef = useRef<HTMLInputElement>(null);
+  const inputFileRef = useRef<HTMLInputFileElement>(null);
 
   useAutoFocus(entryPointButtonRef);
 
   const [dailyLifePost, setDailyLifePostPost] = useInputsValue({
-    // 프로퍼티와 일치하는 id 어트리뷰트를 사용
-    title: currentDailyLifePost.title,
-    content: currentDailyLifePost.content,
+    title: prevDailyLifePost.title,
+    content: prevDailyLifePost.content,
   });
 
   const [isDailyLifePostUpdated, updateDailyLifePost] =
     useDailyLifePostUpdater();
+
+  const [isFileDeleted, deleteFile] = useFileDeleter();
 
   const [uploadPercent, uploadFile] = useFileUploader();
 
@@ -54,25 +57,55 @@ export default function DailyLifePostUpdateForm({
     }
   }, [isDailyLifePostUpdated, handleHideForm]);
 
-  const handleSubmit = async () => {
-    const files = inputFileRef.current?.files;
+  const updateWithNoImg = () => {
+    const updatePost = () => {
+      updateDailyLifePost(prevDailyLifePost.id, {
+        ...dailyLifePost,
+        imageURL: null,
+        imagePath: null,
+      });
+    };
 
-    if (files?.length) {
+    if (prevDailyLifePost.imagePath) {
+      return deleteFile(prevDailyLifePost.imagePath, updatePost);
+    }
+
+    updatePost();
+  };
+
+  const updateWithImg = (file: File) => {
+    const updatePost = () => {
       uploadFile(
         `${imagePath + Date.now()}`,
-        files[0],
-        (downloadURL: string) => {
-          updateDailyLifePost(currentDailyLifePost.id, {
+        file,
+        (imageURL: string, imagePath: string) => {
+          updateDailyLifePost(prevDailyLifePost.id, {
             ...dailyLifePost,
-            downloadURL,
+            imageURL,
+            imagePath,
           });
         }
       );
+    };
 
+    if (prevDailyLifePost.imagePath) {
+      return deleteFile(prevDailyLifePost.imagePath, updatePost);
+    }
+    updatePost();
+  };
+
+  const handleSubmit = async () => {
+    if (!inputFileRef.current) {
       return;
     }
 
-    updateDailyLifePost(currentDailyLifePost.id, dailyLifePost);
+    const files = inputFileRef.current.files;
+
+    if (files.length === 0) {
+      return updateWithNoImg();
+    }
+
+    updateWithImg(files[0]);
   };
 
   return (
@@ -89,12 +122,17 @@ export default function DailyLifePostUpdateForm({
       </ArticleHeader>
       <ArticleContentsContainer>
         <PreventDefaultForm>
-          <TitleInput
+          <CustomInput
+            placeholder="제목을 입력해 주세요."
+            label="제목"
             value={dailyLifePost.title}
             id="title"
             handleChange={setDailyLifePostPost}
           />
-          <TextContentInput
+          <CustomInput
+            placeholder="내용을 입력해 주세요."
+            label="내용"
+            type="textarea"
             value={dailyLifePost.content}
             id="content"
             handleChange={setDailyLifePostPost}
@@ -109,11 +147,15 @@ export default function DailyLifePostUpdateForm({
           </RequestButton>
         </PreventDefaultForm>
         {uploadPercent !== null && (
-          <ImageUploadProgressBar value={uploadPercent} />
+          <CustomProgressBar work="사진 업데이트" value={uploadPercent} />
         )}
         {isDailyLifePostUpdated !== null && (
-          <PostAddProgressBar value={isDailyLifePostUpdated ? 100 : 0} />
+          <CustomProgressBar
+            work="포스트 업데이트"
+            value={isDailyLifePostUpdated ? 100 : 0}
+          />
         )}
+        {children}
       </ArticleContentsContainer>
       <FocusInitButton focusableElRef={entryPointButtonRef} />
     </Article>

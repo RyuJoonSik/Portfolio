@@ -1,1 +1,1 @@
-export const imagePath = "dailyLifePosts";
+export const imagePath = "images/dailyLifePost/";

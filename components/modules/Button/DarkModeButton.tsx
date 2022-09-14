@@ -8,14 +8,13 @@ import contentAlign from "../../_styles/contentAlign";
 import spaceSize from "../../_styles/spaceSize";
 import responsiveSize from "../../_styles/responsiveSize";
 import { blue, yellow } from "../../_styles/color";
-import { customTextStyle } from "../../atoms/Text/CustomText";
+import ButtonName from "../../atoms/Text/CustomText";
 import { darkTheme, lightTheme } from "../../_styles/theme";
 import { ThemeContext as ParentThemeContext } from "../../../contexts/ThemeContext";
 import elementColor from "../../_styles/elementColor";
-
-const ButtonName = styled.span`
-  ${customTextStyle};
-`;
+import roundShape from "../../_styles/roundShape";
+import boxShadow from "../../_styles/boxShadow";
+import hoverEffect from "../../_styles/hoverEffect";
 
 const StyledDarkModeButton = styled.button`
   ${elementColor.white};
@@ -24,21 +23,13 @@ const StyledDarkModeButton = styled.button`
   gap: ${spaceSize.small};
   padding: ${spaceSize.small};
   width: 160px;
-  border-radius: 1.5rem;
-  opacity: 0.7;
-  box-shadow: 0px 4px 6px -2px rgb(0 0 0 / 12%),
-    0px 2px 2px -1px rgb(0 0 0 / 5%);
+  border-radius: ${spaceSize.larger};
+  ${boxShadow.button};
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      opacity: 1;
-    }
-  }
+  ${hoverEffect.opacity};
 
   ${responsiveSize.tablet} {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
+    ${roundShape.medium};
 
     ${ButtonName} {
       display: none;

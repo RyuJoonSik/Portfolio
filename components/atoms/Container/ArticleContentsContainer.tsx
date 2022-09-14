@@ -6,7 +6,7 @@ import contentDirection from "../../_styles/contentDirection";
 
 const articleContentsContainerStyle = css`
   ${contentDirection.vertical};
-  gap: ${spaceSize.small};
+  gap: ${spaceSize.smaller};
   padding: ${spaceSize.larger};
 
   color: ${({ theme }) => theme.color.textDefault};

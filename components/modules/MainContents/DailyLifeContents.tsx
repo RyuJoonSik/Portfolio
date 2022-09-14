@@ -38,11 +38,7 @@ export default function DailyLifeContents(): JSX.Element {
       <DailyLifePostList />
       {isCreateFormVisible && (
         <ModalPortal>
-          <ModalContentsContainer>
-            <CenterFixedContainer>
-              <DailyLifePostCreateForm handleHideForm={handleHideForm} />
-            </CenterFixedContainer>
-          </ModalContentsContainer>
+          <DailyLifePostCreateForm handleHideForm={handleHideForm} />
         </ModalPortal>
       )}
     </Main>

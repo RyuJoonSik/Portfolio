@@ -8,8 +8,7 @@ import RequestButton from "../../atoms/Button/RequestButton";
 import ArticleContentsContainer from "../../atoms/Container/ArticleContentsContainer";
 import PreventDefaultForm from "../../atoms/Form/PreventDefaultForm";
 import ArticleHeader from "../../atoms/Header/ArticleHeader";
-import EmailInput from "../Input/EmailInput";
-import PasswordInput from "../Input/PasswordInput";
+import CustomInput from "../../atoms/Input/CustomInput";
 
 export default function RegisterForm(): JSX.Element {
   const [userAuthInfo, setUserAuthInfo] = useInputsValue({
@@ -23,6 +22,8 @@ export default function RegisterForm(): JSX.Element {
     register(userAuthInfo, () => navigation("/"), alert);
   };
 
+  const { email, password } = userAuthInfo;
+
   return (
     <Article size="small">
       <ArticleHeader>
@@ -30,15 +31,21 @@ export default function RegisterForm(): JSX.Element {
       </ArticleHeader>
       <ArticleContentsContainer>
         <PreventDefaultForm>
-          <EmailInput
-            value={userAuthInfo.email}
-            id="email"
+          <CustomInput
+            label="이메일"
+            placeholder="id@email.com 형식으로 입력해 주세요."
+            type="email"
+            value={email}
+            id={"email"}
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />
-          <PasswordInput
-            value={userAuthInfo.password}
-            id="password"
+          <CustomInput
+            label="비밀번호"
+            placeholder="비밀번호 6자리를 입력해 주세요."
+            type="password"
+            value={password}
+            id={"password"}
             handleChange={setUserAuthInfo}
             handleEnter={handleClick}
           />

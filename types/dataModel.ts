@@ -4,12 +4,14 @@ export interface DailyLifePost {
   id: string;
   title: string;
   content: string;
-  downloadURL: string | null;
+  imageURL: string | null;
+  imagePath: string | null;
   requestedAt: Timestamp;
 }
 
 export type DailyLifePostInput = {
   title: string;
   content: string;
-  downloadURL?: string;
+  imageURL?: string | null;
+  imagePath?: string | null;
 };

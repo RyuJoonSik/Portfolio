@@ -1,30 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import boxShadow from "../../_styles/boxShadow";
 
 import contentAlign from "../../_styles/contentAlign";
 import contentDirection from "../../_styles/contentDirection";
 import elementColor from "../../_styles/elementColor";
 import fontSize from "../../_styles/fontSize";
+import hoverEffect from "../../_styles/hoverEffect";
+import roundShape from "../../_styles/roundShape";
 import spaceSize from "../../_styles/spaceSize";
 
 const StyledScrollToTopButton = styled.button`
   ${elementColor.white};
   ${contentDirection.horizontal};
   ${contentAlign.center};
+  ${roundShape.medium};
   gap: ${spaceSize.small};
   padding: ${spaceSize.small};
-  opacity: 0.7;
-  box-shadow: 0px 4px 6px -2px rgb(0 0 0 / 12%),
-    0px 2px 2px -1px rgb(0 0 0 / 5%);
+  ${boxShadow.button};
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      opacity: 1;
-    }
-  }
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  ${hoverEffect.opacity};
 
   ${fontSize.smallest};
   line-height: 1;

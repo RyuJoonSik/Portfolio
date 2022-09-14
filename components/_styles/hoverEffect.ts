@@ -31,6 +31,15 @@ const hoverEffect = {
       }
     }
   `,
+  opacity: css`
+    opacity: 0.7;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  `,
 };
 
 export default hoverEffect;

@@ -7,6 +7,7 @@ import spaceSize from "../../_styles/spaceSize";
 import contentDirection from "../../_styles/contentDirection";
 import elementColor, { ElementColorKey } from "../../_styles/elementColor";
 import hoverEffect from "../../_styles/hoverEffect";
+import boxShadow from "../../_styles/boxShadow";
 
 interface StyledDefaultButton {
   color?: ElementColorKey;
@@ -25,9 +26,9 @@ const defaultButtonStyle = css<StyledDefaultButton>`
   ${({ color }) => getButtonStyle(color)};
   ${contentDirection.horizontal};
   ${contentAlign.center};
-  gap: ${spaceSize.smaller};
-  padding: ${spaceSize.smaller} ${spaceSize.small};
+  padding: ${spaceSize.smaller};
   border-radius: ${spaceSize.smaller};
+  ${boxShadow.button};
 
   word-break: keep-all;
 `;

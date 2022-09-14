@@ -32,7 +32,7 @@ export function queryWithNull(
   return query(baseQuery, ...filteredArgs);
 }
 
-export function createQueryByOrder(
+export function createDailyLifePostQuery(
   orderDirection: OrderByDirection,
   lastSnapshot: DocumentSnapshot | null,
   offset = 5

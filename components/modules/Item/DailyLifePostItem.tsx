@@ -13,16 +13,6 @@ import PostUpdateButton from "../Button/PostUpdateButton";
 import DailyLifePostUpdateForm from "../Form/DailyLifePostUpdateForm";
 import ArticleImgContents from "../Img/ArticleImgContents";
 
-const dateOption = {
-  year: "numeric",
-  month: "numeric",
-  day: "numeric",
-  weekday: "long",
-  hour: "numeric",
-  minute: "numeric",
-  second: "numeric",
-} as const;
-
 interface DailyLifePostItemProps {
   dailyLifePost: DailyLifePost;
   setLastItem?: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
@@ -45,7 +35,17 @@ export default function DailyLifePostItem({
     updateFormOpenButtonRef.current?.focus();
   };
 
-  const { id, title, content, downloadURL, requestedAt } = dailyLifePost;
+  const { id, title, content, imageURL, imagePath, requestedAt } =
+    dailyLifePost;
+  const dateOption = {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+    weekday: "long",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  } as const;
 
   return (
     <Article ref={setLastItem}>
@@ -56,7 +56,7 @@ export default function DailyLifePostItem({
             {requestedAt.toDate().toLocaleString("ko-KR", dateOption)}
           </time>
           <CustomContainer gap="small">
-            <PostRemoveButton id={id} />
+            <PostRemoveButton id={id} imagePath={imagePath} />
             <PostUpdateButton
               buttonRef={updateFormOpenButtonRef}
               handleShowForm={handleShowForm}
@@ -65,9 +65,9 @@ export default function DailyLifePostItem({
         </CustomContainer>
       </ArticleHeader>
       <ArticleContentsContainer>
-        {downloadURL ? (
+        {imageURL ? (
           <ArticleImgContents
-            src={downloadURL}
+            src={imageURL}
             alt="이미지 파일입니다."
             textContent={content}
           />
@@ -77,14 +77,10 @@ export default function DailyLifePostItem({
       </ArticleContentsContainer>
       {isUpdateFormVisible && (
         <ModalPortal>
-          <ModalContentsContainer>
-            <CenterFixedContainer>
-              <DailyLifePostUpdateForm
-                handleHideForm={handleHideForm}
-                currentDailyLifePost={dailyLifePost}
-              />
-            </CenterFixedContainer>
-          </ModalContentsContainer>
+          <DailyLifePostUpdateForm
+            handleHideForm={handleHideForm}
+            prevDailyLifePost={dailyLifePost}
+          />
         </ModalPortal>
       )}
     </Article>

@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import {
-  doc,
   DocumentSnapshot,
   getDocs,
   OrderByDirection,
 } from "firebase/firestore";
 
 import { DailyLifePost } from "../types/dataModel";
-import { createQueryByOrder, getDocsData } from "../firebase/fireStore";
+import { createDailyLifePostQuery, getDocsData } from "../firebase/fireStore";
 
 type Action =
   | { type: "init"; orderBy: OrderByDirection }
@@ -25,8 +24,8 @@ type Action =
 
 interface InitialState {
   dailyLifePosts: DailyLifePost[];
-  orderBy: OrderByDirection;
   cursor: DocumentSnapshot | null;
+  orderBy: OrderByDirection;
   isLoading: boolean;
   hasMore: boolean;
 }
@@ -64,6 +63,7 @@ function reducer(state: InitialState, action: Action): InitialState {
         isLoading: false,
         hasMore: false,
       };
+    default:
       throw new Error();
   }
 }
@@ -81,7 +81,9 @@ export default function useDailyLifePostReader() {
     async function initDailyLifePosts() {
       if (postManager.isLoading) {
         const { orderBy, cursor } = postManager;
-        const { docs } = await getDocs(createQueryByOrder(orderBy, cursor));
+        const { docs } = await getDocs(
+          createDailyLifePostQuery(orderBy, cursor)
+        );
         if (docs.length === 0) {
           dispatch({ type: "end" });
           return;

@@ -103,7 +103,7 @@ const normalizeAndResetStyle = css`
   }
 `;
 
-const customInittStyle = css`
+const customStyle = css`
   body {
     background-color: ${({ theme }) => theme.color.backgroundDefault};
   }
@@ -145,8 +145,6 @@ const customInittStyle = css`
   }
 
   textarea {
-    height: 100px;
-
     word-break: break-all;
     resize: none;
   }
@@ -168,10 +166,6 @@ const customInittStyle = css`
 
   button,
   a {
-    /* &:focus-visible {
-      border: ${spaceSize.smaller} solid red;
-    } */
-
     position: relative;
 
     &::after {
@@ -203,46 +197,6 @@ const customInittStyle = css`
     text-decoration: none;
   }
 
-  form {
-    ${contentDirection.vertical};
-    gap: ${spaceSize.small};
-    width: 100%;
-  }
-
-  input,
-  textarea {
-    min-width: 0;
-    padding: ${spaceSize.small};
-    background-color: transparent;
-    border: ${spaceSize.smallest} solid
-      ${({ theme }) => theme.color.borderDefault};
-    border-radius: ${spaceSize.smaller};
-
-    color: ${({ theme }) => theme.color.textDefault};
-
-    &::placeholder {
-      /* Chrome, Firefox, Opera, Safari 10.1+ */
-      ${fontSize.medium}
-      color: ${({ theme }) => theme.color.textPlaceholder};
-      opacity: 1; /* Firefox */
-    }
-
-    &:-ms-input-placeholder {
-      /* Internet Explorer 10-11 */
-      color: ${({ theme }) => theme.color.textPlaceholder};
-    }
-
-    &::-ms-input-placeholder {
-      /* Microsoft Edge */
-      color: ${({ theme }) => theme.color.textPlaceholder};
-    }
-  }
-
-  input:focus,
-  textarea:focus {
-    border-color: ${({ theme }) => theme.color.borderFocus};
-  }
-
   dd {
     padding-left: 2.5rem;
   }
@@ -267,5 +221,5 @@ const customInittStyle = css`
 
 export default createGlobalStyle`
   ${normalizeAndResetStyle};
-  ${customInittStyle};
+  ${customStyle};
 `;
