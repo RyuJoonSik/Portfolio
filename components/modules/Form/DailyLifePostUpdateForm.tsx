@@ -1,9 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { imagePath } from "../../../firebase/storage";
 import useAutoFocus from "../../../hooks/useAutoFocus";
 import useDailyLifePostUpdater from "../../../hooks/useDailyLifePostUpdater";
-import useFileUploader from "../../../hooks/useFileUploader";
 import useInputsValue from "../../../hooks/useInputsValue";
 import { DailyLifePost } from "../../../types/dataModel";
 import Article from "../../atoms/Article/Article";
@@ -16,8 +14,7 @@ import CustomInput from "../../atoms/Input/CustomInput";
 import CustomProgressBar from "../../atoms/ProgressBar/CustomProgressBar";
 import FocusInitButton from "../Button/FocusInitButton";
 import ImageFileInput from "../Input/ImageFileInput";
-import { HTMLInputFileElement } from "../../../types/htmlElement";
-import useFileDeleter from "../../../hooks/useFileDeleter";
+import { getMetadata, getStorage, ref } from "firebase/storage";
 
 interface DailyLifePostUpdateFormProps {
   handleHideForm(): void;
@@ -32,7 +29,6 @@ export default function DailyLifePostUpdateForm({
 }: DailyLifePostUpdateFormProps): JSX.Element {
   const entryPointButtonRef = useRef<HTMLButtonElement>(null);
   const endPointButtonRef = useRef<HTMLButtonElement>(null);
-  const inputFileRef = useRef<HTMLInputFileElement>(null);
 
   useAutoFocus(entryPointButtonRef);
 
@@ -41,12 +37,12 @@ export default function DailyLifePostUpdateForm({
     content: prevDailyLifePost.content,
   });
 
-  const [isDailyLifePostUpdated, updateDailyLifePost] =
-    useDailyLifePostUpdater();
-
-  const [isFileDeleted, deleteFile] = useFileDeleter();
-
-  const [uploadPercent, uploadFile] = useFileUploader();
+  const [
+    isDailyLifePostUpdated,
+    updatePostWithNoImg,
+    updatePostWithImg,
+    uploadPercent,
+  ] = useDailyLifePostUpdater();
 
   useEffect(() => {
     if (isDailyLifePostUpdated) {
@@ -57,55 +53,43 @@ export default function DailyLifePostUpdateForm({
     }
   }, [isDailyLifePostUpdated, handleHideForm]);
 
-  const updateWithNoImg = () => {
-    const updatePost = () => {
-      updateDailyLifePost(prevDailyLifePost.id, {
-        ...dailyLifePost,
-        imageURL: null,
-        imagePath: null,
+  useEffect(() => {
+    if (prevDailyLifePost.imagePath === null) return;
+
+    const storage = getStorage();
+    const forestRef = ref(storage, prevDailyLifePost.imagePath);
+
+    // Get metadata properties
+    getMetadata(forestRef)
+      .then((metadata) => {
+        console.log(metadata);
+        // Metadata now contains the metadata for 'images/forest.jpg'
+      })
+      .catch((error) => {
+        // Uh-oh, an error occurred!
       });
-    };
+  }, []);
 
-    if (prevDailyLifePost.imagePath) {
-      return deleteFile(prevDailyLifePost.imagePath, updatePost);
+  const [imgFile, setImgFile] = useState<File | null>(null);
+  const handleChange = ({ target }: { target: HTMLInputElement }) => {
+    const types = ["image/png", "image/jpeg"];
+    const files = target.files as FileList;
+    const [file] = files;
+
+    if (!types.includes(file.type)) {
+      target.files = new DataTransfer().files;
+      return alert("이미지 파일이 아닙니다.");
     }
 
-    updatePost();
-  };
-
-  const updateWithImg = (file: File) => {
-    const updatePost = () => {
-      uploadFile(
-        `${imagePath + Date.now()}`,
-        file,
-        (imageURL: string, imagePath: string) => {
-          updateDailyLifePost(prevDailyLifePost.id, {
-            ...dailyLifePost,
-            imageURL,
-            imagePath,
-          });
-        }
-      );
-    };
-
-    if (prevDailyLifePost.imagePath) {
-      return deleteFile(prevDailyLifePost.imagePath, updatePost);
-    }
-    updatePost();
+    setImgFile(file);
   };
 
   const handleSubmit = async () => {
-    if (!inputFileRef.current) {
-      return;
+    if (imgFile) {
+      return updatePostWithImg(prevDailyLifePost, dailyLifePost, imgFile);
     }
 
-    const files = inputFileRef.current.files;
-
-    if (files.length === 0) {
-      return updateWithNoImg();
-    }
-
-    updateWithImg(files[0]);
+    updatePostWithNoImg(prevDailyLifePost, dailyLifePost);
   };
 
   return (
@@ -137,11 +121,13 @@ export default function DailyLifePostUpdateForm({
             id="content"
             handleChange={setDailyLifePostPost}
           />
-          <ImageFileInput inputFileRef={inputFileRef} />
+
+          <ImageFileInput imgFile={imgFile} handleChange={handleChange} />
           <RequestButton
             type="button"
             ref={endPointButtonRef}
             onClick={handleSubmit}
+            disabled={uploadPercent !== null || isDailyLifePostUpdated !== null}
           >
             수정하기
           </RequestButton>

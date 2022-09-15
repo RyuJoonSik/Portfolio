@@ -1,19 +1,46 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import styled from "styled-components";
 
-import InputContainer from "../../atoms/Container/InputContainer";
+import DefaultButton from "../../atoms/Button/DefaultButton";
 
 interface ImageFileInputProps {
-  inputFileRef?: React.RefObject<HTMLInputElement>;
-  placeholder?: string;
+  imgFile: File | null;
+  handleChange: ({ target }: { target: HTMLInputElement }) => void;
 }
 
+const FileInput = styled.input`
+  display: none;
+`;
+
 export default function ImageFileInput({
-  inputFileRef,
+  imgFile,
+  handleChange,
 }: ImageFileInputProps): JSX.Element {
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleClick = () => {
+    if (!inputRef.current) return;
+
+    inputRef.current.click();
+  };
+
   return (
-    <InputContainer>
-      <label htmlFor="file">이미지</label>
-      <input id="file" type="file" ref={inputFileRef} />
-    </InputContainer>
+    <>
+      <DefaultButton
+        buttonName="사진 불러오기(.jpg, .jpeg, .png)"
+        color="white"
+        handleClick={handleClick}
+      />
+      <FileInput
+        id="file"
+        type="file"
+        ref={(el) => {
+          inputRef.current = el;
+        }}
+        accept=".jpg, .jpeg, .png"
+        onChange={handleChange}
+      />
+      {imgFile !== null && <div>{imgFile.name}</div>}
+    </>
   );
 }

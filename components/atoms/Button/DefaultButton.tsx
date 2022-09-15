@@ -22,13 +22,13 @@ function getButtonStyle(color?: ElementColorKey) {
   `;
 }
 
-const defaultButtonStyle = css<StyledDefaultButton>`
+export const defaultButtonStyle = css<StyledDefaultButton>`
   ${({ color }) => getButtonStyle(color)};
   ${contentDirection.horizontal};
   ${contentAlign.center};
   padding: ${spaceSize.smaller};
   border-radius: ${spaceSize.smaller};
-  ${boxShadow.button};
+  /* ${boxShadow.button}; */
 
   word-break: keep-all;
 `;

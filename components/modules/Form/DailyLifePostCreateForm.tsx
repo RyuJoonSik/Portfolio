@@ -1,9 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { imagePath } from "../../../firebase/storage";
 import useAutoFocus from "../../../hooks/useAutoFocus";
 import useDailyLifePostCreater from "../../../hooks/useDailyLifePostCreater";
-import useFileUploader from "../../../hooks/useFileUploader";
 import useInputsValue from "../../../hooks/useInputsValue";
 import Article from "../../atoms/Article/Article";
 import DefaultButton from "../../atoms/Button/DefaultButton";
@@ -15,7 +13,6 @@ import CustomInput from "../../atoms/Input/CustomInput";
 import CustomProgressBar from "../../atoms/ProgressBar/CustomProgressBar";
 import FocusInitButton from "../Button/FocusInitButton";
 import ImageFileInput from "../Input/ImageFileInput";
-import { HTMLInputFileElement } from "../../../types/htmlElement";
 
 interface DailyLifePostCreateFormProps {
   handleHideForm(): void;
@@ -28,7 +25,6 @@ export default function DailyLifePostCreateForm({
 }: DailyLifePostCreateFormProps): JSX.Element {
   const entryPointButtonRef = useRef<HTMLButtonElement>(null);
   const endPointButtonRef = useRef<HTMLButtonElement>(null);
-  const inputFileRef = useRef<HTMLInputFileElement>(null);
 
   useAutoFocus(entryPointButtonRef);
 
@@ -37,34 +33,34 @@ export default function DailyLifePostCreateForm({
     content: "",
   });
 
-  const [isDailyLifePostCreated, createDailyLifePost] =
-    useDailyLifePostCreater();
-
-  const [uploadPercent, uploadFile] = useFileUploader();
+  const [
+    isDailyLifePostCreated,
+    createDailyLifePost,
+    createPostWithImg,
+    uploadPercent,
+  ] = useDailyLifePostCreater();
 
   useEffect(() => {
     if (isDailyLifePostCreated) setTimeout(handleHideForm, 500);
   }, [isDailyLifePostCreated, handleHideForm]);
 
-  const handleSubmit = async () => {
-    if (!inputFileRef.current) {
-      return;
+  const [imgFile, setImgFile] = useState<File | null>(null);
+  const handleChange = ({ target }: { target: HTMLInputElement }) => {
+    const types = ["image/png", "image/jpeg"];
+    const files = target.files as FileList;
+    const [file] = files;
+
+    if (!types.includes(file.type)) {
+      target.files = new DataTransfer().files;
+      return alert("이미지 파일이 아닙니다.");
     }
 
-    const files = inputFileRef.current.files;
-    if (files.length > 0) {
-      uploadFile(
-        `${imagePath + Date.now()}`,
-        files[0],
-        (imageURL: string, imagePath: string) => {
-          createDailyLifePost({
-            ...dailyLifePost,
-            imageURL,
-            imagePath,
-          });
-        }
-      );
-      return;
+    setImgFile(file);
+  };
+
+  const handleSubmit = async () => {
+    if (imgFile) {
+      return createPostWithImg(dailyLifePost, imgFile);
     }
 
     createDailyLifePost(dailyLifePost);
@@ -101,11 +97,12 @@ export default function DailyLifePostCreateForm({
             id="content"
             handleChange={setDailyLifePostPost}
           />
-          <ImageFileInput inputFileRef={inputFileRef} />
+          <ImageFileInput imgFile={imgFile} handleChange={handleChange} />
           <RequestButton
             type="button"
             ref={endPointButtonRef}
             onClick={handleSubmit}
+            disabled={uploadPercent !== null || isDailyLifePostCreated !== null}
           >
             작성하기
           </RequestButton>

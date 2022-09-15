@@ -10,7 +10,7 @@ interface PreventDefaultFormProps {
 
 const Form = styled.form`
   ${contentDirection.vertical};
-  gap: ${spaceSize.smaller};
+  gap: ${spaceSize.small};
   width: 100%;
 `;
 

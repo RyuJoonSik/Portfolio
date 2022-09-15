@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ArticleImgContents from "./ArticleImgContents";
 
 export default {
-  title: "Modules/Img/ArticleImgContents",
+  title: "Atoms/Img/ArticleImgContents",
   component: ArticleImgContents,
 } as ComponentMeta<typeof ArticleImgContents>;
 

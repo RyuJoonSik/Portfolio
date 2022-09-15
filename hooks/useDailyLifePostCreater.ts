@@ -10,20 +10,23 @@ import { useState } from "react";
 import { dailyLifePostPath } from "../firebase/fireStore";
 
 import firebaseApp from "../firebase/initFirebase";
+import { imagePath } from "../firebase/storage";
 import { DailyLifePostInput } from "../types/dataModel";
+import useFileUploader from "./useFileUploader";
 
 export default function useDailyLifePostCreater() {
   const [isDailyLifePostCreated, setIsDailyLifePostCreated] = useState<
     boolean | null
   >(null);
-
-  const db = getFirestore(firebaseApp);
+  const [uploadPercent, uploadFile] = useFileUploader();
 
   async function createDailyLifePost(
     { title, content, imageURL, imagePath }: DailyLifePostInput,
     onSuccess?: (doc: DocumentReference<DocumentData>) => void,
     onError?: (e: unknown) => void
   ) {
+    const db = getFirestore(firebaseApp);
+
     setIsDailyLifePostCreated((prevState) => !!prevState);
     try {
       const doc = await addDoc(collection(db, dailyLifePostPath), {
@@ -33,7 +36,6 @@ export default function useDailyLifePostCreater() {
         imagePath: imagePath || null,
         requestedAt: Timestamp.now(),
       });
-      console.log(doc);
 
       onSuccess && onSuccess(doc);
       setIsDailyLifePostCreated((prevState) => !prevState);
@@ -43,5 +45,24 @@ export default function useDailyLifePostCreater() {
     }
   }
 
-  return [isDailyLifePostCreated, createDailyLifePost] as const;
+  const createPostWithImg = (dailyLifePost: DailyLifePostInput, file: File) => {
+    uploadFile(
+      `${imagePath + Date.now()}`,
+      file,
+      (imageURL: string, imagePath: string) => {
+        createDailyLifePost({
+          ...dailyLifePost,
+          imageURL,
+          imagePath,
+        });
+      }
+    );
+  };
+
+  return [
+    isDailyLifePostCreated,
+    createDailyLifePost,
+    createPostWithImg,
+    uploadPercent,
+  ] as const;
 }

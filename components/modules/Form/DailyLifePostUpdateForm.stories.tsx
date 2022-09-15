@@ -13,6 +13,7 @@ export default {
 const dailyLifePost = {
   title: "제목",
   content: "내용",
+  imagePath: null,
 } as DailyLifePost;
 
 const Template: ComponentStory<typeof DailyLifePostUpdateForm> = (args) => (

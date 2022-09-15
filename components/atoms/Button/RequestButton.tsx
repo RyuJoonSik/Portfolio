@@ -4,6 +4,7 @@ import spaceSize from "../../_styles/spaceSize";
 import fontSize from "../../_styles/fontSize";
 import elementColor from "../../_styles/elementColor";
 import hoverEffect from "../../_styles/hoverEffect";
+import { blue } from "../../_styles/color";
 
 export const requestButtonStyle = css`
   ${elementColor.blue};
@@ -14,6 +15,10 @@ export const requestButtonStyle = css`
 
   ${fontSize.large};
   text-align: center;
+
+  &:disabled {
+    background-color: ${blue.light};
+  }
 `;
 
 const RequestButton = styled.button`
